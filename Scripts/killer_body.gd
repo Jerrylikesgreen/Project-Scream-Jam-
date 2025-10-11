@@ -9,7 +9,7 @@ class_name Killerbody extends CharacterBody2D
 @export var speed: int = 100
 @export var idle_duration: float = 1.0  # seconds
 @export var attack_range: float = 25.60
-
+@export var packed_scene: PackedScene   
 
 
 ## Killer's Body State Machine
@@ -29,7 +29,6 @@ func _ready():
 	_pick_patrol_target_position()
 	vision.body_entered.connect(_on_body_entered)
 	vision.body_exited.connect(_on_body_exited)
-	self.area_entered.connect(_on_area_entered)
 
 func _physics_process(_delta: float) -> void:
 	match killer_state:
@@ -42,27 +41,29 @@ func _physics_process(_delta: float) -> void:
 		KillerState.ATTACK:
 			_attack_logic(_delta)
 
-func _on_area_entered(area: Area2D) -> void:
+func handle_transition_area(area: Area2D) -> void:
+	# optional: check area group/type
 	if not area.is_in_group("TransitionArea"):
 		return
 
+	# If you want the Killer to be queued for that scene:
 	var target_scene: PackedScene = area.transition_to_scene
 	if target_scene == null:
-		push_warning("TransitionArea has no target scene assigned!")
+		push_warning("Transition area missing target scene")
 		return
 
-	# Queue this killer for the next scene
-	KillerManager.queue_killer_for_scene(target_scene, {
+	# prepare state dictionary (whatever you need later)
+	var state := {
 		"scene_packed": preload("res://Scenes/killer.tscn"),
-		"state": {
-			"speed": speed,
-			"patrol_state": killer_state,
-			"_count": _count,
-		}
-	})
+		"patrol_count": _count,
+		"facing_left": killer_sprite.flip_h,
+		# other fields you want to preserve...
+	}
 
-	# Remove killer from current scene
+	# queue & remove this instance
+	KillerManager.queue_killer_for_scene(target_scene, state)
 	queue_free()
+
 
 
 func _on_body_entered(body: Node2D)->void:
@@ -157,12 +158,12 @@ func _pick_area() -> void:
 	## Currently its just a 25% chance of the Killer to pick to go to another Scene, will make this logic 
 	## More fleshed out later. 
 	var chance_to_leave_scene = randi_range(1, 4)
-	if chance_to_leave_scene == 1:
-		_chosen_node = trans_area[randi() % rect_shapes.size()]
+	if chance_to_leave_scene == 1 and trans_area.size() > 0:
+		_chosen_node = trans_area[randi() % trans_area.size()]
+		return
 
-	## Picks a random collision shape
+	# Otherwise pick a random normal rectangle
 	_chosen_node = rect_shapes[randi() % rect_shapes.size()]
-
 
 func _patrol_logic(_delta: float) -> void:
 	killer_sprite.play("Moving")
@@ -188,6 +189,18 @@ func _patrol_logic(_delta: float) -> void:
 		velocity = Vector2.ZERO
 		killer_state = KillerState.IDLE
 		_idle_timer = 0.0
+
+func get_state_dict() -> Dictionary:
+	var state := {
+		"scene_packed": packed_scene,             # resource to instantiate later
+		"position": global_position,              # optional if you want exact pos
+	}
+	return state
+
+# Restore state on a newly created instance (call after instantiate + add_child)
+func restore_state(state: Dictionary) -> void:
+	if state.has("position"):
+		global_position = state["position"]
 
 
 
