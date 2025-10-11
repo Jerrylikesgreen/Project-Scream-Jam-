@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=4 uid="uid://yyjn1igwglod"]
+[gd_scene load_steps=10 format=4 uid="uid://yyjn1igwglod"]
 
 [ext_resource type="Texture2D" uid="uid://dxojir25gl11d" path="res://icon.svg" id="1_iti4p"]
 [ext_resource type="PackedScene" uid="uid://cu6b24mvag412" path="res://Scenes/killer.tscn" id="2_dtjkg"]
-[ext_resource type="PackedScene" uid="uid://bqlrbogl1wo8y" path="res://Scenes/player_movement.tscn" id="3_7w7ni"]
-[ext_resource type="Script" uid="uid://bvf78xmw0liad" path="res://Scripts/player.gd" id="3_rsyfn"]
+[ext_resource type="PackedScene" uid="uid://bja82w2ernttj" path="res://Scenes/player.tscn" id="4_rsyfn"]
 [ext_resource type="Script" uid="uid://rxg82q62y6dv" path="res://Scripts/game_over_background.gd" id="5_7w7ni"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rsyfn"]
@@ -216,8 +215,6 @@ size = Vector2(32, 27)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eglq2"]
 size = Vector2(262, 107)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_dtjkg"]
-
 [node name="TestLevel" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -239,21 +236,6 @@ debug_color = Color(0.5058824, 0.13725491, 0.49411765, 1)
 
 [node name="Killer Body" parent="Killer" index="1"]
 packed_scene = ExtResource("2_dtjkg")
-
-[node name="TestPlayer" type="CharacterBody2D" parent="." groups=["Player"]]
-position = Vector2(98, 382)
-collision_mask = 66
-script = ExtResource("3_rsyfn")
-
-[node name="PlayerController" parent="TestPlayer" instance=ExtResource("3_7w7ni")]
-
-[node name="Sprite2D" type="Sprite2D" parent="TestPlayer"]
-position = Vector2(-4.7683716e-07, 1)
-scale = Vector2(0.12109374, 0.10546875)
-texture = ExtResource("1_iti4p")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TestPlayer"]
-shape = SubResource("CircleShape2D_dtjkg")
 
 [node name="PlayerHUD" type="CanvasLayer" parent="."]
 
@@ -298,5 +280,8 @@ offset_bottom = -251.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Restart"
+
+[node name="Player" parent="." instance=ExtResource("4_rsyfn")]
+position = Vector2(101, 316)
 
 [editable path="Killer"]
