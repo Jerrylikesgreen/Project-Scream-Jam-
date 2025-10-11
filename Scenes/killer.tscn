@@ -1,0 +1,85 @@
+[gd_scene load_steps=11 format=3 uid="uid://cu6b24mvag412"]
+
+[ext_resource type="Script" uid="uid://biknv3bk14tw" path="res://Scripts/killer_body.gd" id="1_4lk16"]
+[ext_resource type="Script" uid="uid://bmra4mdxkpx1l" path="res://Scripts/killer.gd" id="1_5tl0p"]
+[ext_resource type="Texture2D" uid="uid://djn1qkjsjm2cp" path="res://Assets/BaseBody-Sheet-Sheet.png" id="1_nw6c6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uaoc1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4lk16"]
+atlas = ExtResource("1_nw6c6")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5tl0p"]
+atlas = ExtResource("1_nw6c6")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kjvon"]
+atlas = ExtResource("1_nw6c6")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7fb5"]
+atlas = ExtResource("1_nw6c6")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_282w8"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Action",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Attack ",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4lk16")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5tl0p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kjvon")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7fb5")
+}],
+"loop": true,
+"name": &"Idle ",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Moving ",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5tl0p"]
+size = Vector2(308, 92)
+
+[node name="Killer" type="Node2D"]
+script = ExtResource("1_5tl0p")
+
+[node name="Killer Body" type="CharacterBody2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_4lk16")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killer Body"]
+shape = SubResource("CircleShape2D_uaoc1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Killer Body"]
+sprite_frames = SubResource("SpriteFrames_282w8")
+animation = &"Idle "
+frame_progress = 0.2941962
+
+[node name="PatrolArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(105, 130)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PatrolArea"]
+position = Vector2(144, 36)
+shape = SubResource("RectangleShape2D_5tl0p")
+debug_color = Color(0.90872806, 0.000114936236, 0.7374902, 0.41960785)
