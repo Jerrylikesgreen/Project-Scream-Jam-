@@ -6,6 +6,6 @@ func _ready() -> void:
 	
 	
 func _on_player_hit():
-	## Will flesh pout later 
+	get_parent().queue_free()
 	
 	pass
