@@ -70,7 +70,7 @@ func _idle_logic(_delta: float) -> void:
 		_pick_patrol_target_position()
 		killer_state = KillerState.PATROL
 
-func _attack_logic(delta: float) -> void:
+func _attack_logic(_delta: float) -> void:
 	## Checks for player refrence. 
 	if player_ref == null:
 		killer_state = KillerState.PATROL
