@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=4 uid="uid://yyjn1igwglod"]
+[gd_scene load_steps=7 format=4 uid="uid://yyjn1igwglod"]
 
 [ext_resource type="Texture2D" uid="uid://dxojir25gl11d" path="res://icon.svg" id="1_iti4p"]
 [ext_resource type="PackedScene" uid="uid://cu6b24mvag412" path="res://Scenes/killer.tscn" id="2_dtjkg"]
@@ -76,6 +76,8 @@ sources/0 = SubResource("TileSetAtlasSource_dtjkg")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5tl0p"]
 size = Vector2(308, 92)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_dtjkg"]
+
 [node name="TestLevel" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -86,7 +88,7 @@ tile_set = SubResource("TileSet_eglq2")
 position = Vector2(602, 205)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Killer/PatrolArea" index="1"]
-position = Vector2(-544, 62)
+position = Vector2(-502, 49)
 shape = SubResource("RectangleShape2D_5tl0p")
 debug_color = Color(0.90872806, 0.000114936236, 0.7374902, 0.41960785)
 
@@ -94,5 +96,16 @@ debug_color = Color(0.90872806, 0.000114936236, 0.7374902, 0.41960785)
 position = Vector2(-534, -259)
 shape = SubResource("RectangleShape2D_5tl0p")
 debug_color = Color(0.90872806, 0.000114936236, 0.7374902, 0.41960785)
+
+[node name="TestPlayer" type="CharacterBody2D" parent="." groups=["Player"]]
+position = Vector2(98, 382)
+
+[node name="Sprite2D" type="Sprite2D" parent="TestPlayer"]
+position = Vector2(-4.7683716e-07, 1)
+scale = Vector2(0.12109374, 0.10546875)
+texture = ExtResource("1_iti4p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TestPlayer"]
+shape = SubResource("CircleShape2D_dtjkg")
 
 [editable path="Killer"]
