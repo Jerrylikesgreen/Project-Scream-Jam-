@@ -12,6 +12,7 @@ func _ready() -> void:
 	_percentage = 0
 
 func _process(delta: float) -> void:
+	#ensures percent cannot pass 100
 	if _percentage >= 100:
 		return
 	if _done == true:
@@ -19,5 +20,6 @@ func _process(delta: float) -> void:
 			_percentage += 1
 	percent_display.text = str(_percentage) + " %" 
 
+#waits for fade in to be over before increasing percent
 func _on_darkness_over_timeout() -> void:
 	_done = true
