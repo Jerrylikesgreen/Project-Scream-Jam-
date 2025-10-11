@@ -14,6 +14,10 @@ config/name="Project Scream Jam"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="res://Resources/default_bus_layout.tres"
+
 [autoload]
 
 SceneTransition="*res://Scenes/scene_transition.tscn"
