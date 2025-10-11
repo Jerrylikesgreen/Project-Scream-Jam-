@@ -221,7 +221,7 @@ tile_set = SubResource("TileSet_58jnd")
 position = Vector2(512, 125.5)
 shape = SubResource("RectangleShape2D_nlrt1")
 
-[node name="TransportArea2" type="Area2D" parent="." groups=["TransitionArea"]]
+[node name="TransportArea2" type="Area2D" parent="." groups=["EntryPoint", "TransitionArea"]]
 position = Vector2(-495, 50)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransportArea2"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=4 uid="uid://yyjn1igwglod"]
+[gd_scene load_steps=11 format=4 uid="uid://yyjn1igwglod"]
 
 [ext_resource type="Texture2D" uid="uid://dxojir25gl11d" path="res://icon.svg" id="1_iti4p"]
 [ext_resource type="PackedScene" uid="uid://cu6b24mvag412" path="res://Scenes/killer.tscn" id="2_dtjkg"]
 [ext_resource type="PackedScene" uid="uid://egwwowhbwaop" path="res://Scenes/transport_area.tscn" id="3_eglq2"]
+[ext_resource type="PackedScene" uid="uid://bl5cfkx88qc1a" path="res://Scenes/test_map_1.tscn" id="4_rsyfn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rsyfn"]
 resource_name = "Floor"
@@ -211,6 +212,9 @@ sources/1 = SubResource("TileSetAtlasSource_7w7ni")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5tl0p"]
 size = Vector2(32, 27)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eglq2"]
+size = Vector2(243, 74)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_dtjkg"]
 
 [node name="TestLevel" type="Node2D"]
@@ -222,15 +226,23 @@ tile_set = SubResource("TileSet_eglq2")
 [node name="Killer" parent="." instance=ExtResource("2_dtjkg")]
 position = Vector2(602, 205)
 
+[node name="CollisionShape2D" parent="Killer/PatrolArea" index="0"]
+visible = false
+
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Killer/PatrolArea" index="1" groups=["TransitionArea"]]
 position = Vector2(-195, -209.5)
 shape = SubResource("RectangleShape2D_5tl0p")
 debug_color = Color(0.90872806, 0.000114936236, 0.7374902, 0.41960785)
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Killer/PatrolArea" index="2"]
-position = Vector2(-596, -126)
-shape = SubResource("RectangleShape2D_5tl0p")
-debug_color = Color(0.90872806, 0.000114936236, 0.7374902, 0.41960785)
+visible = false
+position = Vector2(-608, 48)
+shape = SubResource("RectangleShape2D_eglq2")
+
+[node name="Killer Body" parent="Killer" index="1"]
+speed = null
+idle_duration = null
+attack_range = null
 
 [node name="TestPlayer" type="CharacterBody2D" parent="." groups=["Player"]]
 position = Vector2(98, 382)
@@ -241,17 +253,6 @@ scale = Vector2(0.12109374, 0.10546875)
 texture = ExtResource("1_iti4p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TestPlayer"]
-shape = SubResource("CircleShape2D_dtjkg")
-
-[node name="TestPlayer2" type="CharacterBody2D" parent="." groups=["Player"]]
-position = Vector2(26, 224)
-
-[node name="Sprite2D" type="Sprite2D" parent="TestPlayer2"]
-position = Vector2(-4.7683716e-07, 1)
-scale = Vector2(0.12109374, 0.10546875)
-texture = ExtResource("1_iti4p")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TestPlayer2"]
 shape = SubResource("CircleShape2D_dtjkg")
 
 [node name="TestPlayer3" type="CharacterBody2D" parent="." groups=["Player"]]
@@ -266,5 +267,6 @@ texture = ExtResource("1_iti4p")
 shape = SubResource("CircleShape2D_dtjkg")
 
 [node name="TransportArea" parent="." instance=ExtResource("3_eglq2")]
+transition_to_scene = ExtResource("4_rsyfn")
 
 [editable path="Killer"]

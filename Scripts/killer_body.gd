@@ -29,6 +29,7 @@ func _ready():
 	_pick_patrol_target_position()
 	vision.body_entered.connect(_on_body_entered)
 	vision.body_exited.connect(_on_body_exited)
+	self.area_entered.connect(_on_area_entered)
 
 func _physics_process(_delta: float) -> void:
 	match killer_state:
@@ -40,6 +41,28 @@ func _physics_process(_delta: float) -> void:
 			_chase_logic(_delta)
 		KillerState.ATTACK:
 			_attack_logic(_delta)
+
+func _on_area_entered(area: Area2D) -> void:
+	if not area.is_in_group("TransitionArea"):
+		return
+
+	var target_scene: PackedScene = area.transition_to_scene
+	if target_scene == null:
+		push_warning("TransitionArea has no target scene assigned!")
+		return
+
+	# Queue this killer for the next scene
+	KillerManager.queue_killer_for_scene(target_scene, {
+		"scene_packed": preload("res://Scenes/killer.tscn"),
+		"state": {
+			"speed": speed,
+			"patrol_state": killer_state,
+			"_count": _count,
+		}
+	})
+
+	# Remove killer from current scene
+	queue_free()
 
 
 func _on_body_entered(body: Node2D)->void:

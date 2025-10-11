@@ -1,3 +1,4 @@
+## Autoload - SceneTransition
 extends Control
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var darkness_over: Timer = $DarknessOver
