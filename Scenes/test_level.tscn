@@ -108,4 +108,26 @@ texture = ExtResource("1_iti4p")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TestPlayer"]
 shape = SubResource("CircleShape2D_dtjkg")
 
+[node name="TestPlayer2" type="CharacterBody2D" parent="." groups=["Player"]]
+position = Vector2(276, 59)
+
+[node name="Sprite2D" type="Sprite2D" parent="TestPlayer2"]
+position = Vector2(-4.7683716e-07, 1)
+scale = Vector2(0.12109374, 0.10546875)
+texture = ExtResource("1_iti4p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TestPlayer2"]
+shape = SubResource("CircleShape2D_dtjkg")
+
+[node name="TestPlayer3" type="CharacterBody2D" parent="." groups=["Player"]]
+position = Vector2(949, 380)
+
+[node name="Sprite2D" type="Sprite2D" parent="TestPlayer3"]
+position = Vector2(-4.7683716e-07, 1)
+scale = Vector2(0.12109374, 0.10546875)
+texture = ExtResource("1_iti4p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TestPlayer3"]
+shape = SubResource("CircleShape2D_dtjkg")
+
 [editable path="Killer"]
