@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqlrbogl1wo8y"]
+
+[ext_resource type="Script" uid="uid://d1q7v3cnpvhir" path="res://Scripts/player_movement.gd" id="1_yrei1"]
+
+[node name="PlayerController" type="Node"]
+script = ExtResource("1_yrei1")
+
+[node name="Stamina Bar Canvas" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="Stamina Bar Canvas"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Stamina Bar" type="ProgressBar" parent="Stamina Bar Canvas/MarginContainer"]
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+show_percentage = false
