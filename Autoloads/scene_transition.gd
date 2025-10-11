@@ -6,7 +6,7 @@ extends Control
 var _percentage: int = 0
 var _done = false 
 
-func _ready() -> void:
+func run_transition() -> void:
 	animation_player.play("transition") 
 	$DarknessOver.start()
 	_percentage = 0
