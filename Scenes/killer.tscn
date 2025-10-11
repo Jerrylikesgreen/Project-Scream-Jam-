@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://cu6b24mvag412"]
 
 [ext_resource type="Script" uid="uid://cmg5pdm4ioc4a" path="res://Scripts/killer_body.gd" id="1_4lk16"]
-[ext_resource type="Script" uid="uid://bmra4mdxkpx1l" path="res://Scenes/killer.gd" id="1_5tl0p"]
+[ext_resource type="Script" uid="uid://bmra4mdxkpx1l" path="res://Scripts/killer.gd" id="1_5tl0p"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uaoc1"]
 
