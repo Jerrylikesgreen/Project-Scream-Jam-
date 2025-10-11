@@ -64,12 +64,18 @@ func _patrol_logic(_delta: float) -> void:
 	var to_target = _target_position - global_position
 	if to_target.length() > 2.0:
 		velocity = to_target.normalized() * speed
+
+		# Flip sprite based on movement direction
+		if velocity.x != 0:
+			killer_sprite.flip_h = velocity.x < 0
+
 		move_and_slide()
 	else:
-		## Reached patrol point → switch to IDLE
+		# Reached patrol point → switch to IDLE
 		velocity = Vector2.ZERO
 		killer_state = KillerState.IDLE
 		_idle_timer = 0.0
+
 
 
 
