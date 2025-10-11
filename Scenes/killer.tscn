@@ -97,7 +97,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kjvon"]
-size = Vector2(28, 20)
+size = Vector2(66, 59)
 
 [node name="Killer" type="Node2D"]
 script = ExtResource("1_5tl0p")
@@ -136,8 +136,9 @@ polygon = PackedVector2Array(0, -6, 197, -87, 196, 140, -1, 12)
 [node name="HitBox" type="Area2D" parent="Killer Body"]
 unique_name_in_owner = true
 visible = false
+collision_layer = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killer Body/HitBox"]
-position = Vector2(16, 0)
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_kjvon")
 debug_color = Color(0.9696228, 0.09829701, 0.37320936, 0.41960785)

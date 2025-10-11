@@ -22,6 +22,7 @@ buses/default_bus_layout="res://Resources/default_bus_layout.tres"
 
 SceneTransition="*res://Scenes/scene_transition.tscn"
 KillerManager="*res://Autoloads/killer_manager.gd"
+Events="*res://Autoloads/events.gd"
 
 [file_customization]
 
@@ -38,15 +39,6 @@ folder_colors={
 Player="Player"
 TransitionArea="Area that will teleport either Player or Killer to a new location"
 EntryPoint="Area that killer/player will tp to when entering Scene. "
-
-[layer_names]
-
-2d_physics/layer_1="Player"
-2d_physics/layer_2="Killer"
-2d_physics/layer_3="Object"
-2d_physics/layer_4="Interactive"
-2d_physics/layer_5="Floor"
-2d_physics/layer_6="Wall"
 
 [input]
 
@@ -79,6 +71,16 @@ dash={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194325,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Killer"
+2d_physics/layer_3="Object"
+2d_physics/layer_4="Interactive"
+2d_physics/layer_5="Floor"
+2d_physics/layer_6="Wall"
+2d_physics/layer_7="HitBox"
 
 [rendering]
 
