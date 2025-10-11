@@ -15,7 +15,7 @@ class_name Killerbody extends CharacterBody2D
 ## Killer's Body State Machine
 enum KillerState { IDLE, STUNNED, PATROL, CHASING, ATTACK, ACTION }
 var killer_state: KillerState = KillerState.IDLE
-
+var _leaving_area:bool = false
 var player_ref: CharacterBody2D
 var _idle_timer: float = 0.0
 var _chosen_node: CollisionShape2D = null
@@ -118,15 +118,24 @@ func _chase_logic(_delta: float) -> void:
 
 func _pick_area() -> void:
 	var rect_shapes := []
-	for child in patrol_area.get_children():
-		if child is CollisionShape2D and child.shape is RectangleShape2D:
-			rect_shapes.append(child)
+	var trans_area := []
+	for area in patrol_area.get_children():
+		if area is CollisionShape2D and area.shape is RectangleShape2D and !is_in_group("TransitionArea"):
+			rect_shapes.append(area)
+		if area.is_in_group("TransitionArea"):
+			trans_area.append(area)
+			
 	## Runtime check to ensure Collision Shape is there. 
 	if rect_shapes.is_empty():
 		push_warning("No RectangleShape2D found in patrol_area")
 		_chosen_node = null
 		_target_position = patrol_area.global_position
 		return
+	## Currently its just a 25% chance of the Killer to pick to go to another Scene, will make this logic 
+	## More fleshed out later. 
+	var chance_to_leave_scene = randi_range(1, 4)
+	if chance_to_leave_scene == 1:
+		_chosen_node = trans_area[randi() % rect_shapes.size()]
 
 	## Picks a random collision shape
 	_chosen_node = rect_shapes[randi() % rect_shapes.size()]
