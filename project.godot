@@ -21,6 +21,7 @@ buses/default_bus_layout="res://Resources/default_bus_layout.tres"
 [autoload]
 
 SceneTransition="*res://Scenes/scene_transition.tscn"
+KillerManager="*res://Autoloads/killer_manager.gd"
 
 [file_customization]
 
@@ -35,6 +36,17 @@ folder_colors={
 [global_group]
 
 Player="Player"
+TransitionArea="Area that will teleport either Player or Killer to a new location"
+EntryPoint="Area that killer/player will tp to when entering Scene. "
+
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Killer"
+2d_physics/layer_3="Object"
+2d_physics/layer_4="Interactive"
+2d_physics/layer_5="Floor"
+2d_physics/layer_6="Wall"
 
 [input]
 

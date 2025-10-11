@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://egwwowhbwaop"]
+
+[ext_resource type="Script" uid="uid://dp35ngqcsfmn2" path="res://Scripts/transport_area.gd" id="1_dqy56"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dtjkg"]
+size = Vector2(32, 27)
+
+[node name="TransportArea" type="Area2D" groups=["TransitionArea"]]
+script = ExtResource("1_dqy56")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(512, 125.5)
+shape = SubResource("RectangleShape2D_dtjkg")

@@ -78,6 +78,7 @@ scale = Vector2(1.1286354, 1)
 points = PackedVector2Array(126, 268, 1000, 268)
 
 [node name="PercentDisplay" type="Label" parent="."]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 237.0
 offset_top = 205.0
