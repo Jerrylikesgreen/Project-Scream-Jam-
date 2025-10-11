@@ -1,17 +1,22 @@
-class_name GameOverBackground extends ColorRect
+class_name GameOverBackground
+extends Control
 
-@onready var restart: Button = %Restart
+@onready var restart: Button = $Restart
 
 
 func _ready() -> void:
-	Events.player_hit_signal.connect(_on_player_hit) ## Will change this to connecting to a Game over signal later.
-	restart.pressed.connect(restart_game) 
+	Events.player_hit_signal.connect(_on_player_hit)
+	restart.pressed.connect(restart_game)
 	
 
-func _on_player_hit()->void:
-	set_visible(true)
 
 
+func _on_player_hit() -> void:
+	visible = true
 
-func restart_game():
-	get_tree().reload_current_scene()
+func restart_game() -> void:
+	print("[GameOverBackground] Restart pressed")
+	visible = false
+	get_tree().change_scene_to_file("res://Scenes/test_level.tscn")
+	
+	

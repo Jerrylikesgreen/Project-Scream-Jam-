@@ -12,13 +12,14 @@ class_name Killerbody extends CharacterBody2D
 @export var packed_scene: PackedScene   
 
 
+
 ## Killer's Body State Machine
 enum KillerState { IDLE, STUNNED, PATROL, CHASING, ATTACK, ACTION }
 var killer_state: KillerState = KillerState.IDLE
 var _leaving_area:bool = false
 var player_ref: CharacterBody2D
 var _idle_timer: float = 0.0
-var _chosen_node: CollisionShape2D = null
+var _chosen_node: Node2D = null
 var _target_position: Vector2 = Vector2.ZERO
 var _count: int = 3
 
@@ -212,9 +213,14 @@ func restore_state(state: Dictionary) -> void:
 
 func _pick_patrol_target_position() -> void:
 	if _chosen_node == null:
-		_target_position = patrol_area.global_position
+		_target_position = patrol_area.global_position - position
 		return
-
+	
+	if _chosen_node is Area2D:
+		_target_position = _chosen_node.global_position
+		print("Area selectged")
+		return
+		
 	var shape = _chosen_node.shape as RectangleShape2D
 	var ext = shape.extents
 
