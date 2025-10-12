@@ -1,13 +1,16 @@
 class_name PlayerController extends Node
+@onready var player: Player = $"../.."
+
+enum State{DASH_INITIAL,DASHING,WALKING,HIDING,INTERACTION, IDLE};
+var _current_state:State = State.WALKING;
+@onready var action_area: Area2D = %ActionArea
 
 #——————————————Variables——————————————————
 
 ##A PlayerController node gets added as a child to a CharacterBody2D,
 ##and handles the movement of the character.
-@onready var player:CharacterBody2D = get_parent();
+@onready var player_body :CharacterBody2D = get_parent();
 
-enum State{DASH_INITIAL,DASHING,WALKING,HIDING,INTERACTION};
-var _current_state:State = State.WALKING;
 
 ##The player's speed (pixels/second)
 ##when not dashing.
@@ -74,41 +77,47 @@ var accel = 1000
 var friction = 300
 
 func _physics_process(delta: float) -> void:
+		
+	if Input.is_action_just_pressed("action"):
+		_switch_state_to(State.INTERACTION, delta)
+	
 	var input_vector = Input.get_vector("left","right","up","down")
 	
 	# X-axis
-	if input_vector.x != 0:
-		player.velocity.x = move_toward(player.velocity.x, input_vector.x * _current_speed, accel * delta)
+	if input_vector.x != 0 and _can_move:
+		player_body.velocity.x = move_toward(player_body.velocity.x, input_vector.x * _current_speed, accel * delta)
 	else:
-		player.velocity.x = move_toward(player.velocity.x, 0, friction * delta)
+		player_body.velocity.x = move_toward(player_body.velocity.x, 0, friction * delta)
 	
 	# Y-axis
-	if input_vector.y != 0:
-		player.velocity.y = move_toward(player.velocity.y, input_vector.y * _current_speed, accel * delta)
+	if input_vector.y != 0 and _can_move:
+		player_body.velocity.y = move_toward(player_body.velocity.y, input_vector.y * _current_speed, accel * delta)
 	else:
-		player.velocity.y = move_toward(player.velocity.y, 0, friction * delta)
+		player_body.velocity.y = move_toward(player_body.velocity.y, 0, friction * delta)
 	
-	player.move_and_slide()
+	player_body.move_and_slide()
 
 
 
-func _switch_state_to(state:State)->void:
+
+
+func _switch_state_to(state:State, delta)->void:
 	_exit_state(_current_state);
 	_current_state = state;
-	_enter_state(_current_state);
+	_enter_state(_current_state, delta);
 	return;
 
-func _enter_state(state:State)->void:
+func _enter_state(state:State, delta)->void:
 	match state:
 		State.DASH_INITIAL:
 			if(_current_stamina < min_dash_stamina):
-				_switch_state_to(State.WALKING);
+				_switch_state_to(State.WALKING, delta);
 				return;
 			_current_speed = dash_speed;
 			_invuln_time_remaining = invuln_time;
 		State.DASHING:
 			if(_current_stamina < min_dash_stamina):
-				_switch_state_to(State.WALKING);
+				_switch_state_to(State.WALKING, delta);
 				return;
 			_current_speed = dash_speed;
 		State.WALKING:
@@ -117,7 +126,10 @@ func _enter_state(state:State)->void:
 			_killer_touch_fatal = false;
 			_can_move = false;
 		State.INTERACTION:
-			pass
+			action_area.set_visible(true);
+			_can_move = false;
+			_do_state(State.INTERACTION, delta)
+
 
 ##Defines the behaviour while the state is a certain state;
 func _do_state(state:State,delta:float)->void:
@@ -129,28 +141,35 @@ func _do_state(state:State,delta:float)->void:
 			_deplete_stamina(delta)
 			var dash_pressed:bool = Input.is_action_pressed("dash");
 			if(_current_stamina <= 0 || !dash_pressed):
-				_switch_state_to(State.WALKING);
+				_switch_state_to(State.WALKING, delta);
 			_invuln_time_remaining -= delta;
 			if(_invuln_time_remaining <= 0):
-				_switch_state_to(State.DASHING);
+				_switch_state_to(State.DASHING, delta);
 		State.DASHING:
 			_deplete_stamina(delta);
 			#should never be <, but just in case.
 			if (_current_stamina <= 0):
-				_switch_state_to(State.WALKING);
+				_switch_state_to(State.WALKING, delta);
 		State.WALKING:
 			##Let stamina regen
 			_regen_stamina(delta);
 			var dash_pressed:bool = Input.is_action_pressed("dash");
 			if(dash_pressed):
-				_switch_state_to(State.DASH_INITIAL);
+				_switch_state_to(State.DASH_INITIAL, delta);
 		State.HIDING:
 			_regen_stamina(delta);
 			#Placeholder. Unsure what the desired behaviour is currently.
 			pass
 		State.INTERACTION:
-			_regen_stamina(delta);
-			pass
+			var int_obj = action_area.get_overlapping_bodies();
+			for obj in int_obj:
+				obj.action();
+				await get_tree().create_timer(1.0).timeout;
+				action_area.set_visible(false);
+				_exit_state(State.INTERACTION)
+				
+
+
 
 ##Defines any special behaviour to do in a state before exiting;
 func _exit_state(state:State):
@@ -165,7 +184,8 @@ func _exit_state(state:State):
 			_killer_touch_fatal = true;
 			_can_move = true;
 		State.INTERACTION:
-			pass
+			_can_move = true;
+
 
 func _deplete_stamina(delta:float)->void:
 	if _current_stamina > 0:
