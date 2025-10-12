@@ -6,7 +6,7 @@ var _current_state:State = State.WALKING;
 @onready var action_area: Area2D = %ActionArea
 
 #——————————————Variables——————————————————
-
+@onready var staminaBar:ProgressBar = $"Stamina Bar Canvas/MarginContainer/Stamina Bar"
 ##A PlayerController node gets added as a child to a CharacterBody2D,
 ##and handles the movement of the character.
 @onready var player_body :CharacterBody2D = get_parent();
@@ -54,7 +54,7 @@ var _invuln_time_remaining:float = invuln_time;
 ##The player's current speed
 var _current_speed:float = regular_speed;
 
-@onready var staminaBar:ProgressBar = $"Stamina Bar Canvas/MarginContainer/Stamina Bar"
+
 
 ##The player's current stamina
 var _current_stamina:float = stamina_cap:
@@ -75,6 +75,9 @@ var accel = 1000
 
 ## Friction factor (how fast you slow down when no input)
 var friction = 300
+
+## speed it will take to complete action, determined by object. 
+var action_speed:float
 
 func _physics_process(delta: float) -> void:
 		
@@ -127,6 +130,9 @@ func _enter_state(state:State, delta)->void:
 			_can_move = false;
 		State.INTERACTION:
 			action_area.set_visible(true);
+			var objs = action_area.get_overlapping_bodies()
+			var obj = objs[0]
+			action_speed = obj.action_speed
 			_can_move = false;
 			_do_state(State.INTERACTION, delta)
 
@@ -164,7 +170,7 @@ func _do_state(state:State,delta:float)->void:
 			var int_obj = action_area.get_overlapping_bodies();
 			for obj in int_obj:
 				obj.action();
-				await get_tree().create_timer(1.0).timeout;
+				await get_tree().create_timer(action_speed).timeout;
 				action_area.set_visible(false);
 				_exit_state(State.INTERACTION)
 				
