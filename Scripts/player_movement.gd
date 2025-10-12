@@ -80,9 +80,9 @@ var friction = 300
 var action_speed:float
 
 func _physics_process(delta: float) -> void:
-		
+	_do_state(_current_state,delta);
 	if Input.is_action_just_pressed("action"):
-		_switch_state_to(State.INTERACTION, delta)
+		_switch_state_to(State.INTERACTION)
 	
 	var input_vector = Input.get_vector("left","right","up","down")
 	
@@ -104,24 +104,21 @@ func _physics_process(delta: float) -> void:
 
 
 
-func _switch_state_to(state:State, delta)->void:
+func _switch_state_to(state:State)->void:
 	_exit_state(_current_state);
 	_current_state = state;
-	_enter_state(_current_state, delta);
+	_enter_state(_current_state);
 	return;
 
-func _enter_state(state:State, delta)->void:
+func _enter_state(state:State)->void:
 	match state:
 		State.DASH_INITIAL:
 			if(_current_stamina < min_dash_stamina):
-				_switch_state_to(State.WALKING, delta);
+				_switch_state_to(State.WALKING);
 				return;
 			_current_speed = dash_speed;
 			_invuln_time_remaining = invuln_time;
 		State.DASHING:
-			if(_current_stamina < min_dash_stamina):
-				_switch_state_to(State.WALKING, delta);
-				return;
 			_current_speed = dash_speed;
 		State.WALKING:
 			_current_speed = regular_speed;
@@ -134,7 +131,12 @@ func _enter_state(state:State, delta)->void:
 			var obj = objs[0]
 			action_speed = obj.action_speed
 			_can_move = false;
-			_do_state(State.INTERACTION, delta)
+			var int_obj = action_area.get_overlapping_bodies();
+			for obj in int_obj:
+				obj.action();
+				await get_tree().create_timer(1.0).timeout;
+				action_area.set_visible(false);
+			_switch_state_to(State.WALKING);
 
 
 ##Defines the behaviour while the state is a certain state;
@@ -147,21 +149,25 @@ func _do_state(state:State,delta:float)->void:
 			_deplete_stamina(delta)
 			var dash_pressed:bool = Input.is_action_pressed("dash");
 			if(_current_stamina <= 0 || !dash_pressed):
-				_switch_state_to(State.WALKING, delta);
+				_switch_state_to(State.WALKING);
 			_invuln_time_remaining -= delta;
 			if(_invuln_time_remaining <= 0):
-				_switch_state_to(State.DASHING, delta);
+				_switch_state_to(State.DASHING);
 		State.DASHING:
+			var dash_pressed:bool = Input.is_action_pressed("dash");
+			if(!dash_pressed):
+				_switch_state_to(State.WALKING);
+				return;
 			_deplete_stamina(delta);
 			#should never be <, but just in case.
 			if (_current_stamina <= 0):
-				_switch_state_to(State.WALKING, delta);
+				_switch_state_to(State.WALKING);
 		State.WALKING:
 			##Let stamina regen
 			_regen_stamina(delta);
 			var dash_pressed:bool = Input.is_action_pressed("dash");
 			if(dash_pressed):
-				_switch_state_to(State.DASH_INITIAL, delta);
+				_switch_state_to(State.DASH_INITIAL);
 		State.HIDING:
 			_regen_stamina(delta);
 			#Placeholder. Unsure what the desired behaviour is currently.

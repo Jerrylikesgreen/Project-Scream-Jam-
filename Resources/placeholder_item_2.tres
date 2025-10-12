@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://j3svcc865eav"]
+
+[ext_resource type="Texture2D" uid="uid://dsje07ax0lwei" path="res://Assets/Card_Generic_v2.png" id="1_ydqge"]
+[ext_resource type="Script" uid="uid://4b01cqmglqbj" path="res://Scripts/item.gd" id="2_68hv2"]
+
+[resource]
+script = ExtResource("2_68hv2")
+name = "placeholder_2"
+description = "place also held"
+image = ExtResource("1_ydqge")
+max_in_inv_slot = 5
+metadata/_custom_type_script = "uid://4b01cqmglqbj"

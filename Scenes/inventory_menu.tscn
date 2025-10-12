@@ -1,0 +1,70 @@
+[gd_scene load_steps=5 format=3 uid="uid://dskvhp0no28cg"]
+
+[ext_resource type="Script" uid="uid://dl6pfnp7oxiy3" path="res://Scripts/inventory.gd" id="1_ayr70"]
+[ext_resource type="Script" uid="uid://dle7i5bxmgr7x" path="res://Scripts/inventory_contents.gd" id="2_2c8bv"]
+[ext_resource type="Texture2D" uid="uid://dsje07ax0lwei" path="res://Assets/Card_Generic_v2.png" id="2_gbujl"]
+
+[sub_resource type="Resource" id="Resource_gbujl"]
+script = ExtResource("2_2c8bv")
+metadata/_custom_type_script = "uid://dle7i5bxmgr7x"
+
+[node name="InventoryMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ayr70")
+inv_contents = SubResource("Resource_gbujl")
+
+[node name="InvBackground" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(400, 365)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_gbujl")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="InvMargin" type="MarginContainer" parent="InvBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InvBackground/InvMargin"]
+layout_mode = 2
+
+[node name="Inv_Label" type="Label" parent="InvBackground/InvMargin/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+text = "Inventory"
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="InvBackground/InvMargin/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Inventory" type="GridContainer" parent="InvBackground/InvMargin/VBoxContainer/CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+columns = 5
