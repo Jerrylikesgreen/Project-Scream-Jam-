@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://3ak6v3qdvre"]
+
+[ext_resource type="Texture2D" uid="uid://dxojir25gl11d" path="res://icon.svg" id="1_h7xss"]
+[ext_resource type="Script" uid="uid://cb2qf7yftc14k" path="res://Scripts/interactible_object.gd" id="1_wb1i2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yspam"]
+radius = 7.0
+
+[node name="InteractibleObject" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 128
+script = ExtResource("1_wb1i2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_yspam")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_h7xss")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -20.0
+offset_right = 3.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+step = 1.0
