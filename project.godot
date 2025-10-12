@@ -25,6 +25,7 @@ SceneTransition="*res://Scenes/scene_transition.tscn"
 KillerManager="*res://Autoloads/killer_manager.gd"
 Events="*res://Autoloads/events.gd"
 Main="*res://main.gd"
+Globals="*res://Autoloads/globals.gd"
 
 [file_customization]
 
