@@ -126,15 +126,17 @@ func _enter_state(state:State)->void:
 			_killer_touch_fatal = false;
 			_can_move = false;
 		State.INTERACTION:
-			action_area.set_visible(true);
 			var objs = action_area.get_overlapping_bodies()
+			if objs.is_empty():
+				return
+			action_area.set_visible(true);
 			var obj = objs[0]
 			action_speed = obj.action_speed
 			_can_move = false;
 			var int_obj = action_area.get_overlapping_bodies();
-			for obj in int_obj:
-				obj.action();
-				await get_tree().create_timer(1.0).timeout;
+			for ob in int_obj:
+				ob.action();
+				await get_tree().create_timer(action_speed).timeout;
 				action_area.set_visible(false);
 			_switch_state_to(State.WALKING);
 
