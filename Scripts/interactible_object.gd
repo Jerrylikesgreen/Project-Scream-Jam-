@@ -4,9 +4,20 @@ extends StaticBody2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var progress_bar: ProgressBar = $ProgressBar
 
+## Flag for when the player  intereacts with obj
+@export var player_triggered:bool = false
+## Flag for when the killer intereacts with obj
+@export var killer_trigger: bool = false
+## Flag for when the the object is active
+@export var active:bool = false
+
+## current value of progress dont on obj. 
 var action_count: float = 0.0
+## flag to determin if its being interacted with in real time. 
 var is_acting: bool = false
-var action_speed: float = 0.5  # increase per frame (1 = +1 each frame)
+
+## time per sec it will take to complete interaction. 
+var action_speed: float = 2.0  
 
 func _ready() -> void:
 	# ensure bar is configured
@@ -16,11 +27,8 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if is_acting:
-		# Frame-dependent increment: +action_speed each frame
-		action_count += action_speed
 
-		# If you prefer time-based (FPS independent), use:
-		# action_count += (100.0 / action_duration) * _delta
+		action_count += ( 100.0 / action_speed ) * _delta
 
 		if action_count >= 100.0:
 			action_count = 100.0
