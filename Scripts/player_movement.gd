@@ -67,20 +67,29 @@ var _can_move:bool = true;
 ##stages of dash, or when hiding.
 var _killer_touch_fatal:bool = true;
 
+## Acceleration factor (how fast you reach max speed)
+var accel = 1000
+
+## Friction factor (how fast you slow down when no input)
+var friction = 300
+
 func _physics_process(delta: float) -> void:
-	_do_state(_current_state,delta);
-	if _can_move:
-		var movement_direction:Vector2 = Input.get_vector("left","right","up","down");
-		if(movement_direction.x != 0):
-			player.velocity.x = _current_speed*movement_direction.x;
-		else:
-			player.velocity.x = move_toward(player.velocity.x,0,delta*_current_speed);
-		if(movement_direction.y !=0):
-			player.velocity.y = _current_speed*movement_direction.y;
-		else:
-			player.velocity.y = move_toward(player.velocity.y,0,delta*_current_speed);
+	var input_vector = Input.get_vector("left","right","up","down")
 	
-		player.move_and_slide();
+	# X-axis
+	if input_vector.x != 0:
+		player.velocity.x = move_toward(player.velocity.x, input_vector.x * _current_speed, accel * delta)
+	else:
+		player.velocity.x = move_toward(player.velocity.x, 0, friction * delta)
+	
+	# Y-axis
+	if input_vector.y != 0:
+		player.velocity.y = move_toward(player.velocity.y, input_vector.y * _current_speed, accel * delta)
+	else:
+		player.velocity.y = move_toward(player.velocity.y, 0, friction * delta)
+	
+	player.move_and_slide()
+
 
 
 func _switch_state_to(state:State)->void:
