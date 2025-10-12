@@ -24,3 +24,16 @@ region_rect = Rect2(16.899855, 41.147797, 30.03641, 38.8516)
 [node name="SpawnPoint" type="Marker2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(492, 60)
+
+[node name="Debug" type="Label" parent="."]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 474.0
+offset_top = 123.0
+offset_right = 507.0
+offset_bottom = 146.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Test"

@@ -21,7 +21,7 @@ func _on_body_entered(body: Node) -> void:
 			push_error("TransportArea: transition_to_scene is not set.")
 			return
 
-		KillerManager.queue_killer_for_scene(transition_to_scene, body.get_state_dict())
+		KillerManager.killer_in_other_room = true
 		body.queue_free()
 		return
 
@@ -33,5 +33,6 @@ func _on_body_entered(body: Node) -> void:
 		if player:
 			await get_tree().process_frame
 			player.get_parent().remove_child(player)
+			KillerManager.killer_in_other_room = true
 
 		get_tree().change_scene_to_file(scene_path)
