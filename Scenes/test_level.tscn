@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=4 uid="uid://yyjn1igwglod"]
+[gd_scene load_steps=9 format=4 uid="uid://yyjn1igwglod"]
 
 [ext_resource type="Script" uid="uid://bbevki88gr1qn" path="res://Scripts/scene_manager.gd" id="1_btda1"]
 [ext_resource type="Texture2D" uid="uid://dxojir25gl11d" path="res://icon.svg" id="1_iti4p"]
 [ext_resource type="PackedScene" uid="uid://3ak6v3qdvre" path="res://Scenes/interactible_object.tscn" id="4_rsyfn"]
 [ext_resource type="Script" uid="uid://rxg82q62y6dv" path="res://Scripts/game_over_background.gd" id="5_7w7ni"]
+[ext_resource type="PackedScene" uid="uid://yroifrw4ps4e" path="res://Scenes/collectible_item.tscn" id="5_btda1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rsyfn"]
 resource_name = "Floor"
@@ -266,3 +267,6 @@ position = Vector2(68, 301)
 
 [node name="InteractibleObject" parent="." instance=ExtResource("4_rsyfn")]
 position = Vector2(163, 305)
+
+[node name="CollectibleItem" parent="." instance=ExtResource("5_btda1")]
+position = Vector2(236, 341)
