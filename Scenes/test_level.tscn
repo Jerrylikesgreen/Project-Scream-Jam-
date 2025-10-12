@@ -275,6 +275,6 @@ text = "Restart"
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(497, 202)
+position = Vector2(499, 200)
 
 [editable path="Killer"]
