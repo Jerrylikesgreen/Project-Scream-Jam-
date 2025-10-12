@@ -105,7 +105,7 @@ func _attack_logic(_delta: float) -> void:
 	var body_hit =  hit_box.get_overlapping_bodies()
 	for bodies in body_hit:
 		if bodies.is_in_group("Player"):
-			Events.player_hit_signal.emit()
+			Events.player_hit_event()
 
 	print("Attack")
 
