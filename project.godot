@@ -34,7 +34,7 @@ window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/my_inspector_plugin_test/plugin.cfg")
+enabled=PackedStringArray()
 
 [file_customization]
 

@@ -42,6 +42,7 @@ position = Vector2(495, 120)
 
 [node name="Door" parent="." index="8" instance=ExtResource("4_f8btm")]
 position = Vector2(495, 163)
+resource = null
 active = true
 
 [node name="StartMessage" type="Label" parent="." index="9"]
@@ -54,20 +55,14 @@ label_settings = ExtResource("5_f8btm")
 
 [node name="LightPost" parent="." index="10" instance=ExtResource("8_e0ld5")]
 position = Vector2(272, 176)
-flip_state_h = false
-flip_state_v = false
 
 [node name="LightPost2" parent="." index="11" instance=ExtResource("8_e0ld5")]
 position = Vector2(700, 180)
 flip_state_h = true
-flip_state_v = false
 
 [node name="LightPost3" parent="." index="12" instance=ExtResource("8_e0ld5")]
 position = Vector2(983, 179)
 flip_state_h = true
-flip_state_v = false
 
 [node name="LightPost4" parent="." index="13" instance=ExtResource("8_e0ld5")]
 position = Vector2(63, 176)
-flip_state_h = false
-flip_state_v = false

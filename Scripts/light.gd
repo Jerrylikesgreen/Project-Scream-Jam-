@@ -1,3 +1,4 @@
+@tool 
 class_name Light extends InteractibleObject
 
 
@@ -9,3 +10,5 @@ func action_complete() -> void:
 	action_count = 0.0
 	emit_signal("point_gain", points)
 	lamp_light.set_enabled(true)
+	
+	

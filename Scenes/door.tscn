@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://3ak6v3qdvre" path="res://Scenes/interactible_object.tscn" id="1_w6aom"]
 [ext_resource type="Script" uid="uid://b824oukjkhij0" path="res://Scripts/door.gd" id="2_fahql"]
 [ext_resource type="Texture2D" uid="uid://bbbplnpqlea2s" path="res://Assets/TileSets/floors walls and stairs.png" id="2_p0e35"]
-[ext_resource type="Texture2D" uid="uid://cufuiylrbbyrp" path="res://Resources/door.tres" id="3_ab4ky"]
+[ext_resource type="Texture2D" uid="uid://cufuiylrbbyrp" path="res://Resources/Items/door.tres" id="3_ab4ky"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ab4ky"]
 size = Vector2(27, 37)

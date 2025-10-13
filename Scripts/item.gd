@@ -1,4 +1,4 @@
-class_name Item extends Resource
+class_name ItemResource extends Resource
 static var next_id:int = 0;
 var id;
 @export var name:String;
@@ -8,6 +8,9 @@ var id;
 #The most items of this type which can be contained in
 #one inventory slot
 @export var max_in_inv_slot:int = 1;
+
+## if not empty, player will produce a speech bubble with the String during certain actions. 
+@export var player_dialog:String
 
 func _init() -> void:
 	id = next_id;

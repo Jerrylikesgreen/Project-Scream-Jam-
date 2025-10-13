@@ -6,7 +6,7 @@ var menu_canvas:CanvasLayer;
 func _ready() -> void:
 	inventory.item_used.connect(_on_item_used);
 
-func on_acquire_item(item:Item):
+func on_acquire_item(item:ItemResource):
 	inventory.add(item);
 func _on_item_used():
 	pass

@@ -1,22 +1,15 @@
-[gd_scene load_steps=14 format=4 uid="uid://bylcboixemo1k"]
+[gd_scene load_steps=9 format=4 uid="uid://bylcboixemo1k"]
 
 [ext_resource type="PackedScene" uid="uid://ds6aoc55rpn5k" path="res://Scenes/Rooms/room.tscn" id="1_2ejop"]
 [ext_resource type="TileSet" uid="uid://dmvocc6mpwrh0" path="res://Resources/TileSets/walls_room2.tres" id="2_wlyl6"]
 [ext_resource type="TileSet" uid="uid://dkdwam5mbh3ra" path="res://Resources/TileSets/floors_room2.tres" id="2_ynsvt"]
 [ext_resource type="TileSet" uid="uid://bvuugeo67886t" path="res://Resources/TileSets/objects_room_2.tres" id="3_claeb"]
-[ext_resource type="Script" uid="uid://c2v0hd6sn4epl" path="res://Scripts/front_door_escape.gd" id="3_jlb7l"]
-[ext_resource type="PackedScene" uid="uid://3ak6v3qdvre" path="res://Scenes/interactible_object.tscn" id="5_16sh4"]
-[ext_resource type="Texture2D" uid="uid://cufuiylrbbyrp" path="res://Resources/door.tres" id="6_igqrs"]
-[ext_resource type="Script" uid="uid://brlmsc0738y75" path="res://Scripts/box.gd" id="8_opfmq"]
-[ext_resource type="Texture2D" uid="uid://cg7e35pl18vim" path="res://Resources/Interactables/standing_lamp.tres" id="9_5p6re"]
-[ext_resource type="Script" uid="uid://bhk60o6rlq5l" path="res://Scripts/light.gd" id="9_smd2o"]
-[ext_resource type="PackedScene" uid="uid://bfxp1tp6wevhl" path="res://Scenes/point_light.tscn" id="11_mplsn"]
+[ext_resource type="PackedScene" uid="uid://bet4fsfdfx3tk" path="res://Scenes/escape_door.tscn" id="7_k3fpo"]
+[ext_resource type="PackedScene" uid="uid://b5k46f6ff2l7l" path="res://Scenes/box.tscn" id="8_x5hks"]
+[ext_resource type="Resource" uid="uid://c0moxi7totggp" path="res://Resources/Interactables/wooden_box.tres" id="9_mplsn"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_mplsn"]
 polygon = PackedVector2Array(367, 100, 33, 98, 31, 367, 365, 370, 368, 238, 352, 238, 352, 286, 50, 286, 50, 178, 352, 181, 352, 198, 369, 199)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_igqrs"]
-size = Vector2(29, 37)
 
 [node name="Room_2" instance=ExtResource("1_2ejop")]
 
@@ -39,262 +32,24 @@ tile_set = ExtResource("3_claeb")
 position = Vector2(583, -1)
 
 [node name="TransportArea" parent="." index="4"]
+visible = false
 position = Vector2(449, -272)
 
 [node name="DirectionalLight2D" parent="." index="5"]
+visible = false
 energy = 1.12
 
-[node name="Escape" parent="." index="6" instance=ExtResource("5_16sh4")]
-position = Vector2(583, -40)
-script = ExtResource("3_jlb7l")
+[node name="Boxes" type="Node2D" parent="." index="7"]
 
-[node name="InteractibleObjectCollisionShape2D" parent="Escape" index="0"]
-position = Vector2(-0.5, 5.5)
-shape = SubResource("RectangleShape2D_igqrs")
+[node name="WoodenBox" parent="Boxes" index="0" instance=ExtResource("8_x5hks")]
+position = Vector2(403, 46)
+resource = ExtResource("9_mplsn")
 
-[node name="InteractibleObjectSprite2D" parent="Escape" index="1"]
-position = Vector2(0, 5)
-scale = Vector2(1, 1)
-texture = ExtResource("6_igqrs")
-region_enabled = true
-region_rect = Rect2(17, 41, 30, 39)
+[node name="Lights" type="Node2D" parent="." index="8"]
 
-[node name="Boxes" type="Node2D" parent="." index="8"]
+[node name="Dressers" type="Node2D" parent="." index="9"]
 
-[node name="Box" parent="Boxes" index="0" instance=ExtResource("5_16sh4")]
-position = Vector2(214, 58)
-script = ExtResource("8_opfmq")
+[node name="Shelves" type="Node2D" parent="." index="10"]
 
-[node name="Lights" type="Node2D" parent="." index="9"]
-
-[node name="Light" parent="Lights" index="0" instance=ExtResource("5_16sh4")]
-position = Vector2(379, 65)
-script = ExtResource("9_smd2o")
-active = true
-
-[node name="InteractibleObjectSprite2D" parent="Lights/Light" index="1"]
-scale = Vector2(1, 1)
-texture = ExtResource("9_5p6re")
-region_enabled = true
-region_rect = Rect2(42, 14, 19, 34)
-
-[node name="InteractibleObjectProgressBar" parent="Lights/Light" index="2"]
-offset_left = -17.0
-offset_top = -28.0
-offset_right = 89.666664
-offset_bottom = 6.0
-
-[node name="LampLight" parent="Lights/Light" index="3" instance=ExtResource("11_mplsn")]
-position = Vector2(5, -9)
-enabled = false
-shadow_color = Color(0.021434637, 0.021434635, 0.021434633, 0.05490196)
-shadow_filter = 1
-shadow_filter_smooth = 1.0
-
-[node name="Light2" parent="Lights" index="1" instance=ExtResource("5_16sh4")]
-position = Vector2(85, 584)
-script = ExtResource("9_smd2o")
-active = true
-
-[node name="InteractibleObjectSprite2D" parent="Lights/Light2" index="1"]
-scale = Vector2(1, 1)
-texture = ExtResource("9_5p6re")
-region_enabled = true
-region_rect = Rect2(42, 14, 19, 34)
-
-[node name="InteractibleObjectProgressBar" parent="Lights/Light2" index="2"]
-offset_left = -17.0
-offset_top = -28.0
-offset_right = 89.666664
-offset_bottom = 6.0
-
-[node name="LampLight" parent="Lights/Light2" index="3" instance=ExtResource("11_mplsn")]
-position = Vector2(5, -9)
-enabled = false
-shadow_color = Color(0.021434637, 0.021434635, 0.021434633, 0.05490196)
-shadow_filter = 1
-shadow_filter_smooth = 1.0
-
-[node name="Light3" parent="Lights" index="2" instance=ExtResource("5_16sh4")]
-position = Vector2(99, 233)
-script = ExtResource("9_smd2o")
-active = true
-
-[node name="InteractibleObjectSprite2D" parent="Lights/Light3" index="1"]
-scale = Vector2(1, 1)
-texture = ExtResource("9_5p6re")
-region_enabled = true
-region_rect = Rect2(42, 14, 19, 34)
-
-[node name="InteractibleObjectProgressBar" parent="Lights/Light3" index="2"]
-offset_left = -17.0
-offset_top = -28.0
-offset_right = 89.666664
-offset_bottom = 6.0
-
-[node name="LampLight" parent="Lights/Light3" index="3" instance=ExtResource("11_mplsn")]
-position = Vector2(5, -9)
-enabled = false
-shadow_color = Color(0.021434637, 0.021434635, 0.021434633, 0.05490196)
-shadow_filter = 1
-shadow_filter_smooth = 1.0
-
-[node name="Light4" parent="Lights" index="3" instance=ExtResource("5_16sh4")]
-position = Vector2(913, 262)
-script = ExtResource("9_smd2o")
-active = true
-
-[node name="InteractibleObjectSprite2D" parent="Lights/Light4" index="1"]
-scale = Vector2(1, 1)
-texture = ExtResource("9_5p6re")
-region_enabled = true
-region_rect = Rect2(42, 14, 19, 34)
-
-[node name="InteractibleObjectProgressBar" parent="Lights/Light4" index="2"]
-offset_left = -17.0
-offset_top = -28.0
-offset_right = 89.666664
-offset_bottom = 6.0
-
-[node name="LampLight" parent="Lights/Light4" index="3" instance=ExtResource("11_mplsn")]
-position = Vector2(5, -9)
-enabled = false
-shadow_color = Color(0.021434637, 0.021434635, 0.021434633, 0.05490196)
-shadow_filter = 1
-shadow_filter_smooth = 1.0
-
-[node name="Light5" parent="Lights" index="4" instance=ExtResource("5_16sh4")]
-position = Vector2(804, 560)
-script = ExtResource("9_smd2o")
-active = true
-
-[node name="InteractibleObjectSprite2D" parent="Lights/Light5" index="1"]
-scale = Vector2(1, 1)
-texture = ExtResource("9_5p6re")
-region_enabled = true
-region_rect = Rect2(42, 14, 19, 34)
-
-[node name="InteractibleObjectProgressBar" parent="Lights/Light5" index="2"]
-offset_left = -17.0
-offset_top = -28.0
-offset_right = 89.666664
-offset_bottom = 6.0
-
-[node name="LampLight" parent="Lights/Light5" index="3" instance=ExtResource("11_mplsn")]
-position = Vector2(5, -9)
-enabled = false
-shadow_color = Color(0.021434637, 0.021434635, 0.021434633, 0.05490196)
-shadow_filter = 1
-shadow_filter_smooth = 1.0
-
-[node name="Light6" parent="Lights" index="5" instance=ExtResource("5_16sh4")]
-position = Vector2(1503, 615)
-script = ExtResource("9_smd2o")
-active = true
-
-[node name="InteractibleObjectSprite2D" parent="Lights/Light6" index="1"]
-scale = Vector2(1, 1)
-texture = ExtResource("9_5p6re")
-region_enabled = true
-region_rect = Rect2(42, 14, 19, 34)
-
-[node name="InteractibleObjectProgressBar" parent="Lights/Light6" index="2"]
-offset_left = -17.0
-offset_top = -28.0
-offset_right = 89.666664
-offset_bottom = 6.0
-
-[node name="LampLight" parent="Lights/Light6" index="3" instance=ExtResource("11_mplsn")]
-position = Vector2(5, -9)
-enabled = false
-shadow_color = Color(0.021434637, 0.021434635, 0.021434633, 0.05490196)
-shadow_filter = 1
-shadow_filter_smooth = 1.0
-
-[node name="Light7" parent="Lights" index="6" instance=ExtResource("5_16sh4")]
-position = Vector2(1554, 115)
-script = ExtResource("9_smd2o")
-active = true
-
-[node name="InteractibleObjectSprite2D" parent="Lights/Light7" index="1"]
-scale = Vector2(1, 1)
-texture = ExtResource("9_5p6re")
-region_enabled = true
-region_rect = Rect2(42, 14, 19, 34)
-
-[node name="InteractibleObjectProgressBar" parent="Lights/Light7" index="2"]
-offset_left = -17.0
-offset_top = -28.0
-offset_right = 89.666664
-offset_bottom = 6.0
-
-[node name="LampLight" parent="Lights/Light7" index="3" instance=ExtResource("11_mplsn")]
-position = Vector2(5, -9)
-enabled = false
-shadow_color = Color(0.021434637, 0.021434635, 0.021434633, 0.05490196)
-shadow_filter = 1
-shadow_filter_smooth = 1.0
-
-[node name="Light8" parent="Lights" index="7" instance=ExtResource("5_16sh4")]
-position = Vector2(1102, 431)
-script = ExtResource("9_smd2o")
-active = true
-
-[node name="InteractibleObjectSprite2D" parent="Lights/Light8" index="1"]
-scale = Vector2(1, 1)
-texture = ExtResource("9_5p6re")
-region_enabled = true
-region_rect = Rect2(42, 14, 19, 34)
-
-[node name="InteractibleObjectProgressBar" parent="Lights/Light8" index="2"]
-offset_left = -17.0
-offset_top = -28.0
-offset_right = 89.666664
-offset_bottom = 6.0
-
-[node name="LampLight" parent="Lights/Light8" index="3" instance=ExtResource("11_mplsn")]
-position = Vector2(5, -9)
-enabled = false
-shadow_color = Color(0.021434637, 0.021434635, 0.021434633, 0.05490196)
-shadow_filter = 1
-shadow_filter_smooth = 1.0
-
-[node name="Light9" parent="Lights" index="8" instance=ExtResource("5_16sh4")]
-position = Vector2(509, 410)
-script = ExtResource("9_smd2o")
-active = true
-
-[node name="InteractibleObjectSprite2D" parent="Lights/Light9" index="1"]
-scale = Vector2(1, 1)
-texture = ExtResource("9_5p6re")
-region_enabled = true
-region_rect = Rect2(42, 14, 19, 34)
-
-[node name="InteractibleObjectProgressBar" parent="Lights/Light9" index="2"]
-offset_left = -17.0
-offset_top = -28.0
-offset_right = 89.666664
-offset_bottom = 6.0
-
-[node name="LampLight" parent="Lights/Light9" index="3" instance=ExtResource("11_mplsn")]
-position = Vector2(5, -9)
-enabled = false
-shadow_color = Color(0.021434637, 0.021434635, 0.021434633, 0.05490196)
-shadow_filter = 1
-shadow_filter_smooth = 1.0
-
-[node name="Dressers" type="Node2D" parent="." index="10"]
-
-[node name="Shelves" type="Node2D" parent="." index="11"]
-
-[editable path="Escape"]
-[editable path="Boxes/Box"]
-[editable path="Lights/Light"]
-[editable path="Lights/Light2"]
-[editable path="Lights/Light3"]
-[editable path="Lights/Light4"]
-[editable path="Lights/Light5"]
-[editable path="Lights/Light6"]
-[editable path="Lights/Light7"]
-[editable path="Lights/Light8"]
-[editable path="Lights/Light9"]
+[node name="EscapeDoor" parent="." index="11" instance=ExtResource("7_k3fpo")]
+position = Vector2(582, -35)

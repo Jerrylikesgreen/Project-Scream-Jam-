@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://bq5qkqqg3hpi6"]
+
+[ext_resource type="Texture2D" uid="uid://cl77tcvrlc5o6" path="res://Assets/PNG/InteractibleObjects/crate.png" id="1_u3ud0"]
+
+[sub_resource type="GDScript" id="GDScript_u54rr"]
+script/source = "class_name ItemResource extends Resource
+static var next_id:int = 0;
+var id;
+@export var name:String;
+@export var description:String;
+@export var image:Texture2D;
+@export var consumable:bool;
+#The most items of this type which can be contained in
+#one inventory slot
+@export var max_in_inv_slot:int = 1;
+
+func _init() -> void:
+	id = next_id;
+	next_id += 1;
+"
+
+[resource]
+script = SubResource("GDScript_u54rr")
+name = ""
+description = ""
+image = ExtResource("1_u3ud0")
+consumable = false
+max_in_inv_slot = 1
+metadata/_custom_type_script = "uid://4b01cqmglqbj"
