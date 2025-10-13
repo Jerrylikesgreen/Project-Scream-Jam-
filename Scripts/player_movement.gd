@@ -128,6 +128,7 @@ func _enter_state(state:State)->void:
 		State.INTERACTION:
 			var objs = action_area.get_overlapping_bodies()
 			if objs.is_empty():
+				_switch_state_to(State.WALKING);
 				return
 			action_area.set_visible(true);
 			var obj = objs[0]
