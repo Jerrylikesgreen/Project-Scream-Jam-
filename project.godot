@@ -43,6 +43,10 @@ Player="Player"
 TransitionArea="Area that will teleport either Player or Killer to a new location"
 EntryPoint="Area that killer/player will tp to when entering Scene. "
 
+[gui]
+
+theme/custom_font="uid://dgemkxnrtn3i"
+
 [input]
 
 left={
@@ -96,3 +100,5 @@ action={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality=0
+lights_and_shadows/positional_shadow/soft_shadow_filter_quality=0

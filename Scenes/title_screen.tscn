@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://mchc1n0mppt7"]
+[gd_scene load_steps=3 format=3 uid="uid://mchc1n0mppt7"]
 
 [ext_resource type="Script" uid="uid://bpmteq2pnc546" path="res://Scripts/title_screen.gd" id="1_klylv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_klylv"]
+font_size = 62
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -34,6 +37,7 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Game Title"
+label_settings = SubResource("LabelSettings_klylv")
 
 [node name="StartButton" type="Button" parent="ColorRect/Label"]
 unique_name_in_owner = true
