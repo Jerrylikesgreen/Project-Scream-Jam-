@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=2 format=3 uid="uid://btv61c52blsra"]
+
+[ext_resource type="Script" uid="uid://4b01cqmglqbj" path="res://Scripts/item.gd" id="2_64dpf"]
+
+[resource]
+script = ExtResource("2_64dpf")
+name = ""
+description = ""
+consumable = false
+max_in_inv_slot = 1
+player_dialog = ""
+metadata/_custom_type_script = "uid://4b01cqmglqbj"

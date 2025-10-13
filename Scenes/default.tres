@@ -1,13 +1,32 @@
-[gd_resource type="Resource" script_class="ItemResource" load_steps=3 format=3 uid="uid://jba7pir0g2so"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://jba7pir0g2so"]
 
-[ext_resource type="Texture2D" uid="uid://dxojir25gl11d" path="res://icon.svg" id="1_scipo"]
-[ext_resource type="Script" uid="uid://4b01cqmglqbj" path="res://Scripts/item.gd" id="2_d87qo"]
+[sub_resource type="ImageTexture" id="ImageTexture_txm8v"]
+
+[sub_resource type="GDScript" id="GDScript_ryuy7"]
+script/source = "class_name ItemResource extends Resource
+static var next_id:int = 0;
+var id;
+@export var name:String;
+@export var description:String;
+@export var image:Texture2D;
+@export var consumable:bool;
+#The most items of this type which can be contained in
+#one inventory slot
+@export var max_in_inv_slot:int = 1;
+
+## if not empty, player will produce a speech bubble with the String during certain actions. 
+@export var player_dialog:String
+
+func _init() -> void:
+	id = next_id;
+	next_id += 1;
+"
 
 [resource]
-script = ExtResource("2_d87qo")
+script = SubResource("GDScript_ryuy7")
 name = "Default"
 description = "Default"
-image = ExtResource("1_scipo")
+image = SubResource("ImageTexture_txm8v")
 consumable = false
 max_in_inv_slot = 1
 player_dialog = ""

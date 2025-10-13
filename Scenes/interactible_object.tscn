@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://3ak6v3qdvre"]
+[gd_scene load_steps=5 format=3 uid="uid://3ak6v3qdvre"]
 
-[ext_resource type="Texture2D" uid="uid://dxojir25gl11d" path="res://icon.svg" id="1_h7xss"]
 [ext_resource type="Script" uid="uid://cb2qf7yftc14k" path="res://Scripts/interactible_object.gd" id="1_wb1i2"]
-[ext_resource type="Resource" uid="uid://jba7pir0g2so" path="res://Scenes/default.tres" id="2_0qsqp"]
+[ext_resource type="Resource" uid="uid://btv61c52blsra" path="res://Resources/Interactables/interactible_object.tres" id="2_0qsqp"]
 [ext_resource type="Theme" uid="uid://hpso4mu8e4b7" path="res://Resources/Themes/default.tres" id="3_0qsqp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yspam"]
@@ -20,7 +19,6 @@ shape = SubResource("CircleShape2D_yspam")
 
 [node name="InteractibleObjectSprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-texture = ExtResource("1_h7xss")
 region_rect = Rect2(386, 1807, 26, 68)
 
 [node name="InteractibleObjectProgressBar" type="ProgressBar" parent="."]

@@ -1,29 +1,15 @@
-[gd_scene load_steps=14 format=4 uid="uid://bylcboixemo1k"]
+[gd_scene load_steps=9 format=4 uid="uid://bylcboixemo1k"]
 
 [ext_resource type="PackedScene" uid="uid://ds6aoc55rpn5k" path="res://Scenes/Rooms/room.tscn" id="1_2ejop"]
 [ext_resource type="TileSet" uid="uid://dmvocc6mpwrh0" path="res://Resources/TileSets/walls_room2.tres" id="2_wlyl6"]
 [ext_resource type="TileSet" uid="uid://dkdwam5mbh3ra" path="res://Resources/TileSets/floors_room2.tres" id="2_ynsvt"]
 [ext_resource type="TileSet" uid="uid://bvuugeo67886t" path="res://Resources/TileSets/objects_room_2.tres" id="3_claeb"]
 [ext_resource type="PackedScene" uid="uid://bet4fsfdfx3tk" path="res://Scenes/escape_door.tscn" id="7_k3fpo"]
-[ext_resource type="PackedScene" uid="uid://bhsdelkd2lo0j" path="res://Scenes/dresser.tscn" id="7_smd2o"]
-[ext_resource type="Texture2D" uid="uid://cufuiylrbbyrp" path="res://Resources/Items/door.tres" id="8_5p6re"]
-[ext_resource type="PackedScene" uid="uid://cla2d4e0tyr8j" path="res://Scenes/shelves.tscn" id="8_mplsn"]
 [ext_resource type="PackedScene" uid="uid://b5k46f6ff2l7l" path="res://Scenes/box.tscn" id="8_x5hks"]
 [ext_resource type="Resource" uid="uid://c0moxi7totggp" path="res://Resources/Interactables/wooden_box.tres" id="9_mplsn"]
-[ext_resource type="Script" uid="uid://4b01cqmglqbj" path="res://Scripts/item.gd" id="9_smd2o"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_mplsn"]
 polygon = PackedVector2Array(367, 100, 33, 98, 31, 367, 365, 370, 368, 238, 352, 238, 352, 286, 50, 286, 50, 178, 352, 181, 352, 198, 369, 199)
-
-[sub_resource type="Resource" id="Resource_mplsn"]
-script = ExtResource("9_smd2o")
-name = "Escape Door"
-description = "Placeholder Resource"
-image = ExtResource("8_5p6re")
-consumable = false
-max_in_inv_slot = 1
-player_dialog = ""
-metadata/_custom_type_script = "uid://4b01cqmglqbj"
 
 [node name="Room_2" instance=ExtResource("1_2ejop")]
 
@@ -89,38 +75,8 @@ points = 150
 
 [node name="Dressers" type="Node2D" parent="." index="9"]
 
-[node name="Dresser" parent="Dressers" index="0" instance=ExtResource("7_smd2o")]
-position = Vector2(219, 183)
-active = true
-action_speed = 1.5
-points = 500
-
-[node name="Dresser2" parent="Dressers" index="1" instance=ExtResource("7_smd2o")]
-position = Vector2(934, 193)
-active = true
-action_speed = 1.5
-points = 500
-
-[node name="Dresser3" parent="Dressers" index="2" instance=ExtResource("7_smd2o")]
-position = Vector2(1323, 267)
-active = true
-action_speed = 1.5
-points = 500
-
 [node name="Shelves" type="Node2D" parent="." index="10"]
-
-[node name="Shelves" parent="Shelves" index="0" instance=ExtResource("8_mplsn")]
-position = Vector2(737, 171)
-scale = Vector2(2, 2)
-
-[node name="Shelves2" parent="Shelves" index="1" instance=ExtResource("8_mplsn")]
-position = Vector2(1494, 60)
-scale = Vector2(2, 2)
-
-[node name="Shelves3" parent="Shelves" index="2" instance=ExtResource("8_mplsn")]
-position = Vector2(1584, 275)
-scale = Vector2(2, 2)
 
 [node name="EscapeDoor" parent="." index="11" instance=ExtResource("7_k3fpo")]
 position = Vector2(582, -35)
-resource = SubResource("Resource_mplsn")
+resource = null

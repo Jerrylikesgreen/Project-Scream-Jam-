@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://bhsdelkd2lo0j"]
+
+[ext_resource type="PackedScene" uid="uid://3ak6v3qdvre" path="res://Scenes/interactible_object.tscn" id="1_eye0t"]
+[ext_resource type="Script" uid="uid://4b01cqmglqbj" path="res://Scripts/item.gd" id="3_nwdvu"]
+[ext_resource type="Texture2D" uid="uid://u183bp8joxpw" path="res://Resources/Interactables/dresser_sprite.tres" id="4_nwdvu"]
+
+[sub_resource type="Resource" id="Resource_0j27c"]
+script = ExtResource("3_nwdvu")
+name = "Dresser"
+description = "Dresser"
+image = ExtResource("4_nwdvu")
+consumable = false
+max_in_inv_slot = 1
+player_dialog = ""
+metadata/_custom_type_script = "uid://4b01cqmglqbj"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qxkfv"]
+
+[node name="Dresser" instance=ExtResource("1_eye0t")]
+scale = Vector2(1, 0.997411)
+resource = SubResource("Resource_0j27c")
+
+[node name="InteractibleObjectCollisionShape2D" parent="." index="0"]
+shape = SubResource("RectangleShape2D_qxkfv")
+
+[node name="InteractibleObjectSprite2D" parent="." index="1"]
+texture = ExtResource("4_nwdvu")
+region_enabled = true
+region_rect = Rect2(38, 1898, 54, 46)
