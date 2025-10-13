@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=3 format=3 uid="uid://c0moxi7totggp"]
+
+[ext_resource type="Texture2D" uid="uid://cl77tcvrlc5o6" path="res://Assets/PNG/InteractibleObjects/crate.png" id="1_83hqn"]
+[ext_resource type="Script" uid="uid://4b01cqmglqbj" path="res://Scripts/item.gd" id="2_gi7qm"]
+
+[resource]
+script = ExtResource("2_gi7qm")
+name = "Wooden Box"
+description = "Wooden Box"
+image = ExtResource("1_83hqn")
+consumable = false
+max_in_inv_slot = 1
+metadata/_custom_type_script = "uid://4b01cqmglqbj"

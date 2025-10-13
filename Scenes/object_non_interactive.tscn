@@ -8,8 +8,6 @@ size = Vector2(6, 25)
 [node name="ObjectNonInteractive" type="Node2D" node_paths=PackedStringArray("object_body", "object_sprite", "object_collisionshape")]
 self_modulate = Color(0.359332, 0.542232, 0.624805, 1)
 script = ExtResource("1_ka3d4")
-flip_state_h = null
-flip_state_v = null
 object_body = NodePath("ObjectBody")
 object_sprite = NodePath("ObjectBody/ObjectSprite")
 object_collisionshape = NodePath("ObjectBody/ObjectCollisionshape")

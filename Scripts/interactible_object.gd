@@ -12,14 +12,7 @@ signal point_gain
 @export var flip_h:bool = true
 @export_tool_button("Flip Sprite") var flip_sprite_action = flip_sprite
 
-## Texture assigned via Inspector (with live editor preview)
-@export var sprite: Texture:
-	set(value):
-		_sprite = value
-		_update_sprite_preview(_sprite)
-	get:
-		return _sprite
-
+@export var resource: ItemResource
 ## stores the current flip state on this node so it persists
 @export var flip_state_h: bool = false
 @export var flip_state_v: bool = false
@@ -37,19 +30,19 @@ var action_count: float = 0.0
 ## flag to determin if its being interacted with in real time. 
 var is_acting: bool = false
 ## time per sec it will take to complete interaction. 
-
-## Backing field for 'sprite' to avoid recursion
-var _sprite: Texture = null
-
+var sprite_rect: Rect2
 
 
 func _ready() -> void:
-	if interactible_object_sprite_2d:
-		interactible_object_sprite_2d.flip_h = flip_state_h
-		interactible_object_sprite_2d.flip_v = flip_state_v
+	interactible_object_sprite_2d.flip_h = flip_state_h
+	interactible_object_sprite_2d.flip_v = flip_state_v
 	interactible_object_progress_bar.max_value = 100.0
 	interactible_object_progress_bar.value = 0.0
 	interactible_object_progress_bar.visible = false
+	interactible_object_sprite_2d.set_texture(resource.image)
+	var shape := RectangleShape2D.new()
+	shape.size == resource.image.get_size()
+	interactible_object_collision_shape_2d.set_shape(shape)
 
 func _process(_delta: float) -> void:
 	if is_acting:
@@ -102,17 +95,3 @@ func action_complete() -> void:
 	interactible_object_progress_bar.visible = false
 	action_count = 0.0
 	emit_signal("point_gain", points)
-
-
-
-
-func _update_sprite_preview(new_sprite: Texture) -> void:
-	if not interactible_object_sprite_2d:
-		# In the editor this warns; in runtime it won't crash
-		push_warning("object_sprite is not assigned for %s" % name)
-		return
-	# Sprite2D uses 'texture' property
-	interactible_object_sprite_2d.texture = new_sprite
-	# If running in the editor, mark the node dirty so inspector updates visually
-	if Engine.is_editor_hint():
-		notify_property_list_changed()

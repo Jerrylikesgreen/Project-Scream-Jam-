@@ -1,5 +1,5 @@
 class_name ItemSlot extends ColorRect
-var item:Item;
+var item:ItemResource;
 var num_stored:int = 0:
 	set(val):
 		num_stored = val;
@@ -15,7 +15,7 @@ func _ready()->void:
 	mouse_exited.connect(_on_release_hover);
 	set_item(item);
 
-func set_item(i:Item,n:int = 1)->bool:
+func set_item(i:ItemResource,n:int = 1)->bool:
 	if i == null:
 		num_stored = 0;
 		item = null;
