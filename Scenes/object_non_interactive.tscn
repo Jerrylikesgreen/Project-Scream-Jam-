@@ -1,12 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://f7t5ayuv5ypk"]
+[gd_scene load_steps=3 format=3 uid="uid://f7t5ayuv5ypk"]
+
+[ext_resource type="Script" uid="uid://706t3if5k6ef" path="res://Scripts/object_non_interactive.gd" id="1_ka3d4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h401l"]
+size = Vector2(6, 25)
 
-[node name="ObjectNonInteractive" type="Node2D"]
+[node name="ObjectNonInteractive" type="Node2D" node_paths=PackedStringArray("object_body", "object_sprite", "object_collisionshape")]
+self_modulate = Color(0.359332, 0.542232, 0.624805, 1)
+script = ExtResource("1_ka3d4")
+flip_state_h = null
+flip_state_v = null
+object_body = NodePath("ObjectBody")
+object_sprite = NodePath("ObjectBody/ObjectSprite")
+object_collisionshape = NodePath("ObjectBody/ObjectCollisionshape")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="ObjectBody" type="StaticBody2D" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+[node name="ObjectSprite" type="Sprite2D" parent="ObjectBody"]
+region_enabled = true
+region_rect = Rect2(0, 0, 128, 128)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="ObjectCollisionshape" type="CollisionShape2D" parent="ObjectBody"]
 shape = SubResource("RectangleShape2D_h401l")

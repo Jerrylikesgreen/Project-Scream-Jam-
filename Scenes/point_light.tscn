@@ -1,10 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://bfxp1tp6wevhl"]
+[gd_scene load_steps=3 format=3 uid="uid://bfxp1tp6wevhl"]
 
 [ext_resource type="Texture2D" uid="uid://ro4qxlwkrgwb" path="res://Assets/2d_lights_and_shadows_neutral_point_light.webp" id="1_s46ca"]
+[ext_resource type="Script" uid="uid://dudv0hjt8blbg" path="res://Scripts/point_light.gd" id="2_hb5ce"]
 
 [node name="PointLight" type="PointLight2D"]
-color = Color(0.74558026, 0.7455802, 0.7455802, 1)
+color = Color(0.74558, 0.74558, 0.74558, 1)
 energy = 0.5
 shadow_enabled = true
 texture = ExtResource("1_s46ca")
 texture_scale = 1.97
+script = ExtResource("2_hb5ce")

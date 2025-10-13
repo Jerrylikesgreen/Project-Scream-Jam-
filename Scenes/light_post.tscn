@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://c0tn64ljsa1mr"]
+
+[ext_resource type="PackedScene" uid="uid://f7t5ayuv5ypk" path="res://Scenes/object_non_interactive.tscn" id="1_7rwld"]
+[ext_resource type="Texture2D" uid="uid://ro4qxlwkrgwb" path="res://Assets/2d_lights_and_shadows_neutral_point_light.webp" id="2_6a0t3"]
+[ext_resource type="Script" uid="uid://cy3ojldgx7v7q" path="res://Scenes/light_post.gd" id="2_6r6ss"]
+[ext_resource type="Script" uid="uid://dudv0hjt8blbg" path="res://Scripts/point_light.gd" id="2_7nkrh"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7nkrh"]
+load_path = "res://.godot/imported/spritesheet_hospital_maternity.png-96b6cc6300e6b4655e29d0333e0ee1f2.ctex"
+
+[node name="LightPost" node_paths=PackedStringArray("pointlight") instance=ExtResource("1_7rwld")]
+script = ExtResource("2_6r6ss")
+pointlight = NodePath("Pointlight")
+
+[node name="ObjectSprite" parent="ObjectBody" index="0"]
+texture = SubResource("CompressedTexture2D_7nkrh")
+region_rect = Rect2(42, 14, 19, 34)
+
+[node name="ObjectCollisionshape" parent="ObjectBody" index="1"]
+position = Vector2(-5, 4)
+
+[node name="Pointlight" type="PointLight2D" parent="." index="1"]
+position = Vector2(5, -9)
+energy = 0.8
+texture = ExtResource("2_6a0t3")
+script = ExtResource("2_7nkrh")
+flicker_enabled = true
+metadata/_custom_type_script = "uid://dudv0hjt8blbg"

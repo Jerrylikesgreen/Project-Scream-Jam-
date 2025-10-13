@@ -11,6 +11,8 @@ radius = 7.0
 collision_layer = 12
 collision_mask = 128
 script = ExtResource("1_wb1i2")
+flip_state_h = null
+flip_state_v = null
 
 [node name="InteractibleObjectCollisionShape2D" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
@@ -23,16 +25,16 @@ texture = ExtResource("1_h7xss")
 
 [node name="InteractibleObjectProgressBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -16.0
 offset_top = -20.0
-offset_right = 90.666664
+offset_right = 90.6667
 offset_bottom = 7.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.3, 0.3)
 theme = ExtResource("3_0qsqp")
 step = 1.0
-value = 50.0
