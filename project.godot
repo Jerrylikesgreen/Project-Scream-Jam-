@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Project Scream Jam"
 run/main_scene="uid://mchc1n0mppt7"
-config/features=PackedStringArray("4.5", "GL Compatibility")
+config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [audio]
@@ -27,6 +27,14 @@ Events="*res://Autoloads/events.gd"
 Main="*res://main.gd"
 Globals="*res://Autoloads/globals.gd"
 InventoryManager="*res://Autoloads/inventory_manager.gd"
+
+[display]
+
+window/stretch/mode="viewport"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/my_inspector_plugin_test/plugin.cfg")
 
 [file_customization]
 

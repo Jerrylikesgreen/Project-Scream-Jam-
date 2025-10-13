@@ -1,3 +1,4 @@
+@tool 
 class_name InteractibleObject
 extends StaticBody2D
 
@@ -5,6 +6,23 @@ signal point_gain
 @onready var interactible_object_collision_shape_2d: CollisionShape2D = %InteractibleObjectCollisionShape2D
 @onready var interactible_object_sprite_2d: Sprite2D = %InteractibleObjectSprite2D
 @onready var interactible_object_progress_bar: ProgressBar = %InteractibleObjectProgressBar
+
+
+## If flip_h is true will flip Horizontal else will flip verticle 
+@export var flip_h:bool = true
+@export_tool_button("Flip Sprite") var flip_sprite_action = flip_sprite
+
+## Texture assigned via Inspector (with live editor preview)
+@export var sprite: Texture:
+	set(value):
+		_sprite = value
+		_update_sprite_preview(_sprite)
+	get:
+		return _sprite
+
+## stores the current flip state on this node so it persists
+@export var flip_state_h: bool = false
+@export var flip_state_v: bool = false
 
 ## Flag for when the player  intereacts with obj
 @export var player_triggered:bool = false
@@ -20,9 +38,15 @@ var action_count: float = 0.0
 var is_acting: bool = false
 ## time per sec it will take to complete interaction. 
 
+## Backing field for 'sprite' to avoid recursion
+var _sprite: Texture = null
+
+
 
 func _ready() -> void:
-	# ensure bar is configured
+	if interactible_object_sprite_2d:
+		interactible_object_sprite_2d.flip_h = flip_state_h
+		interactible_object_sprite_2d.flip_v = flip_state_v
 	interactible_object_progress_bar.max_value = 100.0
 	interactible_object_progress_bar.value = 0.0
 	interactible_object_progress_bar.visible = false
@@ -58,6 +82,19 @@ func action() -> void:
 
 
 
+func flip_sprite() -> void:
+	if not interactible_object_sprite_2d:
+		push_warning("object_sprite not assigned")
+		return
+
+	if flip_h:
+		flip_state_h = not flip_state_h
+		interactible_object_sprite_2d.flip_h = flip_state_h
+	else:
+		flip_state_v = not flip_state_v
+		interactible_object_sprite_2d.flip_v = flip_state_v
+
+	print("Sprite flipped", "H" if flip_h else "V")
 
 
 func action_complete() -> void:
@@ -65,3 +102,17 @@ func action_complete() -> void:
 	interactible_object_progress_bar.visible = false
 	action_count = 0.0
 	emit_signal("point_gain", points)
+
+
+
+
+func _update_sprite_preview(new_sprite: Texture) -> void:
+	if not interactible_object_sprite_2d:
+		# In the editor this warns; in runtime it won't crash
+		push_warning("object_sprite is not assigned for %s" % name)
+		return
+	# Sprite2D uses 'texture' property
+	interactible_object_sprite_2d.texture = new_sprite
+	# If running in the editor, mark the node dirty so inspector updates visually
+	if Engine.is_editor_hint():
+		notify_property_list_changed()
