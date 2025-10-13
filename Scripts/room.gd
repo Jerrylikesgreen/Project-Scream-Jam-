@@ -1,6 +1,5 @@
-class_name Room1 extends Node2D
+class_name Room extends Node2D
 
-@onready var debug: Label = %Debug
 
 @onready var spawn_point: Node2D = %SpawnPoint
 var killer_spawn_countdown: Timer
@@ -21,7 +20,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if killer_spawn_countdown:
 		var wt: String =   str(killer_spawn_countdown.get_time_left()) 
-		debug.set_text(wt)
 	
 
 func _on_killer_countdown_timeout() ->void:

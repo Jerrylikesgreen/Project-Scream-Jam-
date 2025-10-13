@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cmg5pdm4ioc4a" path="res://Scripts/killer_body.gd" id="1_4lk16"]
 [ext_resource type="Script" uid="uid://bmra4mdxkpx1l" path="res://Scripts/killer.gd" id="1_5tl0p"]
-[ext_resource type="Texture2D" uid="uid://ctqfymvu1ic6g" path="res://Assets/Monster (1).png" id="3_5tl0p"]
+[ext_resource type="Texture2D" uid="uid://ctqfymvu1ic6g" path="res://Assets/PNG/Monster (1).png" id="3_5tl0p"]
 [ext_resource type="PackedScene" uid="uid://3ak6v3qdvre" path="res://Scenes/interactible_object.tscn" id="4_kjvon"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5tl0p"]

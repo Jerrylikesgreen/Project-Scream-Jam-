@@ -56,7 +56,6 @@ func handle_transition_area(area: Area2D) -> void:
 	var state := {
 		"scene_packed": preload("res://Scenes/killer.tscn"),
 		"patrol_count": _count,
-		"facing_left": killer_sprite.flip_h,
 	}
 	KillerManager.queue_killer_for_scene(target_scene, state)
 	queue_free()

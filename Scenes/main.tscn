@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0whbhpilsin7"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jjgbg"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_bo1nx"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8gbba"]
+normal = Vector2(-0.99993503, -0.011395271)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jjvhh"]
+normal = Vector2(-0.016179113, -0.99986917)
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -10
+follow_viewport_enabled = true
+follow_viewport_scale = 1000.0
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.032574426, 0.0044820798, 0.00012703435, 1)
+
+[node name="WorldBoundries" type="StaticBody2D" parent="."]
+collision_layer = 32
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBoundries"]
+shape = SubResource("WorldBoundaryShape2D_jjgbg")
+
+[node name="WorldBoundries2" type="StaticBody2D" parent="."]
+collision_layer = 32
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBoundries2"]
+shape = SubResource("WorldBoundaryShape2D_bo1nx")
+
+[node name="WorldBoundries3" type="StaticBody2D" parent="."]
+collision_layer = 32
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBoundries3"]
+position = Vector2(1153, 647)
+shape = SubResource("WorldBoundaryShape2D_8gbba")
+
+[node name="WorldBoundries4" type="StaticBody2D" parent="."]
+collision_layer = 32
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBoundries4"]
+position = Vector2(1153, 647)
+shape = SubResource("WorldBoundaryShape2D_jjvhh")
