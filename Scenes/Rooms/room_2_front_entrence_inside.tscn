@@ -44,7 +44,6 @@ position = Vector2(583, -1)
 position = Vector2(449, -272)
 
 [node name="DirectionalLight2D" parent="." index="5"]
-visible = false
 energy = 1.2
 
 [node name="LockerSide4" parent="." index="7" instance=ExtResource("10_wordl")]
