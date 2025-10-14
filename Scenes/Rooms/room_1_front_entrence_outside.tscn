@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://cvl8kf1nyvo88"]
+[gd_scene load_steps=10 format=4 uid="uid://cvl8kf1nyvo88"]
 
 [ext_resource type="PackedScene" uid="uid://ds6aoc55rpn5k" path="res://Scenes/Rooms/room.tscn" id="1_on5we"]
 [ext_resource type="TileSet" uid="uid://dquj14hvcbg8a" path="res://Resources/TileSets/floors_room1.tres" id="2_2cw0f"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bylcboixemo1k" path="res://Scenes/Rooms/room_2_front_entrence_inside.tscn" id="4_74mnt"]
 [ext_resource type="PackedScene" uid="uid://dh2mt3nebig3q" path="res://Scenes/door.tscn" id="4_f8btm"]
 [ext_resource type="LabelSettings" uid="uid://cgh0uejw4ndem" path="res://Resources/Themes/writings.tres" id="5_f8btm"]
+[ext_resource type="Resource" uid="uid://jba7pir0g2so" path="res://Resources/default.tres" id="7_2j81o"]
 [ext_resource type="PackedScene" uid="uid://bfxp1tp6wevhl" path="res://Scenes/point_light.tscn" id="7_74mnt"]
 [ext_resource type="PackedScene" uid="uid://c0tn64ljsa1mr" path="res://Scenes/light_post.tscn" id="8_e0ld5"]
 
@@ -42,7 +43,7 @@ position = Vector2(495, 120)
 
 [node name="Door" parent="." index="8" instance=ExtResource("4_f8btm")]
 position = Vector2(495, 163)
-resource = null
+resource = ExtResource("7_2j81o")
 active = true
 
 [node name="StartMessage" type="Label" parent="." index="9"]

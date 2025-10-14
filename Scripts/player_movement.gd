@@ -10,7 +10,8 @@ var _current_state:State = State.WALKING;
 ##A PlayerController node gets added as a child to a CharacterBody2D,
 ##and handles the movement of the character.
 @onready var player_body :CharacterBody2D = get_parent();
-
+var KILLER_COLLISION_LAYER:int = 2;
+var SELF_COLLISION_LAYER:int = 1;
 
 ##The player's speed (pixels/second)
 ##when not dashing.
@@ -113,6 +114,8 @@ func _switch_state_to(state:State)->void:
 func _enter_state(state:State)->void:
 	match state:
 		State.DASH_INITIAL:
+			player_body.set_collision_mask_value(KILLER_COLLISION_LAYER,false);
+			player_body.set_collision_layer_value(SELF_COLLISION_LAYER,false);
 			if(_current_stamina < min_dash_stamina):
 				_switch_state_to(State.WALKING);
 				return;
@@ -176,12 +179,13 @@ func _do_state(state:State,delta:float)->void:
 			#Placeholder. Unsure what the desired behaviour is currently.
 			pass
 		State.INTERACTION:
-			var int_obj = action_area.get_overlapping_bodies();
-			for obj in int_obj:
-				obj.action();
-				await get_tree().create_timer(action_speed).timeout;
-				action_area.set_visible(false);
-				_exit_state(State.INTERACTION)
+			pass
+			#var int_obj = action_area.get_overlapping_bodies();
+			#for obj in int_obj:
+				#obj.action();
+				#await get_tree().create_timer(action_speed).timeout;
+				#action_area.set_visible(false);
+				#_exit_state(State.INTERACTION)
 				
 
 
@@ -190,7 +194,8 @@ func _do_state(state:State,delta:float)->void:
 func _exit_state(state:State):
 	match state:
 		State.DASH_INITIAL:
-			pass
+			player_body.set_collision_mask_value(KILLER_COLLISION_LAYER,true);
+			player_body.set_collision_layer_value(SELF_COLLISION_LAYER,true);
 		State.DASHING:
 			pass
 		State.WALKING:

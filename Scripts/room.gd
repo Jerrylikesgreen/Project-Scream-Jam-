@@ -14,6 +14,8 @@ func _ready() -> void:
 		killer_spawn_countdown = Timer.new()
 		add_child(killer_spawn_countdown)
 		killer_spawn_countdown.set_wait_time(10.0)
+		#Added for testing of nav
+		killer_spawn_countdown.one_shot = true;
 		killer_spawn_countdown.timeout.connect(_on_killer_countdown_timeout)
 		killer_spawn_countdown.start()
 
