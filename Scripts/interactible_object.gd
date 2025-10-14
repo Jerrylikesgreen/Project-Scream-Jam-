@@ -62,7 +62,18 @@ func _process(_delta: float) -> void:
 	interactible_object_progress_bar.value = action_count
 
 
-
+func action_incomplete() ->void:
+	print("Incomplete")
+	interactible_object_progress_bar.visible = false
+	action_count = 0.0
+	#action() is called in player movement, which sets
+	#is_acting to true. If the action has been attemted
+	#before, then it will be not active, and so will will never set
+	#is_acting to false again. Setting is_action to false
+	#here avoids that, so action_incomplete won't be called
+	#anymore every process loop.
+	is_acting = false;
+	
 func action() -> void:
 
 	if not is_acting:
