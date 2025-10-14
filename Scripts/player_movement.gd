@@ -134,8 +134,10 @@ func _enter_state(state:State)->void:
 				_switch_state_to(State.WALKING);
 				return
 			action_area.set_visible(true);
-			var obj = objs[0]
-			action_speed = obj.action_speed
+			var obj = objs[0];
+			#this ensures the player won't get stuck trying to
+			#do an action that's already done.
+			action_speed = obj.action_speed if obj.active else 0;
 			_can_move = false;
 			var int_obj = action_area.get_overlapping_bodies();
 			for ob in int_obj:

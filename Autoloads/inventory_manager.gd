@@ -10,18 +10,19 @@ func use_key(lock_uid:int) -> bool:
 	
 	if not lock_uid:
 		return false
-
+	var index:int = 0;
 	for item_stored in inventory.contents:
 		if not item_stored:
 			continue
 		if item_stored.is_key and item_stored.key_uid == lock_uid:
-			item_stored.use()
+			inventory.use(index);
 			return true
 		if item_stored.is_key and item_stored.key_uid == !lock_uid:
 			if item_stored.key_uid == 0:
-				item_stored.use()
+				inventory.use(index)
 				return true
 			pass
+		index += 1;
 	
 	return false
 
