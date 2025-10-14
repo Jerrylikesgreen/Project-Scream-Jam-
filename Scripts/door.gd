@@ -3,6 +3,8 @@ class_name Door extends InteractibleObject
 
 @onready var closed: Sprite2D = %Closed
 
+## Unsed to determin which key can unlock this door. 
+@export var lock_uid: int
 
 func action_complete() -> void:
 	closed.set_visible(false)

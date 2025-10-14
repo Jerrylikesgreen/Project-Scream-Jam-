@@ -1,5 +1,5 @@
 @tool 
-class_name LockerSide extends InteractibleObject
+class_name LockerSide extends Box
 
 
 

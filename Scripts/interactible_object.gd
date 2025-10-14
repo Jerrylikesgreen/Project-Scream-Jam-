@@ -46,6 +46,8 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if is_acting:
+		if !active:
+			action_incomplete()
 
 		action_count += ( 100.0 / action_speed ) * _delta
 
@@ -67,6 +69,7 @@ func action_incomplete() ->void:
 	
 	
 func action() -> void:
+
 	if not is_acting:
 		is_acting = true
 		interactible_object_progress_bar.visible = true
@@ -95,3 +98,4 @@ func action_complete() -> void:
 	interactible_object_progress_bar.visible = false
 	action_count = 0.0
 	emit_signal("point_gain", points)
+	print(InventoryManager.inventory)

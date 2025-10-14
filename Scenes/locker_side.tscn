@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://rruityo8xk0v"]
+[gd_scene load_steps=7 format=3 uid="uid://rruityo8xk0v"]
 
 [ext_resource type="PackedScene" uid="uid://3ak6v3qdvre" path="res://Scenes/interactible_object.tscn" id="1_hp5pl"]
-[ext_resource type="Texture2D" uid="uid://ce7bb65n6pwhc" path="res://Scenes/locker_side.tres" id="2_3dwe4"]
-[ext_resource type="Script" uid="uid://bncx4eekaswgg" path="res://Scenes/locker_side.gd" id="2_hojcf"]
+[ext_resource type="Texture2D" uid="uid://ce7bb65n6pwhc" path="res://Resources/locker_side.tres" id="2_3dwe4"]
+[ext_resource type="Script" uid="uid://bncx4eekaswgg" path="res://Scripts/locker_side.gd" id="2_hojcf"]
 [ext_resource type="Script" uid="uid://4b01cqmglqbj" path="res://Scripts/item.gd" id="3_hojcf"]
 
 [sub_resource type="Resource" id="Resource_f1g5t"]
@@ -12,9 +12,15 @@ description = "Locker"
 image = ExtResource("2_3dwe4")
 metadata/_custom_type_script = "uid://4b01cqmglqbj"
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hojcf"]
+
 [node name="LockerSide" instance=ExtResource("1_hp5pl")]
 script = ExtResource("2_hojcf")
+storage = Array[ExtResource("3_hojcf")]([])
 resource = SubResource("Resource_f1g5t")
+
+[node name="InteractibleObjectCollisionShape2D" parent="." index="0"]
+shape = SubResource("RectangleShape2D_hojcf")
 
 [node name="InteractibleObjectSprite2D" parent="." index="1"]
 texture = ExtResource("2_3dwe4")
