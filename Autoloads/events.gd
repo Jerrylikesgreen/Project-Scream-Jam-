@@ -4,7 +4,7 @@ extends Node
 # Signal other nodes can connect to: Events.connect("player_hit", target, "_on_player_hit")
 signal player_hit_signal
 signal player_message(new_message: String)
-
+signal pin_entered_signal(v:bool)
 
 
 
@@ -31,6 +31,10 @@ func player_hit_event() -> void:
 	
 func _now_s() -> float:
 	return Time.get_unix_time_from_system()
+
+
+func pin_entered(v:bool) -> void:
+	emit_signal("pin_entered_signal", v)
 
 
 func display_player_message(new_message: String, cooldown: float = -1.0) -> void:
