@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://7m1psxif0fay"]
 
 [ext_resource type="PackedScene" uid="uid://3ak6v3qdvre" path="res://Scenes/interactible_object.tscn" id="1_qnirs"]
-[ext_resource type="Script" uid="uid://cp7pv22g3uiw0" path="res://Scenes/standing_lamp.gd" id="2_msrpv"]
+[ext_resource type="Script" uid="uid://cp7pv22g3uiw0" path="res://Scripts/standing_lamp.gd" id="2_msrpv"]
 [ext_resource type="PackedScene" uid="uid://bfxp1tp6wevhl" path="res://Scenes/point_light.tscn" id="2_o4ps0"]
 [ext_resource type="Resource" uid="uid://bgntavp5ioewt" path="res://Resources/lamp.tres" id="3_ofb25"]
 [ext_resource type="Texture2D" uid="uid://b35tvp7v3v5kp" path="res://Resources/Interactables/standing_lamp.tres" id="4_lgk5o"]

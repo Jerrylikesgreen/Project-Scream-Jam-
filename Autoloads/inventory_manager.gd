@@ -6,9 +6,32 @@ var menu_canvas:CanvasLayer;
 func _ready() -> void:
 	inventory.item_used.connect(_on_item_used);
 
+func use_key(lock_uid:int) -> bool:
+	
+	if not lock_uid:
+		return false
+
+	for item_stored in inventory.contents:
+		if not item_stored:
+			continue
+		if item_stored.is_key and item_stored.key_uid == lock_uid:
+			item_stored.use()
+			return true
+		if item_stored.is_key and item_stored.key_uid == !lock_uid:
+			if item_stored.key_uid == 0:
+				item_stored.use()
+				return true
+			pass
+	
+	return false
+
+
+
 func on_acquire_item(item:ItemResource):
 	inventory.add(item);
-func _on_item_used():
+
+func _on_item_used(item:ItemResource):
+	Events.display_player_message("Used " + str(item.name))
 	pass
 
 func _input(event: InputEvent) -> void:

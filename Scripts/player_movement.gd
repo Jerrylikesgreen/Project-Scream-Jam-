@@ -82,7 +82,7 @@ var action_speed:float
 
 func _physics_process(delta: float) -> void:
 	_do_state(_current_state,delta);
-	if Input.is_action_just_pressed("action"):
+	if Input.is_action_just_released("action"):
 		_switch_state_to(State.INTERACTION)
 	
 	var input_vector = Input.get_vector("left","right","up","down")
@@ -140,8 +140,9 @@ func _enter_state(state:State)->void:
 			var int_obj = action_area.get_overlapping_bodies();
 			for ob in int_obj:
 				ob.action();
-				await get_tree().create_timer(action_speed).timeout;
 				action_area.set_visible(false);
+				await get_tree().create_timer(action_speed).timeout;
+				
 			_switch_state_to(State.WALKING);
 
 
