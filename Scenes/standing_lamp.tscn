@@ -1,13 +1,35 @@
-[gd_scene format=3 uid="uid://bpxvd7dj47j4a"]
+[gd_scene load_steps=7 format=3 uid="uid://7m1psxif0fay"]
 
-[node name="MissingNode" type="Object"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-script = null
+[ext_resource type="PackedScene" uid="uid://3ak6v3qdvre" path="res://Scenes/interactible_object.tscn" id="1_qnirs"]
+[ext_resource type="Script" uid="uid://cp7pv22g3uiw0" path="res://Scenes/standing_lamp.gd" id="2_msrpv"]
+[ext_resource type="PackedScene" uid="uid://bfxp1tp6wevhl" path="res://Scenes/point_light.tscn" id="2_o4ps0"]
+[ext_resource type="Resource" uid="uid://bgntavp5ioewt" path="res://Resources/lamp.tres" id="3_ofb25"]
+[ext_resource type="Texture2D" uid="uid://b35tvp7v3v5kp" path="res://Resources/Interactables/standing_lamp.tres" id="4_lgk5o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lgk5o"]
+
+[node name="StandingLamp" instance=ExtResource("1_qnirs")]
+script = ExtResource("2_msrpv")
+resource = ExtResource("3_ofb25")
+active = true
+
+[node name="InteractibleObjectCollisionShape2D" parent="." index="0"]
+position = Vector2(0, 21.5)
+shape = SubResource("RectangleShape2D_lgk5o")
+
+[node name="InteractibleObjectSprite2D" parent="." index="1"]
+texture = ExtResource("4_lgk5o")
+region_enabled = true
+
+[node name="PointLight" parent="." index="3" instance=ExtResource("2_o4ps0")]
+position = Vector2(0, -17)
+enabled = false
+color = Color(0.75, 0.57, 0.57, 0.8627451)
+energy = 0.25
+shadow_color = Color(0, 0, 0, 0.39215687)
+
+[node name="PointLight3" parent="." index="4" instance=ExtResource("2_o4ps0")]
+position = Vector2(0, -22)
+color = Color(0.75, 0.059999987, 0.059999987, 0.8627451)
+energy = 0.15
+shadow_color = Color(0, 0, 0, 0.39215687)

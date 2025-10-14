@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bja82w2ernttj"]
+[gd_scene load_steps=17 format=3 uid="uid://bja82w2ernttj"]
 
 [ext_resource type="Script" uid="uid://bikngahb45rul" path="res://Scripts/player.gd" id="1_6t5aa"]
 [ext_resource type="Script" uid="uid://bvf78xmw0liad" path="res://Scripts/player_body.gd" id="2_fkybt"]
@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://0vmi48yphey3" path="res://Assets/Fonts/PixelAE-Bold.ttf" id="5_fkybt"]
 [ext_resource type="Script" uid="uid://ct7iom4vpnfc4" path="res://Scripts/player_dialog_popup.gd" id="6_x3wgy"]
 [ext_resource type="Theme" uid="uid://hpso4mu8e4b7" path="res://Resources/Themes/default.tres" id="7_3smsa"]
+[ext_resource type="PackedScene" uid="uid://bfxp1tp6wevhl" path="res://Scenes/point_light.tscn" id="8_8erm5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vgqql"]
 atlas = ExtResource("3_6t5aa")
@@ -144,3 +145,9 @@ offset_bottom = 2.125
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("7_3smsa")
+
+[node name="PointLight" parent="PlayerBody" instance=ExtResource("8_8erm5")]
+color = Color(0.75, 0.71999997, 0.71999997, 0.5372549)
+energy = 0.18
+shadow_enabled = false
+texture_scale = 0.75
