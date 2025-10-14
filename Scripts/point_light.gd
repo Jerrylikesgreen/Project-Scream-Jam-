@@ -29,7 +29,7 @@ func _ready() -> void:
 ## Helper function re-sets the values 
 func _pick_new_randoms() -> void:
 	_flicker_interval = randf_range(0.2, 2.0)
-	_light_bright_range = randf_range(0.1, 0.5)
+	_light_bright_range = randf_range(0.8, 1.3)
 
 
 ## Helper function sets off the logic of the flickering once flicker_enabled is set to true

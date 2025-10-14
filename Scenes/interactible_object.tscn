@@ -39,10 +39,14 @@ scale = Vector2(0.3, 0.3)
 theme = ExtResource("3_0qsqp")
 step = 1.0
 
-[node name="PointLight" parent="InteractibleObjectProgressBar" instance=ExtResource("4_ojmeb")]
+[node name="RedGlowProgress" parent="InteractibleObjectProgressBar" instance=ExtResource("4_ojmeb")]
 z_index = -1
 position = Vector2(54.66666, 18.33333)
 scale = Vector2(1.0208333, 0.31250003)
 color = Color(0.75, 0, 0, 1)
-energy = 0.75
-texture_scale = 0.5
+
+[node name="RedGlow" parent="." instance=ExtResource("4_ojmeb")]
+position = Vector2(0, -17)
+color = Color(0.75, 0, 0, 0.74509805)
+energy = 0.5
+shadow_color = Color(0, 0, 0, 0.39215687)
