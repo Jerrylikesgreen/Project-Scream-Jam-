@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var patrol_area: Area2D = %PatrolArea
 @onready var vision: Area2D = %Vision
 @onready var hit_box: Area2D = %HitBox
+@onready var pathfinder:NavigationAgent2D = %PathfinderToPlayer
 
 @export var speed: int = 100
 @export var idle_duration: float = 1.0  # seconds
@@ -153,23 +154,30 @@ func _chase_logic(_delta: float) -> void:
 	_target_position = player_ref.global_position
 	var dist_sq = global_position.distance_squared_to(player_ref.global_position)
 	var attack_range_sq = attack_range * attack_range
+	#Attack if in the attack range
 	if dist_sq <= attack_range_sq:
 		killer_sprite.flip_h = (player_ref.global_position.x < global_position.x)
 		killer_state = KillerState.ATTACK
 		return
-	var to_target = _target_position - global_position
-	if to_target.length() > 2.0:
-		velocity = to_target.normalized() * speed
-		if velocity.x != 0:
-			var facing_left = velocity.x < 0
-			killer_sprite.flip_h = facing_left
-			if facing_left:
-				vision.rotation_degrees = 180.0
-			else:
-				vision.rotation_degrees = 0.0
-		move_and_slide()
-	else:
-		velocity = Vector2.ZERO
+	pathfinder.target_position = player_ref.global_position;
+	var current_position = global_position;
+	var next_path_point:Vector2 = pathfinder.get_next_path_position();
+	var target_vel:Vector2 = current_position.direction_to(next_path_point)*speed;
+	velocity = target_vel;
+	move_and_slide();
+	#var to_target = _target_position - global_position
+	#if to_target.length() > 2.0:
+		#velocity = to_target.normalized() * speed
+		#if velocity.x != 0:
+			#var facing_left = velocity.x < 0
+			#killer_sprite.flip_h = facing_left
+			#if facing_left:
+				#vision.rotation_degrees = 180.0
+			#else:
+				#vision.rotation_degrees = 0.0
+		#move_and_slide()
+	#else:
+		#velocity = Vector2.ZERO
 
 func _pick_area() -> void:
 	var rect_shapes := []

@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://cmg5pdm4ioc4a" path="res://Scripts/killer_body.gd" id="1_4lk16"]
 [ext_resource type="Script" uid="uid://bmra4mdxkpx1l" path="res://Scripts/killer.gd" id="1_5tl0p"]
 [ext_resource type="Texture2D" uid="uid://ctqfymvu1ic6g" path="res://Assets/PNG/Monster (1).png" id="3_5tl0p"]
-[ext_resource type="PackedScene" uid="uid://3ak6v3qdvre" path="res://Scenes/interactible_object.tscn" id="4_kjvon"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5tl0p"]
 size = Vector2(308, 92)
@@ -39,6 +38,9 @@ animations = [{
 "speed": 9.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_5tl0p"]
+radius = 250.8944
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kjvon"]
 size = Vector2(66, 59)
 
@@ -61,6 +63,9 @@ unique_name_in_owner = true
 collision_layer = 2
 collision_mask = 36
 script = ExtResource("1_4lk16")
+speed = null
+idle_duration = null
+attack_range = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killer Body"]
 shape = SubResource("CapsuleShape2D_5tl0p")
@@ -76,6 +81,9 @@ unique_name_in_owner = true
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="Killer Body/Vision"]
 position = Vector2(1, -3)
 polygon = PackedVector2Array(0, -6, 197, -87, 196, 140, -1, 12)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Killer Body/Vision"]
+shape = SubResource("CircleShape2D_5tl0p")
 
 [node name="HitBox" type="Area2D" parent="Killer Body"]
 unique_name_in_owner = true
@@ -96,8 +104,10 @@ offset_right = 28.0
 offset_bottom = -23.0
 text = "Action"
 
-[node name="InteractibleObject" parent="." instance=ExtResource("4_kjvon")]
-position = Vector2(359, 150)
+[node name="PathfinderToPlayer" type="NavigationAgent2D" parent="Killer Body"]
+unique_name_in_owner = true
+debug_enabled = true
+debug_path_custom_color = Color(0.33333334, 0.07058824, 1, 1)
 
 [node name="Debug" type="Label" parent="."]
 unique_name_in_owner = true
