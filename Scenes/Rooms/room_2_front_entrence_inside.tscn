@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://dwq3vyg6od7v5" path="res://Assets/spr_tile_itch.png" id="12_4dbpb"]
 [ext_resource type="PackedScene" uid="uid://b00jneawpjbmd" path="res://Scenes/old_chest.tscn" id="12_bogq7"]
 [ext_resource type="Script" uid="uid://fwvtxcwim8xh" path="res://Resources/Items/key_resource_script.gd" id="13_1vsvp"]
+[ext_resource type="PackedScene" uid="uid://dxqpkjuu8sknm" path="res://Scenes/hiding_spot.tscn" id="13_dhpm4"]
 [ext_resource type="PackedScene" uid="uid://cf7q6nd3ce3hm" path="res://Scenes/broken_dresser.tscn" id="15_4dbpb"]
 [ext_resource type="PackedScene" uid="uid://dbkdleftnglmk" path="res://Scenes/door_locked.tscn" id="17_wlyl6"]
 [ext_resource type="PackedScene" uid="uid://3ak6v3qdvre" path="res://Scenes/interactible_object.tscn" id="22_37mkd"]
@@ -26,13 +27,6 @@
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_mplsn"]
 polygon = PackedVector2Array(367, 100, 33, 98, 31, 367, 365, 370, 368, 238, 352, 238, 352, 286, 50, 286, 50, 178, 352, 181, 352, 198, 369, 199)
-
-[sub_resource type="Resource" id="Resource_d2gdd"]
-script = ExtResource("13_1vsvp")
-name = "SkeletonKey"
-description = "Can unlock most doors. "
-is_key = true
-metadata/_custom_type_script = "uid://fwvtxcwim8xh"
 
 [sub_resource type="Resource" id="Resource_1vsvp"]
 script = ExtResource("13_1vsvp")
@@ -132,7 +126,6 @@ active = true
 
 [node name="OldToolbox" parent="Boxes" index="7" instance=ExtResource("12_bogq7")]
 position = Vector2(1364, 551)
-storage = Array[ExtResource("6_opfmq")]([SubResource("Resource_d2gdd")])
 
 [node name="Lights" type="Node2D" parent="." index="8"]
 
@@ -239,19 +232,18 @@ position = Vector2(582, -35)
 
 [node name="LockedDoor" parent="Doors" index="1" instance=ExtResource("17_wlyl6")]
 position = Vector2(1126, -30)
-lock_uid = 10
 
 [node name="LockedDoor2" parent="Doors" index="2" instance=ExtResource("17_wlyl6")]
 position = Vector2(1488, 720)
-lock_uid = 3
-action_speed = 3.0
-points = 500
 
 [node name="InteractibleObjectSprite2D" parent="Doors/LockedDoor2" index="1"]
 position = Vector2(-3.182888e-05, -8.000015)
 scale = Vector2(1.1874979, 1.0624995)
 
-[node name="Switches" type="Node2D" parent="." index="11"]
+[node name="HidingSpot" parent="." index="11" instance=ExtResource("13_dhpm4")]
+position = Vector2(1104, 528)
+
+[node name="Switches" type="Node2D" parent="." index="12"]
 
 [node name="switch" parent="Switches" index="0" instance=ExtResource("22_37mkd")]
 position = Vector2(-1, 4)

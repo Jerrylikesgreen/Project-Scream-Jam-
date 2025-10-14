@@ -90,13 +90,6 @@ func action_complete() -> void:
 	emit_signal("point_gain", points)
 	print(InventoryManager.inventory)
 
-func action_incomplete() ->void:
-	print("Incomplete")
-	interactible_object_progress_bar.visible = false
-	action_count = 0.0
-	
-	
-
 func flip_sprite() -> void:
 	if not interactible_object_sprite_2d:
 		push_warning("object_sprite not assigned")

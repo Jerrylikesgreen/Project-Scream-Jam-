@@ -71,6 +71,8 @@ var _can_move:bool = true;
 ##stages of dash, or when hiding.
 var _killer_touch_fatal:bool = true;
 
+var hiding:bool = false;
+
 ## Acceleration factor (how fast you reach max speed)
 var accel = 1000
 
@@ -83,7 +85,10 @@ var action_speed:float
 func _physics_process(delta: float) -> void:
 	_do_state(_current_state,delta);
 	if Input.is_action_just_released("action"):
-		_switch_state_to(State.INTERACTION)
+		if !hiding:
+			_switch_state_to(State.INTERACTION)
+		else:
+			_switch_state_to(State.WALKING)
 	
 	var input_vector = Input.get_vector("left","right","up","down")
 	
@@ -126,9 +131,21 @@ func _enter_state(state:State)->void:
 		State.WALKING:
 			_current_speed = regular_speed;
 		State.HIDING:
+			if hiding:
+				_switch_state_to(State.WALKING);
+			#can only hide if not in line of sight
+			if KillerManager.player_in_line_of_sight(player_body):
+				_switch_state_to(State.WALKING);
+				return;
+			hiding = true
+			player.hide();
+			player_body.set_collision_mask_value(KILLER_COLLISION_LAYER,false);
+			player_body.set_collision_layer_value(SELF_COLLISION_LAYER,false);
 			_killer_touch_fatal = false;
 			_can_move = false;
 		State.INTERACTION:
+			if hiding:
+				_switch_state_to(State.HIDING);
 			var objs = action_area.get_overlapping_bodies()
 			if objs.is_empty():
 				_switch_state_to(State.WALKING);
@@ -137,10 +154,16 @@ func _enter_state(state:State)->void:
 			var obj = objs[0];
 			#this ensures the player won't get stuck trying to
 			#do an action that's already done.
+			if obj is HidingSpot:
+				_switch_state_to(State.HIDING);
+				return;
 			action_speed = obj.action_speed if obj.active else 0;
 			_can_move = false;
 			var int_obj = action_area.get_overlapping_bodies();
 			for ob in int_obj:
+				if obj is HidingSpot:
+					_switch_state_to(State.HIDING);
+					return;
 				ob.action();
 				action_area.set_visible(false);
 				await get_tree().create_timer(action_speed).timeout;
@@ -204,9 +227,14 @@ func _exit_state(state:State):
 		State.WALKING:
 			pass
 		State.HIDING:
+			hiding = false;
+			player.show();
+			player_body.set_collision_mask_value(KILLER_COLLISION_LAYER,true);
+			player_body.set_collision_layer_value(SELF_COLLISION_LAYER,true);
 			_killer_touch_fatal = true;
 			_can_move = true;
 		State.INTERACTION:
+			action_area.set_visible(false);
 			_can_move = true;
 
 

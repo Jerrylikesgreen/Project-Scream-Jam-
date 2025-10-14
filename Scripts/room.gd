@@ -7,13 +7,15 @@ var killer_spawn_countdown: Timer
 
 func _ready() -> void:
 	if get_tree().get_nodes_in_group("Player").is_empty():
-		var player = Globals.PLAYER.instantiate()
+		var player = Globals.player
 		add_child(player)
+		player.reset_pos();
 		player.global_position = spawn_point.global_position
 	if KillerManager.killer_in_other_room:
 		killer_spawn_countdown = Timer.new()
 		add_child(killer_spawn_countdown)
 		killer_spawn_countdown.set_wait_time(10.0)
+		killer_spawn_countdown.one_shot = true;
 		killer_spawn_countdown.timeout.connect(_on_killer_countdown_timeout)
 		killer_spawn_countdown.start()
 
@@ -26,4 +28,5 @@ func _on_killer_countdown_timeout() ->void:
 	var killer_instance =  KillerManager.KILLER.instantiate()
 	add_child(killer_instance)
 	killer_instance.position = spawn_point.global_position
+	KillerManager.killer = killer_instance;
 	KillerManager.killer_in_other_room = false

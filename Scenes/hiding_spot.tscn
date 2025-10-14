@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxqpkjuu8sknm"]
+
+[ext_resource type="Script" uid="uid://cwmejgimc8amg" path="res://Scripts/hiding_place.gd" id="1_ao2br"]
+[ext_resource type="Texture2D" uid="uid://bogyrj818pw0m" path="res://Assets/Alternate/Bed.png" id="2_ku0ps"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tprcw"]
+size = Vector2(95, 27)
+
+[node name="HidingSpot" type="StaticBody2D"]
+collision_layer = 12
+collision_mask = 0
+script = ExtResource("1_ao2br")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, 13.5)
+shape = SubResource("RectangleShape2D_tprcw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ku0ps")

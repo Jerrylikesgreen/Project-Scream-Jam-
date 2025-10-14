@@ -1,0 +1,1 @@
+class_name HidingSpot extends StaticBody2D

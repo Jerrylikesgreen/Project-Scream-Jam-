@@ -151,6 +151,9 @@ func _chase_logic(_delta: float) -> void:
 	if player_ref == null:
 		killer_state = KillerState.PATROL
 		return
+	if player_ref.player_controller.hiding:
+		killer_state = KillerState.PATROL
+		return
 	_target_position = player_ref.global_position
 	var dist_sq = global_position.distance_squared_to(player_ref.global_position)
 	var attack_range_sq = attack_range * attack_range
