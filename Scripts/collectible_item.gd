@@ -1,5 +1,5 @@
 extends Sprite2D
-@export var item:Item;
+@export var item:ItemResource;
 @onready var area:Area2D = $Area2D;
 
 func _ready() -> void:
@@ -7,7 +7,7 @@ func _ready() -> void:
 	area.body_entered.connect(_body_entered)
 	player_acquired_item.connect(InventoryManager.on_acquire_item);
 
-signal player_acquired_item(item:Item);
+signal player_acquired_item(item:ItemResource);
 func _body_entered(body:Node2D):
 	if body is PlayerBody:
 		player_acquired_item.emit(item);

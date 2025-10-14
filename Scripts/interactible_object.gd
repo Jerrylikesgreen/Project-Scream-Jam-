@@ -62,12 +62,7 @@ func _process(_delta: float) -> void:
 	interactible_object_progress_bar.value = action_count
 
 
-func action_incomplete() ->void:
-	print("Incomplete")
-	interactible_object_progress_bar.visible = false
-	action_count = 0.0
-	
-	
+
 func action() -> void:
 
 	if not is_acting:
@@ -77,6 +72,19 @@ func action() -> void:
 			print("Action started (frame-based increment)")
 
 
+func action_complete() -> void:
+	print("Action complete!")
+	interactible_object_progress_bar.visible = false
+	action_count = 0.0
+	emit_signal("point_gain", points)
+	print(InventoryManager.inventory)
+
+func action_incomplete() ->void:
+	print("Incomplete")
+	interactible_object_progress_bar.visible = false
+	action_count = 0.0
+	
+	
 
 func flip_sprite() -> void:
 	if not interactible_object_sprite_2d:
@@ -91,11 +99,3 @@ func flip_sprite() -> void:
 		interactible_object_sprite_2d.flip_v = flip_state_v
 
 	print("Sprite flipped", "H" if flip_h else "V")
-
-
-func action_complete() -> void:
-	print("Action complete!")
-	interactible_object_progress_bar.visible = false
-	action_count = 0.0
-	emit_signal("point_gain", points)
-	print(InventoryManager.inventory)

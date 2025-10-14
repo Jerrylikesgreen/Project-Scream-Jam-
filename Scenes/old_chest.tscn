@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b00jneawpjbmd"]
+[gd_scene load_steps=7 format=3 uid="uid://b00jneawpjbmd"]
 
 [ext_resource type="PackedScene" uid="uid://3ak6v3qdvre" path="res://Scenes/interactible_object.tscn" id="1_0dn1f"]
 [ext_resource type="Script" uid="uid://bxaf5ytsgvpcr" path="res://Scenes/old_toolbox.gd" id="2_a4vje"]
@@ -12,10 +12,15 @@ description = "Old Toolbox"
 image = ExtResource("4_eumq6")
 metadata/_custom_type_script = "uid://4b01cqmglqbj"
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eumq6"]
+
 [node name="OldToolbox" instance=ExtResource("1_0dn1f")]
 script = ExtResource("2_a4vje")
 storage = Array[ExtResource("3_xgxlk")]([])
 resource = SubResource("Resource_jpwol")
+
+[node name="InteractibleObjectCollisionShape2D" parent="." index="0"]
+shape = SubResource("RectangleShape2D_eumq6")
 
 [node name="InteractibleObjectSprite2D" parent="." index="1"]
 texture = ExtResource("4_eumq6")

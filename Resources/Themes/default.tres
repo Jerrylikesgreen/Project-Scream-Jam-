@@ -1,4 +1,16 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://hpso4mu8e4b7"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://hpso4mu8e4b7"]
+
+[ext_resource type="StyleBox" uid="uid://ct23yfrc1b5oj" path="res://1.tres" id="1_piocd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qeibt"]
+bg_color = Color(0.18039216, 0.3137255, 0.32156864, 0.54901963)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.04687143, 0.20922193, 0.3779931, 1)
+border_blend = true
+shadow_size = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0i5dr"]
 bg_color = Color(0.33, 0.00659999, 0.00659999, 0.901961)
@@ -44,6 +56,9 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [resource]
+Label/styles/focus = ExtResource("1_piocd")
+Label/styles/normal = ExtResource("1_piocd")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_qeibt")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_0i5dr")
 ProgressBar/constants/outline_size = 8
 ProgressBar/font_sizes/font_size = 26

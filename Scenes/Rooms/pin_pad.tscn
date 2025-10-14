@@ -1,0 +1,69 @@
+[gd_scene load_steps=4 format=3 uid="uid://mdo0lponneh"]
+
+[ext_resource type="Script" uid="uid://cby2r7rvs4oxq" path="res://Scenes/Rooms/pin_pad.gd" id="1_7foyv"]
+[ext_resource type="Theme" uid="uid://hpso4mu8e4b7" path="res://Resources/Themes/default.tres" id="1_ms3cx"]
+[ext_resource type="LabelSettings" uid="uid://hlixbh7byjyu" path="res://password.tres" id="2_7foyv"]
+
+[node name="PinPad" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7foyv")
+
+[node name="Pin" type="PanelContainer" parent="."]
+top_level = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -87.0
+offset_right = 239.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme = ExtResource("1_ms3cx")
+
+[node name="ColorRect" type="ColorRect" parent="Pin"]
+layout_mode = 2
+mouse_filter = 1
+color = Color(0.2, 0.11933334, 0.112, 0.7490196)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Pin/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.40625
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Pin/ColorRect/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 6
+text = "Enter  PIN"
+label_settings = ExtResource("2_7foyv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="Pin/ColorRect/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("1_ms3cx")
+text = "Password"
+placeholder_text = "PASSWORD"
+alignment = 1
+virtual_keyboard_type = 2
+clear_button_enabled = true
+caret_blink = true
+secret = true
