@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cispvaoil2iep"
-path="res://.godot/imported/spritesheet_hospital_lab.png-938becc3374869c5f5e714625f81ec2e.ctex"
+uid="uid://dvfjm01x3sd0p"
+path="res://.godot/imported/PostApoc_Workshop_WithShadow.png-f10f8eefe979dc907e0a80d2448191e2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/TileSets/spritesheet_hospital_lab.png"
-dest_files=["res://.godot/imported/spritesheet_hospital_lab.png-938becc3374869c5f5e714625f81ec2e.ctex"]
+source_file="res://Assets/TileSets/PostApoc_Workshop_WithShadow.png"
+dest_files=["res://.godot/imported/PostApoc_Workshop_WithShadow.png-f10f8eefe979dc907e0a80d2448191e2.ctex"]
 
 [params]
 

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=3 format=3 uid="uid://jba7pir0g2so"]
+
+[ext_resource type="Script" uid="uid://4b01cqmglqbj" path="res://Scripts/item.gd" id="1_vuyyf"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vuyyf"]
+load_path = "res://.godot/imported/spritesheet_hospital_maternity.png-96b6cc6300e6b4655e29d0333e0ee1f2.ctex"
+
+[resource]
+script = ExtResource("1_vuyyf")
+name = "Standing Lamp"
+description = "Standing Lamp - Lights"
+image = SubResource("CompressedTexture2D_vuyyf")
+player_dialog = "Some light! "
+metadata/_custom_type_script = "uid://4b01cqmglqbj"

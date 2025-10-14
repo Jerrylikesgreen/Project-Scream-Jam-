@@ -1,31 +1,31 @@
 [gd_scene load_steps=6 format=3 uid="uid://3ak6v3qdvre"]
 
-[ext_resource type="Texture2D" uid="uid://dxojir25gl11d" path="res://icon.svg" id="1_h7xss"]
 [ext_resource type="Script" uid="uid://cb2qf7yftc14k" path="res://Scripts/interactible_object.gd" id="1_wb1i2"]
-[ext_resource type="Resource" uid="uid://jba7pir0g2so" path="res://Scenes/default.tres" id="2_0qsqp"]
 [ext_resource type="Theme" uid="uid://hpso4mu8e4b7" path="res://Resources/Themes/default.tres" id="3_0qsqp"]
+[ext_resource type="Texture2D" uid="uid://cl77tcvrlc5o6" path="res://Assets/PNG/InteractibleObjects/crate.png" id="3_ojmeb"]
+[ext_resource type="PackedScene" uid="uid://bfxp1tp6wevhl" path="res://Scenes/point_light.tscn" id="4_ojmeb"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_yspam"]
-radius = 7.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wou4j"]
+size = Vector2(20, 11)
 
 [node name="InteractibleObject" type="StaticBody2D"]
 collision_layer = 12
 collision_mask = 128
 script = ExtResource("1_wb1i2")
-resource = ExtResource("2_0qsqp")
 
 [node name="InteractibleObjectCollisionShape2D" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
-shape = SubResource("CircleShape2D_yspam")
+shape = SubResource("RectangleShape2D_wou4j")
 
 [node name="InteractibleObjectSprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-texture = ExtResource("1_h7xss")
+texture = ExtResource("3_ojmeb")
 region_rect = Rect2(386, 1807, 26, 68)
 
 [node name="InteractibleObjectProgressBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
 visible = false
+z_index = 10
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -38,3 +38,11 @@ grow_vertical = 2
 scale = Vector2(0.3, 0.3)
 theme = ExtResource("3_0qsqp")
 step = 1.0
+
+[node name="PointLight" parent="InteractibleObjectProgressBar" instance=ExtResource("4_ojmeb")]
+z_index = -1
+position = Vector2(54.66666, 18.33333)
+scale = Vector2(1.0208333, 0.31250003)
+color = Color(0.75, 0, 0, 1)
+energy = 0.75
+texture_scale = 0.5

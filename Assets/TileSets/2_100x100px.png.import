@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cispvaoil2iep"
-path="res://.godot/imported/spritesheet_hospital_lab.png-938becc3374869c5f5e714625f81ec2e.ctex"
+uid="uid://qo3mfornot01"
+path="res://.godot/imported/2_100x100px.png-2140fe056f4f82592c59a5853d7a731c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/TileSets/spritesheet_hospital_lab.png"
-dest_files=["res://.godot/imported/spritesheet_hospital_lab.png-938becc3374869c5f5e714625f81ec2e.ctex"]
+source_file="res://Assets/TileSets/2_100x100px.png"
+dest_files=["res://.godot/imported/2_100x100px.png-2140fe056f4f82592c59a5853d7a731c.ctex"]
 
 [params]
 

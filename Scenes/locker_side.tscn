@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://rruityo8xk0v"]
+
+[ext_resource type="PackedScene" uid="uid://3ak6v3qdvre" path="res://Scenes/interactible_object.tscn" id="1_hp5pl"]
+[ext_resource type="Texture2D" uid="uid://ce7bb65n6pwhc" path="res://Scenes/locker_side.tres" id="2_3dwe4"]
+[ext_resource type="Script" uid="uid://bncx4eekaswgg" path="res://Scenes/locker_side.gd" id="2_hojcf"]
+[ext_resource type="Script" uid="uid://4b01cqmglqbj" path="res://Scripts/item.gd" id="3_hojcf"]
+
+[sub_resource type="Resource" id="Resource_f1g5t"]
+script = ExtResource("3_hojcf")
+name = "LockerSide"
+description = "Locker"
+image = ExtResource("2_3dwe4")
+metadata/_custom_type_script = "uid://4b01cqmglqbj"
+
+[node name="LockerSide" instance=ExtResource("1_hp5pl")]
+script = ExtResource("2_hojcf")
+resource = SubResource("Resource_f1g5t")
+
+[node name="InteractibleObjectSprite2D" parent="." index="1"]
+texture = ExtResource("2_3dwe4")
+hframes = 2
+region_enabled = true
+region_rect = Rect2(481, 257, 64, 66)

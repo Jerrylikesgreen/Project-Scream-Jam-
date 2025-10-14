@@ -4,9 +4,11 @@
 [ext_resource type="Script" uid="uid://dudv0hjt8blbg" path="res://Scripts/point_light.gd" id="2_hb5ce"]
 
 [node name="PointLight" type="PointLight2D"]
-color = Color(0.74558, 0.74558, 0.74558, 1)
+color = Color(0.75, 0.75, 0.75, 0.8627451)
 energy = 0.5
 shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.12156863)
 texture = ExtResource("1_s46ca")
 texture_scale = 1.97
+height = 100.0
 script = ExtResource("2_hb5ce")
