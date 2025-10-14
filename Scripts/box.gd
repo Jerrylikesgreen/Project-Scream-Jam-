@@ -12,3 +12,17 @@ func add_to_storage(item:ItemResource)->void:
 	
 func remove_from_storage(item:ItemResource)->void:
 	storage.erase(item)
+
+
+
+func action_complete() -> void:
+	active = false
+	interactible_object_progress_bar.visible = false
+	action_count = 0.0
+	emit_signal("point_gain", points)
+	if !storage.is_empty():
+		for items in storage:
+			InventoryManager.on_acquire_item(items)
+			print(items)
+			storage.clear()
+	

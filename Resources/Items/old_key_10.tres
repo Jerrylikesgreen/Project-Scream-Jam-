@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="KeyResource" load_steps=2 format=3 uid="uid://ccnj0408cq768"]
+
+[ext_resource type="Script" uid="uid://fwvtxcwim8xh" path="res://Resources/Items/key_resource_script.gd" id="1_bvy31"]
+
+[resource]
+script = ExtResource("1_bvy31")
+key_uid = 10
+name = "Old Key"
+description = "An old key with a 10 on it. "
+consumable = true
+player_dialog = "This key has a 10 on it..."
+is_key = true
+metadata/_custom_type_script = "uid://fwvtxcwim8xh"

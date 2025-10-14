@@ -12,6 +12,9 @@ var id;
 ## if not empty, player will produce a speech bubble with the String during certain actions. 
 @export var player_dialog:String
 
+
+@export var is_key: bool = false
+
 func _init() -> void:
 	id = next_id;
 	next_id += 1;
