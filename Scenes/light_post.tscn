@@ -5,19 +5,19 @@
 [ext_resource type="Script" uid="uid://cy3ojldgx7v7q" path="res://Scripts/light_post.gd" id="2_6r6ss"]
 [ext_resource type="Script" uid="uid://dudv0hjt8blbg" path="res://Scripts/point_light.gd" id="2_7nkrh"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7nkrh"]
-load_path = "res://.godot/imported/spritesheet_hospital_maternity.png-96b6cc6300e6b4655e29d0333e0ee1f2.ctex"
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6r6ss"]
+load_path = "res://.godot/imported/spr_tile_itch.png-4292642bda82092e33353a109659a4f8.ctex"
 
 [node name="LightPost" node_paths=PackedStringArray("pointlight") instance=ExtResource("1_7rwld")]
 script = ExtResource("2_6r6ss")
 pointlight = NodePath("Pointlight")
 
 [node name="ObjectSprite" parent="ObjectBody" index="0"]
-texture = SubResource("CompressedTexture2D_7nkrh")
-region_rect = Rect2(42, 14, 19, 34)
+texture = SubResource("CompressedTexture2D_6r6ss")
+region_rect = Rect2(320, 224, 16, 44)
 
 [node name="ObjectCollisionshape" parent="ObjectBody" index="1"]
-position = Vector2(-5, 4)
+position = Vector2(0, 8)
 
 [node name="Pointlight" type="PointLight2D" parent="." index="1"]
 position = Vector2(5, -9)

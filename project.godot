@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Project Scream Jam"
-run/main_scene="uid://mchc1n0mppt7"
+run/main_scene="uid://d0whbhpilsin7"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 

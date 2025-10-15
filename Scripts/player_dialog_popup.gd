@@ -6,6 +6,7 @@ signal finished
 @onready var timer : Timer           = %Timer
 @onready var panel : PanelContainer  = %PanelContainer
 # ────────────────────────────────────────────────────────────
+@onready var dialog_light: PointLight2D = $"../DialogLight"
 
 @export var speed: float = 0.08
 @export var min_width_pixels  := 120
@@ -22,7 +23,7 @@ var _queue: Array[String] = []
 var _txt   := ""
 var _idx   := 0
 var _typing := false
-
+var cam
 var _next_allowed_time := 0.0       
 var _dropped_overflow := 0          
 
@@ -30,6 +31,7 @@ func _ready() -> void:
 	timer.timeout.connect(_on_timeout)
 	timer.one_shot = true
 	timer.wait_time = hold_seconds
+	cam = get_viewport().get_camera_2d()
 
 	Events.player_message.connect(_on_player_message)
 
@@ -74,6 +76,8 @@ func _start(msg: String) -> void:
 	await _type()
 	_typing = false
 	timer.start()
+	dialog_light.set_enabled(true)
+	
 
 func _type() -> void:
 	while _idx < _txt.length():
@@ -86,6 +90,7 @@ func _on_timeout() -> void:
 	if _queue.is_empty():
 		visible = false
 		finished.emit()
+		dialog_light.set_enabled(false)
 	else:
 		var now := _now()
 		if now < _next_allowed_time:

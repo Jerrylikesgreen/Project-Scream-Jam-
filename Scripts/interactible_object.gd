@@ -39,7 +39,6 @@ func _ready() -> void:
 	interactible_object_progress_bar.max_value = 100.0
 	interactible_object_progress_bar.value = 0.0
 	interactible_object_progress_bar.visible = false
-	interactible_object_sprite_2d.set_texture(resource.image)
 	var shape := RectangleShape2D.new()
 	shape.size == resource.image.get_size()
 	interactible_object_collision_shape_2d.set_shape(shape)
@@ -90,12 +89,7 @@ func action_complete() -> void:
 	emit_signal("point_gain", points)
 	print(InventoryManager.inventory)
 
-func action_incomplete() ->void:
-	print("Incomplete")
-	interactible_object_progress_bar.visible = false
-	action_count = 0.0
-	
-	
+
 
 func flip_sprite() -> void:
 	if not interactible_object_sprite_2d:

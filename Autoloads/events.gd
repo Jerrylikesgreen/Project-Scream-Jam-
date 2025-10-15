@@ -19,6 +19,7 @@ var _last_emit_norm := ""
 var _last_emit_time := 0.0
 var _msg_default_cooldown := 30.0           # seconds; change as you like
 var _msg_last_until: Dictionary = {}        # text -> show-again time (unix seconds)
+var game_start:bool = true
 
 const MSG_TEXT_COOLDOWN := {
 	"I need to escape!!": 99999.0

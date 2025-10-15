@@ -11,12 +11,30 @@ polygon = PackedVector2Array(3105, -1127, 3227, 2064, -1277, 1995, -1358, -1153)
 [node name="Room" type="Node2D"]
 script = ExtResource("1_dyxu8")
 
-[node name="Floor" type="TileMapLayer" parent="."]
+[node name="Lighting" type="Node2D" parent="."]
 
-[node name="Wall" type="TileMapLayer" parent="."]
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Lighting"]
+energy = 1.2
+blend_mode = 1
+height = 1.0
+max_distance = 16384.0
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Lighting"]
+position = Vector2(-18, 25)
+occluder = SubResource("OccluderPolygon2D_dyxu8")
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Lighting"]
+position = Vector2(-18, 25)
+occluder = SubResource("OccluderPolygon2D_dyxu8")
+
+[node name="Map" type="Node2D" parent="."]
+
+[node name="Floor" type="TileMapLayer" parent="Map"]
+
+[node name="Wall" type="TileMapLayer" parent="Map"]
 tile_set = ExtResource("2_g3m34")
 
-[node name="Objects" type="TileMapLayer" parent="."]
+[node name="Objects" type="TileMapLayer" parent="Map"]
 tile_set = ExtResource("3_c2haw")
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
@@ -25,10 +43,22 @@ position = Vector2(464, 93)
 
 [node name="TransportArea" parent="." instance=ExtResource("4_g3m34")]
 
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-color = Color(1, 1, 1, 0.8627451)
-blend_mode = 1
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -10
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-position = Vector2(-18, 25)
-occluder = SubResource("OccluderPolygon2D_dyxu8")
+[node name="Background" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.021434637, 0.021434635, 0.021434633, 1)
