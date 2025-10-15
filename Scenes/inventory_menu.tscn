@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dskvhp0no28cg"]
+[gd_scene load_steps=6 format=3 uid="uid://dskvhp0no28cg"]
 
 [ext_resource type="Script" uid="uid://dl6pfnp7oxiy3" path="res://Scripts/inventory.gd" id="1_ayr70"]
 [ext_resource type="Script" uid="uid://dle7i5bxmgr7x" path="res://Scripts/inventory_contents.gd" id="2_2c8bv"]
 [ext_resource type="Texture2D" uid="uid://dsje07ax0lwei" path="res://Assets/PNG/Card_Generic_v2.png" id="2_gbujl"]
+[ext_resource type="LabelSettings" uid="uid://fk0q6ntdy2lp" path="res://tool_tip.tres" id="4_2c8bv"]
 
 [sub_resource type="Resource" id="Resource_gbujl"]
 script = ExtResource("2_2c8bv")
@@ -17,6 +18,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+tooltip_text = "Inventory Menu"
 script = ExtResource("1_ayr70")
 inv_contents = SubResource("Resource_gbujl")
 
@@ -67,4 +69,16 @@ size_flags_vertical = 3
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+tooltip_text = "Inventory"
 columns = 5
+
+[node name="Tooltip" type="Panel" parent="InvBackground/InvMargin/VBoxContainer/CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="InvBackground/InvMargin/VBoxContainer/CenterContainer/Tooltip"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 18.0
+text = "ds"
+label_settings = ExtResource("4_2c8bv")

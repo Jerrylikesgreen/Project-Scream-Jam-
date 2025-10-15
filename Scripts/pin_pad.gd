@@ -4,8 +4,9 @@ extends Control
 @onready var label: Label = %Label
 @onready var line_edit: LineEdit = %LineEdit
 
-var _correct_pin: int = 2258
+var _correct_pin: int = 2589
 const PIN_LENGTH: int = 4 
+@onready var exit: Button = $Pin/ColorRect/VBoxContainer/Exit
 
 signal closed
 
@@ -13,11 +14,10 @@ func _ready() -> void:
 	line_edit.text_changed.connect(_on_text_changed)
 	if PIN_LENGTH > 0:
 		line_edit.max_length = PIN_LENGTH
+	exit.pressed.connect(_on_exit_pressed)
 
-func _on_close() -> void:
-	# emit so parent knows it was closed
-	emit_signal("closed")
-	hide()
+func _on_exit_pressed()->void:
+	Events.pin_entered(false)
 
 
 func _on_text_changed(new_text: String) -> void:

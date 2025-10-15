@@ -43,9 +43,17 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -1.40625
+offset_top = -2.0
+offset_right = 1.5
+offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
+
+[node name="Exit" type="Button" parent="Pin/ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "X"
 
 [node name="Label" type="Label" parent="Pin/ColorRect/VBoxContainer"]
 unique_name_in_owner = true

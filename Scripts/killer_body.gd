@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 @onready var debug: Label = %Debug
 @onready var killer_sprite: AnimatedSprite2D = $KillerSprite
-@onready var patrol_area: Area2D = %PatrolArea
+@onready var patrol_area: Area2D 
 @onready var vision: Area2D = %Vision
 @onready var hit_box: Area2D = %HitBox
 @onready var pathfinder:NavigationAgent2D = %PathfinderToPlayer
@@ -27,6 +27,11 @@ var _action_target: InteractibleObject = null
 var _current_area: Area2D = null
 
 func _ready():
+	var patrol_area_search = get_tree().get_root().get_children()
+	for node in patrol_area_search:
+		if node.is_in_group("Patrol Area"):
+			patrol_area = node
+
 	randomize()
 	_pick_area()
 	_pick_patrol_target_position()
@@ -183,39 +188,40 @@ func _pick_area() -> void:
 	var rect_shapes := []
 	var trans_area := []
 	_current_area = null
-	for child in patrol_area.get_children():
-		# we expect CollisionShape2D nodes under patrol_area
-		if child is CollisionShape2D:
-			# skip transition areas (groups are on the parent Area2D typically)
-			var parent_area = child.get_parent()
-			if parent_area != null and parent_area.is_in_group("TransitionArea"):
-				trans_area.append(child)
-				continue
-			# only RectangleShape2D shapes are valid for random points
-			if child.shape is RectangleShape2D:
-				rect_shapes.append(child)
-				# set _current_area to parent area (if desired)
-				_current_area = child.get_parent()
-		# if child itself is an Area2D that holds an interactable object
-		elif child is Area2D:
-			# attempt to find action target stored on that area
-			var obj_candidate = child.get_parent()
-			if obj_candidate != null and obj_candidate.has_method("action_speed"):
-				_action_target = obj_candidate
-
-	if rect_shapes.is_empty():
-		push_warning("No RectangleShape2D found in patrol_area")
-		_chosen_node = null
-		_target_position = patrol_area.global_position
-		return
-
-	var chance_to_leave_scene = randi_range(1, 4)
-	if chance_to_leave_scene == 1 and trans_area.size() > 0:
-		_chosen_node = trans_area[randi() % trans_area.size()]
-		return
-
-	_chosen_node = rect_shapes[randi() % rect_shapes.size()]
-
+	if patrol_area:
+		for child in patrol_area.get_children():
+			# we expect CollisionShape2D nodes under patrol_area
+			if child is CollisionShape2D:
+				# skip transition areas (groups are on the parent Area2D typically)
+				var parent_area = child.get_parent()
+				if parent_area != null and parent_area.is_in_group("TransitionArea"):
+					trans_area.append(child)
+					continue
+				# only RectangleShape2D shapes are valid for random points
+				if child.shape is RectangleShape2D:
+					rect_shapes.append(child)
+					# set _current_area to parent area (if desired)
+					_current_area = child.get_parent()
+			# if child itself is an Area2D that holds an interactable object
+			elif child is Area2D:
+				# attempt to find action target stored on that area
+				var obj_candidate = child.get_parent()
+				if obj_candidate != null and obj_candidate.has_method("action_speed"):
+					_action_target = obj_candidate
+	
+		if rect_shapes.is_empty():
+			push_warning("No RectangleShape2D found in patrol_area")
+			_chosen_node = null
+			_target_position = patrol_area.global_position
+			return
+	
+		var chance_to_leave_scene = randi_range(1, 4)
+		if chance_to_leave_scene == 1 and trans_area.size() > 0:
+			_chosen_node = trans_area[randi() % trans_area.size()]
+			return
+	
+		_chosen_node = rect_shapes[randi() % rect_shapes.size()]
+	
 func _patrol_logic(_delta: float) -> void:
 	killer_sprite.play("Moving")
 	var to_target = _target_position - global_position
@@ -246,6 +252,9 @@ func restore_state(state: Dictionary) -> void:
 		global_position = state["position"]
 
 func _pick_patrol_target_position() -> void:
+	if !patrol_area:
+		return
+	
 	if _chosen_node == null:
 		_target_position = patrol_area.global_position - position
 		return
@@ -253,6 +262,7 @@ func _pick_patrol_target_position() -> void:
 		_target_position = _chosen_node.global_position
 		print("Area selected")
 		return
+	
 	var shape = _chosen_node.shape as RectangleShape2D
 	var ext = shape.extents
 	var random_point = Vector2(

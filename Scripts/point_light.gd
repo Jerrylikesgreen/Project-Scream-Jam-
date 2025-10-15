@@ -56,5 +56,3 @@ func _on_timeout() -> void:
 		set_enabled(true)
 
 	light_flicker_logic()
-
-	print("flicker interval:", _flicker_interval, " brightness:", _light_bright_range)
