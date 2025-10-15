@@ -1,6 +1,4 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://hpso4mu8e4b7"]
-
-[ext_resource type="StyleBox" uid="uid://ct23yfrc1b5oj" path="res://Resources/1.tres" id="1_piocd"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://hpso4mu8e4b7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qeibt"]
 bg_color = Color(0.18039216, 0.3137255, 0.32156864, 0.54901963)
@@ -56,8 +54,8 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [resource]
-Label/styles/focus = ExtResource("1_piocd")
-Label/styles/normal = ExtResource("1_piocd")
+Label/styles/focus = null
+Label/styles/normal = null
 LineEdit/styles/normal = SubResource("StyleBoxFlat_qeibt")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_0i5dr")
 ProgressBar/constants/outline_size = 8

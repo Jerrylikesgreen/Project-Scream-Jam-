@@ -34,7 +34,7 @@ func _remaining_capacity(index:int,item:ItemResource)->int:
 
 ##Sets the specified index to have item with multiplicity n.
 func setInd(index:int,item:ItemResource,n:int = 1)->bool:
-	if n > item.max_in_inv_slot:
+	if item != null && n > item.max_in_inv_slot:
 		return false;
 	contents[index] = item;
 	multiplicity[index] = n;
