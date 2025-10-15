@@ -1,10 +1,15 @@
 class_name ItemSlot extends ColorRect
 var item:ItemResource;
+
 var num_stored:int = 0:
 	set(val):
 		num_stored = val;
 		num_label.text = str(val);
 		return;
+
+var menu:InventoryMenu;
+##Which index in the inventory is being stored in this item slot?
+var index_stored:int;
 @onready var num_label:Label = $%NumItems;
 @onready var item_texture:TextureRect = $%ItemTexture;
 @onready var default_colour:Color = color;
@@ -41,11 +46,21 @@ func full()->bool:
 		return false;
 	return item.max_in_inv_slot == num_items;
 
-
+##Keeps track of whether this item slot is hovered.
+var hovered:bool = false;
+##What to do when being hovered over
 func _on_hover():
+	hovered = true
+	menu.last_hovered = index_stored;
 	color = hover_colour;
+	
+##What to do when no longer being hovered over
 func _on_release_hover():
+	hovered = false;
 	color = default_colour;
+
+
+
 func drag():
 	num_label.hide();
 	item_texture.texture= null;

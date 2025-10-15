@@ -17,7 +17,7 @@ func use_key(lock_uid:int) -> bool:
 		if item_stored.is_key and item_stored.key_uid == lock_uid:
 			inventory.use(index);
 			return true
-		if item_stored.is_key and item_stored.key_uid == !lock_uid:
+		if item_stored.is_key and item_stored.key_uid != lock_uid:
 			if item_stored.key_uid == 0:
 				inventory.use(index)
 				return true
