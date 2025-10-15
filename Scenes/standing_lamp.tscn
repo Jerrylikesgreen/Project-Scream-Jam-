@@ -21,7 +21,8 @@ shape = SubResource("RectangleShape2D_lgk5o")
 texture = ExtResource("4_lgk5o")
 region_enabled = true
 
-[node name="PointLight" parent="." index="4" instance=ExtResource("2_o4ps0")]
+[node name="LampPointLight" parent="." index="4" instance=ExtResource("2_o4ps0")]
+unique_name_in_owner = true
 position = Vector2(0, -17)
 enabled = false
 color = Color(1, 0.7226667, 0.68, 0.65882355)
