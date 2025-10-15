@@ -149,9 +149,12 @@ func _attack_logic(_delta: float) -> void:
 
 func _chase_logic(_delta: float) -> void:
 	if player_ref == null:
+		pathfinder.target_position = global_position
 		killer_state = KillerState.PATROL
+		;
 		return
 	if player_ref.player_controller.hiding:
+		pathfinder.target_position = global_position;
 		killer_state = KillerState.PATROL
 		return
 	_target_position = player_ref.global_position

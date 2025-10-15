@@ -134,7 +134,8 @@ func _enter_state(state:State)->void:
 			if hiding:
 				_switch_state_to(State.WALKING);
 			#can only hide if not in line of sight
-			if KillerManager.player_in_line_of_sight(player_body):
+			var line_of_sight:bool = await KillerManager.player_in_line_of_sight(player_body);
+			if line_of_sight:
 				_switch_state_to(State.WALKING);
 				return;
 			hiding = true
