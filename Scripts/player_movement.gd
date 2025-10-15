@@ -142,6 +142,7 @@ func _enter_state(state:State)->void:
 			var int_obj = action_area.get_overlapping_bodies();
 			for ob in int_obj:
 				ob.action();
+				ob.player_triggered = true
 				action_area.set_visible(false);
 				await get_tree().create_timer(action_speed).timeout;
 				

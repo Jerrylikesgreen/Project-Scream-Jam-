@@ -27,6 +27,8 @@ func action_complete() -> void:
 	
 
 func action_incomplete() -> void:
+	player_triggered = false;
 	interactible_object_progress_bar.visible = false
 	action_count = 0.0
 	emit_signal("action_incomplete_signal")
+	print("Signal being emitted from Switch")

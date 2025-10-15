@@ -28,12 +28,7 @@ func _on_text_changed(new_text: String) -> void:
 
 	if filtered != new_text:
 		var caret: int = 0
-		if line_edit.has_method("get_cursor_position"):
-			caret = line_edit.get_cursor_position()
-		else:
-			caret = line_edit.cursor_position
 		line_edit.text = filtered
-		line_edit.cursor_position = min(caret, filtered.length())
 
 	if PIN_LENGTH > 0:
 		if filtered.length() != PIN_LENGTH:

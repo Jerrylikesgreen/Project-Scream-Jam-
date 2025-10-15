@@ -45,7 +45,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if is_acting:
-		if !active:
+		if !active and player_triggered:
 			action_incomplete()
 
 		action_count += ( 100.0 / action_speed ) * _delta
@@ -55,6 +55,7 @@ func _process(_delta: float) -> void:
 			is_acting = false
 			if active:
 				action_complete()
+				
 			else:
 				action_incomplete()
 
@@ -72,9 +73,10 @@ func action_incomplete() ->void:
 	#here avoids that, so action_incomplete won't be called
 	#anymore every process loop.
 	is_acting = false;
+	player_triggered = false;
 	
 func action() -> void:
-
+	
 	if not is_acting:
 		is_acting = true
 		interactible_object_progress_bar.visible = true

@@ -76,7 +76,7 @@ func _start(msg: String) -> void:
 	await _type()
 	_typing = false
 	timer.start()
-	dialog_light.set_enabled(true)
+
 	
 
 func _type() -> void:
@@ -90,7 +90,6 @@ func _on_timeout() -> void:
 	if _queue.is_empty():
 		visible = false
 		finished.emit()
-		dialog_light.set_enabled(false)
 	else:
 		var now := _now()
 		if now < _next_allowed_time:

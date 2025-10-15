@@ -11,27 +11,27 @@ const PIN_PAD = preload("uid://mdo0lponneh")
 var pop_up: Control
 var _pop_up_shown:bool = false
 var active: bool = true
-
+var switch_ref:StaticBody2D
  
 func _ready() -> void:
-	var hud = get_tree().current_scene.get_node("HUD")
-	if hud == null:
-		push_warning("HUD node not found under current_scene. Check the path.")
-		return
+	var switch_node_search = get_tree().get_nodes_in_group("Switch")
+	for nodes in switch_node_search:
+		if nodes._switch:
+			switch_ref = nodes.get_child(0)
+			switch_ref.action_incomplete_signal.connect(_on_action_incomplete_signal)
+			switch_ref.action_complete_signal.connect(_on_action_complete_signal)
 
 	pop_up = PIN_PAD.instantiate()
 	pop_up.visible = false   
-	hud.add_child(pop_up)   
+	add_child(pop_up)   
 	Events.pin_entered_signal.connect(_on_pin_entered_signal)
-	#hud.action_incomplete_signal.connect(_on_action_incomplete_signal)
-	#hud.action_complete_signal.connect(_on_action_complete_signal)
 
 func _on_pin_entered_signal(v: bool) -> void:
 	if v:
 		active = true
 	if pop_up:
 		pop_up.set_visible(false)
-	_pop_up_shown = false
+		_pop_up_shown = false
 
 
 func _on_pin_signal()->void:
@@ -43,7 +43,7 @@ func _on_action_complete_signal()->void:
 	pass
 
 func _on_action_incomplete_signal()->void:
+	print("received action complete", _pop_up_shown)
 	if !_pop_up_shown:
-		
-		pop_up.show()
 		_pop_up_shown = true
+		pop_up.set_visible(true)

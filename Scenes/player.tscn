@@ -123,6 +123,14 @@ sprite_frames = SubResource("SpriteFrames_8erm5")
 animation = &"Idle"
 autoplay = "Idle"
 
+[node name="DialogLight" type="PointLight2D" parent="PlayerBody/Sprite2D"]
+z_index = 100
+position = Vector2(1.4999847, -30.499998)
+scale = Vector2(1.8789061, 0.85546875)
+energy = 1.1
+range_item_cull_mask = 16
+texture = ExtResource("8_gymyn")
+
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="PlayerBody"]
 position = Vector2(2, 3)
 polygon = PackedVector2Array(-7, -6, -6, -9, 2, -9, 3, -6, 3, 6, -7, 6)
@@ -140,25 +148,15 @@ debug_color = Color(0.662523, 0.40550858, 0.812828, 0.41960785)
 [node name="LightOccluder2D" type="LightOccluder2D" parent="PlayerBody"]
 occluder = SubResource("OccluderPolygon2D_vgqql")
 
-[node name="PointLight" parent="PlayerBody" instance=ExtResource("8_8erm5")]
+[node name="PlayerLight" parent="PlayerBody" instance=ExtResource("8_8erm5")]
 color = Color(0.75, 0.71999997, 0.71999997, 0.5372549)
-energy = 1.0
 shadow_enabled = false
 texture_scale = 0.75
 
 [node name="Camera2D" type="Camera2D" parent="PlayerBody"]
 zoom = Vector2(1.75, 1.75)
 
-[node name="DialogLight" type="PointLight2D" parent="PlayerBody"]
-z_index = 100
-position = Vector2(1.4999847, -29.499998)
-scale = Vector2(1.8789061, 0.85546875)
-energy = 1.1
-range_item_cull_mask = 16
-texture = ExtResource("8_gymyn")
-
 [node name="HUD" parent="." instance=ExtResource("9_f1ek2")]
 layer = 20
-follow_viewport_enabled = true
 follow_viewport_scale = 4.0
 script = ExtResource("10_tx1dd")

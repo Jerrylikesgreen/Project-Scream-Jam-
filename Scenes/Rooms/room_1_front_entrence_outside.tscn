@@ -29,7 +29,7 @@ position = Vector2(497, 118)
 scale = Vector2(0.36683053, 0.24190988)
 energy = 0.75
 
-[node name="Map" parent="." index="2"]
+[node name="Map" parent="." index="3"]
 z_index = -8
 
 [node name="Floor" parent="Map" index="0"]
@@ -43,12 +43,8 @@ tile_map_data = PackedByteArray("AABHAAoABQAcAAwAAAAAAAoABQAZAAwAAAAAAAkABQAZAAs
 [node name="Objects" parent="Map" index="2"]
 tile_map_data = PackedByteArray("AAAkAAcABQAOAAkAAAAkAAgABQAOAAoAAAAlAAcABQAPAAkAAAAlAAgABQAPAAoAAAAyAAcABQAOAAkAAAAyAAgABQAOAAoAAAAzAAcABQAPAAkAAAAzAAgABQAPAAoAAABAAAcABQAOAAkAAABAAAgABQAOAAoAAABBAAcABQAPAAkAAABBAAgABQAPAAoAAAAXAAcABQAOAAkAAAAXAAgABQAOAAoAAAAYAAcABQAPAAkAAAAYAAgABQAPAAoAAAAMAAcABQAOAAkAAAAMAAgABQAOAAoAAAANAAcABQAPAAkAAAANAAgABQAPAAoAAAAEAAcABQAOAAkAAAAEAAgABQAOAAoAAAAFAAcABQAPAAkAAAAFAAgABQAPAAoAAAAJAAkABQAMAAcAAAAJAAoABQAMAAgAAAAKAAkABQANAAcAAAAKAAoABQANAAgAAAA3AAkABQAMAAcAAAA3AAoABQAMAAgAAAA4AAkABQANAAcAAAA4AAoABQANAAgAAAAdAAcABQARAAEAAAAeAAcABQASAAEAAAAfAAcABQASAAEAAAAgAAcABQATAAEAAAAaAAgABQAMAAQAAAAbAAgABQANAAQAAAAZAAgABQALAAQAAAAsAAYABQALAAQAAAAsAAcABQALAAUAAAAtAAYABQAMAAQAAAAtAAcABQAMAAUAAAAuAAYABQANAAQAAAAuAAcABQANAAUAAAAhAAsABQAcAAIAAAAhAAwABQAcAAMAAAAWAAsABQAcAAIAAAAWAAwABQAcAAMAAAAKAAsABQAcAAIAAAAKAAwABQAcAAMAAAAwAAsABQAcAAIAAAAwAAwABQAcAAMAAAA5AAsABQAcAAIAAAA5AAwABQAcAAMAAAA=")
 
-[node name="SpawnPoint" parent="." index="3"]
+[node name="SpawnPoint" parent="." index="4"]
 position = Vector2(494, 213)
-
-[node name="TransportArea" parent="." index="4"]
-position = Vector2(497, 170)
-transition_to_scene = ExtResource("4_74mnt")
 
 [node name="LightPosts" type="Node2D" parent="." index="5"]
 
@@ -106,8 +102,9 @@ collision_mask = 3
 position = Vector2(1153, 647)
 shape = SubResource("WorldBoundaryShape2D_rr2l4")
 
-[node name="CanvasLayer" parent="." index="8"]
-follow_viewport_enabled = true
+[node name="TransportArea" parent="." index="8"]
+position = Vector2(497, 170)
+transition_to_scene = ExtResource("4_74mnt")
 
 [node name="Door" parent="." index="9" instance=ExtResource("4_f8btm")]
 position = Vector2(497, 163)
