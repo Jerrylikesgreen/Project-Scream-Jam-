@@ -18,7 +18,7 @@ extends CharacterBody2D
 enum KillerState { IDLE, STUNNED, PATROL, CHASING, ATTACK, ACTION }
 var killer_state: KillerState = KillerState.IDLE
 var _leaving_area:bool = false
-var player_ref: CharacterBody2D
+var player_ref: PlayerBody
 var _idle_timer: float = 0.0
 var _chosen_node: Node2D = null
 var _target_position: Vector2 = Vector2.ZERO
@@ -148,7 +148,9 @@ func _attack_logic(_delta: float) -> void:
 	print("Attack")
 
 func _chase_logic(_delta: float) -> void:
-	if player_ref == null:
+	
+	if player_ref == null || player_ref.hiding:
+		_pick_patrol_target_position();
 		killer_state = KillerState.PATROL
 		return
 	_target_position = player_ref.global_position

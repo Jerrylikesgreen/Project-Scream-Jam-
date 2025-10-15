@@ -106,7 +106,6 @@ text = "Action"
 
 [node name="PathfinderToPlayer" type="NavigationAgent2D" parent="Killer Body"]
 unique_name_in_owner = true
-debug_enabled = true
 debug_path_custom_color = Color(0.33333334, 0.07058824, 1, 1)
 
 [node name="Debug" type="Label" parent="."]

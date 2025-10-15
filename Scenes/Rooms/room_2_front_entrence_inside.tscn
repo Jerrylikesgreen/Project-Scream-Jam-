@@ -51,7 +51,7 @@ image = SubResource("PlaceholderTexture2D_37mkd")
 player_dialog = "I need to find a password."
 metadata/_custom_type_script = "uid://4b01cqmglqbj"
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dhpm4"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gwmvl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8pdxm"]
 size = Vector2(18.5, 49.5)
@@ -271,7 +271,7 @@ points = 1000
 
 [node name="InteractibleObjectCollisionShape2D" parent="Switches/switch" index="0"]
 position = Vector2(90.5, -47)
-shape = SubResource("RectangleShape2D_dhpm4")
+shape = SubResource("RectangleShape2D_gwmvl")
 
 [node name="InteractibleObjectSprite2D" parent="Switches/switch" index="1"]
 position = Vector2(22.999998, 0)
