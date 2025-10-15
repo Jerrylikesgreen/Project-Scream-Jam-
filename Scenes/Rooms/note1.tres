@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=3 format=3 uid="uid://c2eaat2k4dlfs"]
+
+[ext_resource type="Script" uid="uid://4b01cqmglqbj" path="res://Scripts/item.gd" id="1_cfr4e"]
+[ext_resource type="Texture2D" uid="uid://dsje07ax0lwei" path="res://Assets/PNG/Card_Generic_v2.png" id="1_d1xjy"]
+
+[resource]
+script = ExtResource("1_cfr4e")
+name = "Note"
+description = "PIN = 2,5,?,? "
+image = ExtResource("1_d1xjy")
+metadata/_custom_type_script = "uid://4b01cqmglqbj"

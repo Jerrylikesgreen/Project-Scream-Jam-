@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ds6aoc55rpn5k"]
+[gd_scene load_steps=8 format=3 uid="uid://ds6aoc55rpn5k"]
 
 [ext_resource type="Script" uid="uid://cf6twwk0k0dtx" path="res://Scripts/room.gd" id="1_dyxu8"]
+[ext_resource type="PackedScene" uid="uid://do85javim3v33" path="res://Scenes/patrol_area.tscn" id="2_c2haw"]
 [ext_resource type="TileSet" uid="uid://dquj14hvcbg8a" path="res://Resources/TileSets/floors_room1.tres" id="2_g3m34"]
+[ext_resource type="Script" uid="uid://cxfwu2iokuhxd" path="res://Scenes/patrol_area.gd" id="3_622ha"]
 [ext_resource type="TileSet" uid="uid://7paqvgy0mhu3" path="res://Resources/TileSets/objects_room_1.tres" id="3_c2haw"]
 [ext_resource type="PackedScene" uid="uid://egwwowhbwaop" path="res://Scenes/transport_area.tscn" id="4_g3m34"]
 
@@ -46,6 +48,9 @@ occluder = SubResource("OccluderPolygon2D_dyxu8")
 [node name="LightOccluder2D2" type="LightOccluder2D" parent="Lighting"]
 position = Vector2(-18, 25)
 occluder = SubResource("OccluderPolygon2D_dyxu8")
+
+[node name="PatrolArea" parent="." instance=ExtResource("2_c2haw")]
+script = ExtResource("3_622ha")
 
 [node name="Map" type="Node2D" parent="."]
 

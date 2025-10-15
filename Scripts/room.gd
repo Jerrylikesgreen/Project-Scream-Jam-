@@ -8,8 +8,8 @@ var killer_spawn_countdown: Timer
 
 func _ready() -> void:
 	if get_tree().get_nodes_in_group("Player").is_empty():
-		var player = Globals.PLAYER.instantiate()
-		add_child(player)
+		var player = Globals.player
+		add_child(player) 
 		player.global_position = spawn_point.global_position
 	if KillerManager.killer_in_other_room:
 		killer_spawn_countdown = Timer.new()

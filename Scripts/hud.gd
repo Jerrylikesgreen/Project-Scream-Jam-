@@ -6,7 +6,6 @@ class_name HUD extends CanvasLayer
 
 const PIN_PAD = preload("uid://mdo0lponneh")
 
-@onready var block: CollisionShape2D = $Block
 
 var pop_up: Control
 var _pop_up_shown:bool = false
@@ -35,7 +34,7 @@ func _on_pin_entered_signal(v: bool) -> void:
 
 
 func _on_pin_signal()->void:
-	block.set_disabled(true)
+	pop_up.set_visible(true)
 	
 
 

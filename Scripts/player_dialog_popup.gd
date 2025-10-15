@@ -6,7 +6,6 @@ signal finished
 @onready var timer : Timer           = %Timer
 @onready var panel : PanelContainer  = %PanelContainer
 # ────────────────────────────────────────────────────────────
-@onready var dialog_light: PointLight2D = $"../DialogLight"
 
 @export var speed: float = 0.08
 @export var min_width_pixels  := 120
