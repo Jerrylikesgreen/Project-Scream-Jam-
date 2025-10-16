@@ -1,9 +1,11 @@
 ## Autoload Events
 extends Node
 const GAME_OVER = preload("uid://bq1dinllmwo6p")
+const ESCAPED_SCREEN = preload("res://Scenes/escape_screen.tscn");
 
 # Signal other nodes can connect to: Events.connect("player_hit", target, "_on_player_hit")
 signal player_hit_signal
+signal player_escape_signal
 signal player_message(new_message: String)
 signal pin_entered_signal(v:bool)
 
@@ -31,6 +33,11 @@ func player_hit_event() -> void:
 	
 func _now_s() -> float:
 	return Time.get_unix_time_from_system()
+
+func escape()->void:
+	var escape_screen = ESCAPED_SCREEN.instantiate();
+	get_tree().get_current_scene().add_child(escape_screen);
+	return;
 
 func game_over()->void:
 	var game_over_screen = GAME_OVER.instantiate()

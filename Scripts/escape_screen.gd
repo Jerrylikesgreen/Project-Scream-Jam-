@@ -20,6 +20,7 @@ func _ready() -> void:
 		await get_tree().create_timer(0.1).timeout;
 	
 func _on_return_button_pressed()->void:
-	pass
+	Events.game_restart();
+	queue_free();
 func _on_quit_button_pressed()->void:
-	pass
+	get_tree().quit();
