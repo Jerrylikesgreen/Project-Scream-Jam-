@@ -10,7 +10,9 @@
 size = Vector2(9, 20)
 
 [node name="StandingLamp" instance=ExtResource("1_qnirs")]
+scale = Vector2(1.5, 1.5)
 script = ExtResource("2_msrpv")
+outside = false
 resource = ExtResource("3_ofb25")
 active = true
 
@@ -22,6 +24,9 @@ shape = SubResource("RectangleShape2D_lgk5o")
 texture = ExtResource("4_lgk5o")
 region_enabled = true
 region_rect = Rect2(40, 13.823517, 24, 33.670784)
+
+[node name="RedGlow" parent="." index="3"]
+shadow_enabled = false
 
 [node name="LampPointLight" parent="." index="4" instance=ExtResource("2_o4ps0")]
 unique_name_in_owner = true

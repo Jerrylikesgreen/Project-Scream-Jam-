@@ -13,6 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://djivhnyw6vgwr" path="res://Scenes/hud.tscn" id="9_f1ek2"]
 [ext_resource type="Script" uid="uid://75y01qcsxxql" path="res://Scripts/hud.gd" id="10_tx1dd"]
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_gymyn"]
+polygon = PackedVector2Array(3, -31, -4, -28, -5, -22, -12, -9, -10, -6, -12, -3, -12, 0, -11, 2, -9, 2, -13, 14, -13, 17, -11, 18, -14, 26, -6, 27, -6, 33, 7, 33, 8, 27, 15, 27, 11, 16, 14, 16, 11, 3, 14, 3, 14, -4, 12, -21, 9, -28)
+
 [sub_resource type="LabelSettings" id="LabelSettings_x3wgy"]
 font = ExtResource("5_fkybt")
 font_size = 10
@@ -95,11 +98,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gymyn"]
-radius = 13.285713
-height = 66.85714
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_gymyn"]
-polygon = PackedVector2Array(3, -31, -4, -28, -5, -22, -12, -9, -10, -6, -12, -3, -12, 0, -11, 2, -9, 2, -13, 14, -13, 17, -11, 18, -14, 26, -6, 27, -6, 33, 7, 33, 8, 27, 15, 27, 11, 16, 14, 16, 11, 3, 14, 3, 14, -4, 12, -21, 9, -28)
+radius = 15.666666
+height = 74.0
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_6t5aa")
@@ -108,6 +108,11 @@ script = ExtResource("1_6t5aa")
 disable_mode = 2
 collision_mask = 102
 script = ExtResource("2_fkybt")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="PlayerBody"]
+visible = false
+scale = Vector2(0.6, 0.6)
+occluder = SubResource("OccluderPolygon2D_gymyn")
 
 [node name="PlayerDialog" type="Label" parent="PlayerBody"]
 light_mask = 16
@@ -181,13 +186,8 @@ position = Vector2(1, -2)
 shape = SubResource("CapsuleShape2D_gymyn")
 debug_color = Color(0.662523, 0.40550858, 0.812828, 0.41960785)
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="PlayerBody"]
-scale = Vector2(0.6, 0.6)
-occluder = SubResource("OccluderPolygon2D_gymyn")
-
 [node name="PlayerLight" parent="PlayerBody" instance=ExtResource("8_8erm5")]
-color = Color(0.75, 0.71999997, 0.71999997, 0.5372549)
-energy = 1.5
+color = Color(0.7490196, 0.72156864, 0.72156864, 0.4117647)
 shadow_enabled = false
 texture_scale = 0.75
 

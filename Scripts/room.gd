@@ -11,14 +11,7 @@ func _ready() -> void:
 		Globals.player = Globals.PLAYER.instantiate()
 	add_child(Globals.player)
 	Globals.player.global_position = spawn_point.global_position
-
-	if KillerManager.killer_in_other_room and KillerManager.killer_active:
-		killer_spawn_countdown = Timer.new()
-		add_child(killer_spawn_countdown)
-		killer_spawn_countdown.wait_time = 10.0
-		killer_spawn_countdown.timeout.connect(_on_killer_countdown_timeout)
-		killer_spawn_countdown.start()
-
+	KillerManager.active_room = self
 
 
 		
