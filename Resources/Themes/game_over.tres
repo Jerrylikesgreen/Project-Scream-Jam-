@@ -1,0 +1,12 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://dvc4o13t1lngk"]
+
+[resource]
+font_size = 111
+font_color = Color(0.51, 0.07649998, 0.07649998, 0.7254902)
+outline_size = 10
+outline_color = Color(0, 0, 0, 0.91764706)
+shadow_size = 20
+shadow_color = Color(0, 0, 0, 0.8627451)
+stacked_outline_count = 1
+stacked_outline_0/size = 20
+stacked_outline_0/color = Color(0.45882353, 0, 0, 0.5764706)

@@ -5,5 +5,8 @@
 
 [resource]
 script = ExtResource("1_tj8nw")
+name = "Door"
+description = "Door"
 image = ExtResource("1_qo17d")
+player_dialog = "Door"
 metadata/_custom_type_script = "uid://4b01cqmglqbj"

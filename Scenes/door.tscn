@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dh2mt3nebig3q"]
+[gd_scene load_steps=6 format=3 uid="uid://dh2mt3nebig3q"]
 
 [ext_resource type="PackedScene" uid="uid://3ak6v3qdvre" path="res://Scenes/interactible_object.tscn" id="1_w6aom"]
 [ext_resource type="Script" uid="uid://b824oukjkhij0" path="res://Scripts/door.gd" id="2_fahql"]
+[ext_resource type="Resource" uid="uid://b055t10e2vurr" path="res://Resources/Themes/door.tres" id="3_fahql"]
+[ext_resource type="Texture2D" uid="uid://dm00d5ha4cfjm" path="res://Resources/Items/door_sprite_frames.tres" id="4_ab4ky"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fahql"]
 
@@ -10,6 +12,7 @@ collision_layer = 40
 collision_mask = 131
 script = ExtResource("2_fahql")
 lock_uid = 0
+resource = ExtResource("3_fahql")
 points = 100
 
 [node name="InteractibleObjectCollisionShape2D" parent="." index="0"]
@@ -19,6 +22,7 @@ shape = SubResource("RectangleShape2D_fahql")
 [node name="InteractibleObjectSprite2D" parent="." index="1"]
 position = Vector2(4.7683716e-07, -6.9999995)
 scale = Vector2(0.9999999, 0.9999998)
+texture = ExtResource("4_ab4ky")
 hframes = 2
 vframes = 2
 frame = 3
