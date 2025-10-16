@@ -4,7 +4,6 @@ class_name Room extends Node2D
 @onready var spawn_point: Node2D = %SpawnPoint
 var killer_spawn_countdown: Timer
 
-var _ran:bool = false
 
 
 func _ready() -> void:

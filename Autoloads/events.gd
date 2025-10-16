@@ -6,7 +6,7 @@ const GAME_OVER = preload("uid://bq1dinllmwo6p")
 signal player_hit_signal
 signal player_message(new_message: String)
 signal pin_entered_signal(v:bool)
-
+signal play_sfx_signal(track: String, pos: Vector2 , overlap: bool , restart_same: bool )
 
 
 var _msg_default_cooldown := 30.0           # seconds; change as you like
@@ -54,6 +54,10 @@ func pin_entered(v:bool) -> void:
 func player_gains_points(points:int)->void:
 	var points_gained = Globals.player_data.player_score + points
 	Globals.player_data.player_score = points_gained
+
+
+func sfx_play(track: String, pos: Vector2 , overlap: bool , restart_same: bool )->void:
+	emit_signal("play_sfx_signal", track, pos, overlap, restart_same)
 
 
 func display_player_message(new_message: String, cooldown: float = -1.0, force: bool = false) -> void:

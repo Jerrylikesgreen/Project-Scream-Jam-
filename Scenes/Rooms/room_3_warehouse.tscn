@@ -200,7 +200,7 @@ sprite = ExtResource("8_4ybyy")
 texture = ExtResource("8_4ybyy")
 hframes = 2
 vframes = 2
-frame = 2
+frame = 1
 
 [node name="ObjectNonInteractive2" parent="Furniture/Workbench" index="1" instance=ExtResource("7_4ybyy")]
 position = Vector2(1118, 373)
@@ -211,7 +211,6 @@ sprite = ExtResource("8_4ybyy")
 texture = ExtResource("8_4ybyy")
 hframes = 2
 vframes = 2
-frame = 3
 
 [node name="ObjectNonInteractive3" parent="Furniture/Workbench" index="2" instance=ExtResource("7_4ybyy")]
 position = Vector2(10, 47)
@@ -222,7 +221,7 @@ sprite = ExtResource("8_4ybyy")
 texture = ExtResource("8_4ybyy")
 hframes = 2
 vframes = 2
-frame = 2
+frame = 1
 
 [node name="ObjectNonInteractive4" parent="Furniture/Workbench" index="3" instance=ExtResource("7_4ybyy")]
 position = Vector2(328, 230)
@@ -233,7 +232,7 @@ sprite = ExtResource("8_4ybyy")
 texture = ExtResource("8_4ybyy")
 hframes = 2
 vframes = 2
-frame = 1
+frame = 2
 
 [node name="ObjectNonInteractive5" parent="Furniture/Workbench" index="4" instance=ExtResource("7_4ybyy")]
 position = Vector2(115, 510)

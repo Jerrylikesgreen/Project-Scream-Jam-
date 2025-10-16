@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ds6aoc55rpn5k"]
+[gd_scene load_steps=11 format=3 uid="uid://ds6aoc55rpn5k"]
 
 [ext_resource type="Script" uid="uid://cf6twwk0k0dtx" path="res://Scripts/room.gd" id="1_dyxu8"]
 [ext_resource type="PackedScene" uid="uid://do85javim3v33" path="res://Scenes/patrol_area.tscn" id="2_c2haw"]
@@ -7,6 +7,8 @@
 [ext_resource type="TileSet" uid="uid://7paqvgy0mhu3" path="res://Resources/TileSets/objects_room_1.tres" id="3_c2haw"]
 [ext_resource type="PackedScene" uid="uid://egwwowhbwaop" path="res://Scenes/transport_area.tscn" id="4_g3m34"]
 [ext_resource type="TileSet" uid="uid://d3ui3hwm7rqkr" path="res://Resources/TileSets/msc.tres" id="6_qvido"]
+[ext_resource type="Script" uid="uid://bkt56jhgdpfmr" path="res://Scenes/Rooms/sfx.gd" id="8_y264i"]
+[ext_resource type="PackedScene" uid="uid://d07kyn1y07o7r" path="res://Scenes/bgm.tscn" id="9_5wmef"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_dyxu8"]
 polygon = PackedVector2Array(3105, -1127, 3227, 2064, -1277, 1995, -1358, -1153)
@@ -70,3 +72,8 @@ unique_name_in_owner = true
 position = Vector2(464, 93)
 
 [node name="TransportArea" parent="." instance=ExtResource("4_g3m34")]
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="."]
+script = ExtResource("8_y264i")
+
+[node name="BgmNode" parent="." instance=ExtResource("9_5wmef")]

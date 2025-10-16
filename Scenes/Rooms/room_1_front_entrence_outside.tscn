@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://cvl8kf1nyvo88"]
+[gd_scene load_steps=14 format=4 uid="uid://cvl8kf1nyvo88"]
 
 [ext_resource type="PackedScene" uid="uid://ds6aoc55rpn5k" path="res://Scenes/Rooms/room.tscn" id="1_on5we"]
 [ext_resource type="TileSet" uid="uid://dquj14hvcbg8a" path="res://Resources/TileSets/floors_room1.tres" id="2_2cw0f"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://7m1psxif0fay" path="res://Scenes/standing_lamp.tscn" id="4_vpfpd"]
 [ext_resource type="LabelSettings" uid="uid://cgh0uejw4ndem" path="res://Resources/Themes/writings.tres" id="5_f8btm"]
 [ext_resource type="PackedScene" uid="uid://bfxp1tp6wevhl" path="res://Scenes/point_light.tscn" id="7_74mnt"]
+[ext_resource type="AudioStream" uid="uid://b55rmgq6tn1m" path="res://Assets/OGG/Character Walk Rotation 1 (SpookJam1).ogg" id="8_e0ld5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p1uk1"]
 
@@ -152,6 +153,11 @@ label_settings = ExtResource("5_f8btm")
 [node name="Door" parent="." index="9" instance=ExtResource("4_f8btm")]
 position = Vector2(640, 128)
 active = true
+
+[node name="SFX" parent="." index="10"]
+tracks = Dictionary[String, AudioStream]({
+"Moving": ExtResource("8_e0ld5")
+})
 
 [editable path="Lamps/StandingLamp"]
 [editable path="Lamps/StandingLamp2"]
