@@ -1,16 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://dbkdleftnglmk"]
+[gd_scene load_steps=5 format=3 uid="uid://dbkdleftnglmk"]
 
 [ext_resource type="PackedScene" uid="uid://dh2mt3nebig3q" path="res://Scenes/door.tscn" id="1_h0k4f"]
 [ext_resource type="Texture2D" uid="uid://xovlkdt1qgyo" path="res://Assets/TileSets/post apoc hatches and doors set updated.png" id="2_1co6j"]
 [ext_resource type="Script" uid="uid://2shb2vdbiror" path="res://Scripts/door_locked.gd" id="2_n3kii"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1co6j"]
+
 [node name="LockedDoor" instance=ExtResource("1_h0k4f")]
 script = ExtResource("2_n3kii")
-lock_uid = 0
 points = 0
+
+[node name="InteractibleObjectCollisionShape2D" parent="." index="0"]
+shape = SubResource("RectangleShape2D_1co6j")
 
 [node name="InteractibleObjectSprite2D" parent="." index="1"]
 texture = ExtResource("2_1co6j")
-vframes = 2
-frame = 1
-region_rect = Rect2(256, 8, 32, 128)
+frame = 2
+
+[node name="RedGlow" parent="." index="3"]
+energy = 0.5

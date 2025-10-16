@@ -66,14 +66,9 @@ func action_incomplete() ->void:
 	print("Incomplete")
 	interactible_object_progress_bar.visible = false
 	action_count = 0.0
-	#action() is called in player movement, which sets
-	#is_acting to true. If the action has been attemted
-	#before, then it will be not active, and so will will never set
-	#is_acting to false again. Setting is_action to false
-	#here avoids that, so action_incomplete won't be called
-	#anymore every process loop.
 	is_acting = false;
 	player_triggered = false;
+	Events.display_player_message("（＞д＜）")
 	
 func action() -> void:
 	
@@ -90,6 +85,7 @@ func action_complete() -> void:
 	action_count = 0.0
 	emit_signal("point_gain", points)
 	print(InventoryManager.inventory)
+	Events.display_player_message("(o_O) ?!")
 
 
 

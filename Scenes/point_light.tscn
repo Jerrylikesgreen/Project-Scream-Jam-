@@ -5,7 +5,6 @@
 
 [node name="PointLight" type="PointLight2D"]
 color = Color(0.75, 0.75, 0.75, 0.8627451)
-energy = 1.1
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 0.12156863)
 texture = ExtResource("1_s46ca")

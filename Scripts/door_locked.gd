@@ -2,9 +2,6 @@
 class_name DoorLocked extends Door
 
 
-func _ready() -> void:
-	closed.queue_free()
-
 
 func _process(_delta: float) -> void:
 	if is_acting:
