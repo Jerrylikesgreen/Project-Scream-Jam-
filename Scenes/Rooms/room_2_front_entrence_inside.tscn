@@ -73,11 +73,14 @@ size = Vector2(34.5, 48.625)
 
 [sub_resource type="PackedScene" id="PackedScene_mrhaj"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mrhaj"]
-size = Vector2(29, 46.5)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_deyxv"]
+size = Vector2(29, 13.25)
 
 [node name="Room_2" instance=ExtResource("1_2ejop")]
 script = ExtResource("2_mrhaj")
+
+[node name="Shadows" parent="Lighting" index="0"]
+visible = false
 
 [node name="MoonLight" parent="Lighting" index="2"]
 energy = 0.55
@@ -248,54 +251,67 @@ region_rect = Rect2(282, 19, 28, 10)
 [node name="StandingLamp" parent="Lights/StandingLamps" index="0" instance=ExtResource("11_x5hks")]
 position = Vector2(846, 227)
 scale = Vector2(0.75, 0.75)
+outside = false
 
 [node name="StandingLamp8" parent="Lights/StandingLamps" index="1" instance=ExtResource("11_x5hks")]
 position = Vector2(567, 312)
 scale = Vector2(0.75, 0.75)
+outside = false
 
 [node name="StandingLamp9" parent="Lights/StandingLamps" index="2" instance=ExtResource("11_x5hks")]
 position = Vector2(454, 608)
 scale = Vector2(0.75, 0.75)
+outside = false
 
 [node name="StandingLamp10" parent="Lights/StandingLamps" index="3" instance=ExtResource("11_x5hks")]
 position = Vector2(1139, 623)
 scale = Vector2(0.75, 0.75)
+outside = false
 
 [node name="StandingLamp11" parent="Lights/StandingLamps" index="4" instance=ExtResource("11_x5hks")]
 position = Vector2(1159, 249)
 scale = Vector2(0.75, 0.75)
+outside = false
 
 [node name="StandingLamp2" parent="Lights/StandingLamps" index="5" instance=ExtResource("11_x5hks")]
 position = Vector2(1411, 148)
 scale = Vector2(0.75, 0.75)
+outside = false
 
 [node name="StandingLamp3" parent="Lights/StandingLamps" index="6" instance=ExtResource("11_x5hks")]
 position = Vector2(1576, 576)
 scale = Vector2(0.75, 0.75)
+outside = false
 
 [node name="StandingLamp4" parent="Lights/StandingLamps" index="7" instance=ExtResource("11_x5hks")]
 position = Vector2(180, 560)
 scale = Vector2(0.75, 0.75)
+outside = false
 
 [node name="StandingLamp5" parent="Lights/StandingLamps" index="8" instance=ExtResource("11_x5hks")]
 position = Vector2(682, 593)
 scale = Vector2(0.75, 0.75)
+outside = false
 
 [node name="StandingLamp6" parent="Lights/StandingLamps" index="9" instance=ExtResource("11_x5hks")]
 position = Vector2(814, 442.00003)
 scale = Vector2(0.75, 0.75)
+outside = false
 
 [node name="StandingLamp12" parent="Lights/StandingLamps" index="10" instance=ExtResource("11_x5hks")]
 position = Vector2(936, 83)
 scale = Vector2(0.75, 0.75)
+outside = false
 
 [node name="StandingLamp13" parent="Lights/StandingLamps" index="11" instance=ExtResource("11_x5hks")]
 position = Vector2(1148, 426)
 scale = Vector2(0.75, 0.75)
+outside = false
 
 [node name="StandingLamp7" parent="Lights/StandingLamps" index="12" instance=ExtResource("11_x5hks")]
 position = Vector2(307, 262.00003)
 scale = Vector2(0.75, 0.75)
+outside = false
 
 [node name="PointLight" parent="Lights" index="2" instance=ExtResource("10_x5hks")]
 position = Vector2(1157, -58)
@@ -366,12 +382,12 @@ position = Vector2(55, 10)
 shape = SubResource("RectangleShape2D_juusu")
 
 [node name="TransportArea2" parent="." index="11" instance=ExtResource("28_fubpg")]
-position = Vector2(1121, -44)
+position = Vector2(1119, -46)
 transition_to_scene = SubResource("PackedScene_mrhaj")
 
 [node name="CollisionShape2D" parent="TransportArea2" index="0"]
-position = Vector2(1128, -38)
-shape = SubResource("RectangleShape2D_mrhaj")
+position = Vector2(1, 17)
+shape = SubResource("RectangleShape2D_deyxv")
 
 [editable path="PatrolArea"]
 [editable path="Lights/EntrenceLight/ObjectNonInteractive"]

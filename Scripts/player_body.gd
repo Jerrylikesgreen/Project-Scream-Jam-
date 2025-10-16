@@ -11,6 +11,7 @@ func _ready() -> void:
 	
 	
 func _on_player_hit():
+	Events.game_over()
 	get_parent().queue_free()
 	
 	pass

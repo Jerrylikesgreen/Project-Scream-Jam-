@@ -1,6 +1,6 @@
 extends Node
 @onready var inventory:InvContents = preload("res://Resources/Items/inventory_contents.tres");
-@onready var inv_menu_scene:PackedScene = preload("res://Scenes/inventory_menu.tscn");
+@onready var inv_menu_scene:PackedScene = preload("res://Scenes/Menus/inventory_menu.tscn");
 var menu_shown:bool = false;
 var menu_canvas:CanvasLayer;
 func _ready() -> void:

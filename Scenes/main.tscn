@@ -1,4 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://d0whbhpilsin7"]
+[gd_scene load_steps=6 format=3 uid="uid://d0whbhpilsin7"]
+
+[ext_resource type="Script" uid="uid://cfwe3edoo7huy" path="res://main.gd" id="1_jjgbg"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jjgbg"]
 normal = Vector2(0, 1)
@@ -20,6 +22,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+script = ExtResource("1_jjgbg")
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -1000

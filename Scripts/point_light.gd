@@ -14,7 +14,8 @@ var _light_bright_range: float = 1.0
 
 ## hidden refrence to timer node. 
 var _flicker: Timer = null
-
+var light_bright_min:float = 0.6
+var light_bright_max:float = 1.3
 ## set up
 func _ready() -> void:
 	randomize()
@@ -29,7 +30,7 @@ func _ready() -> void:
 ## Helper function re-sets the values 
 func _pick_new_randoms() -> void:
 	_flicker_interval = randf_range(0.2, 2.0)
-	_light_bright_range = randf_range(0.8, 1.3)
+	_light_bright_range = randf_range(light_bright_min, light_bright_max)
 
 
 ## Helper function sets off the logic of the flickering once flicker_enabled is set to true
@@ -44,7 +45,8 @@ func light_flicker_logic() -> void:
 		_flicker.timeout.connect(Callable(self, "_on_timeout"))
 
 	_pick_new_randoms()
-	_flicker.start(_flicker_interval)
+	
+	_flicker.set_autostart(true)
 
 
 ## Called when timer goes off to enable or disable the light. 

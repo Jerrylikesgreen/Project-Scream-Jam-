@@ -1,3 +1,3 @@
 class_name Player extends Node2D
 
-@export var save_data:Data 
+@export var save_data:DataResource 

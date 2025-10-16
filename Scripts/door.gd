@@ -5,6 +5,7 @@ class_name Door extends InteractibleObject
 ## Unsed to determin which key can unlock this door. 
 @export var lock_uid: int
 
+
 func action_complete() -> void:
 	interactible_object_collision_shape_2d.queue_free()
 	interactible_object_progress_bar.visible = false

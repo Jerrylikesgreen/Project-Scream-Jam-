@@ -1,5 +1,6 @@
 ## Autoload Events
 extends Node
+const GAME_OVER = preload("uid://bq1dinllmwo6p")
 
 # Signal other nodes can connect to: Events.connect("player_hit", target, "_on_player_hit")
 signal player_hit_signal
@@ -30,6 +31,21 @@ func player_hit_event() -> void:
 	
 func _now_s() -> float:
 	return Time.get_unix_time_from_system()
+
+func game_over()->void:
+	var game_over_screen = GAME_OVER.instantiate()
+	var scene_root = get_tree().get_current_scene()
+	scene_root.add_child(game_over_screen)
+
+func game_restart() -> void:
+	Globals.is_new_start = true
+
+	if Globals.player != null and is_instance_valid(Globals.player):
+		Globals.player.queue_free()
+		Globals.player = null
+
+	var initial_scene = preload("res://Scenes/main.tscn")
+	get_tree().call_deferred("change_scene_to_packed", initial_scene)
 
 
 func pin_entered(v:bool) -> void:
