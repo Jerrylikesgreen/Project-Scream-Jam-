@@ -1,7 +1,8 @@
 ## Autoload Events
 extends Node
 const GAME_OVER = preload("uid://bq1dinllmwo6p")
-const ESCAPED_SCREEN = preload("res://Scenes/escape_screen.tscn");
+const ESCAPED_SCREEN = preload("res://Scenes/Menus/escape_screen.tscn");
+
 
 # Signal other nodes can connect to: Events.connect("player_hit", target, "_on_player_hit")
 signal player_hit_signal
@@ -9,7 +10,7 @@ signal player_escape_signal
 signal player_message(new_message: String)
 signal pin_entered_signal(v:bool)
 signal play_sfx_signal(track: String, pos: Vector2 , overlap: bool , restart_same: bool )
-
+signal room_changed_signal
 
 var _msg_default_cooldown := 30.0           # seconds; change as you like
 var _msg_last_until: Dictionary = {}        # text -> show-again time (unix seconds)
@@ -26,6 +27,7 @@ var negative_player_dialog: Array[String] = [
 	"(*_*)",
 	"(>_<;) !!"
 ]
+
 
 
 func player_hit_event() -> void:
