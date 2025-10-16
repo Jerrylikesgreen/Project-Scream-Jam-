@@ -15,6 +15,8 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node) -> void:
 	print("TransportArea: body entered -> ", body)
+	if !transition_to_scene:
+		return
 	scene_path = transition_to_scene.resource_path
 	# If a killer walks in, queue its state for the next scene, then free it
 	if body is Killerbody:

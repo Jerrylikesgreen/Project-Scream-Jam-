@@ -150,6 +150,7 @@ occluder = SubResource("OccluderPolygon2D_vgqql")
 
 [node name="PlayerLight" parent="PlayerBody" instance=ExtResource("8_8erm5")]
 color = Color(0.75, 0.71999997, 0.71999997, 0.5372549)
+energy = 1.5
 shadow_enabled = false
 texture_scale = 0.75
 

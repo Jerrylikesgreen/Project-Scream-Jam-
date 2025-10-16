@@ -3,7 +3,7 @@ class_name Room extends Node2D
 
 @onready var spawn_point: Node2D = %SpawnPoint
 var killer_spawn_countdown: Timer
-@onready var switch: Switch1 = $Switches/switch
+
 
 
 func _ready() -> void:
@@ -17,6 +17,7 @@ func _ready() -> void:
 		killer_spawn_countdown.set_wait_time(10.0)
 		killer_spawn_countdown.timeout.connect(_on_killer_countdown_timeout)
 		killer_spawn_countdown.start()
+
 		
 
 func _process(delta: float) -> void:
