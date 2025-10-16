@@ -66,6 +66,13 @@ var _current_stamina:float = stamina_cap:
 ##private var dictating whether the player can move;
 var _can_move:bool = true;
 
+##Defines whether the player is hiding
+var hiding:bool = false;
+##Function for accessing hiding functionality from outside
+##of this object.
+func enter_hiding()->void:
+	_switch_state_to(State.HIDING);
+
 ##defines whether the player will die if the killer
 ##touches them. Generally true, but not in initial
 ##stages of dash, or when hiding.
@@ -82,8 +89,6 @@ var action_speed:float
 
 func _physics_process(delta: float) -> void:
 	_do_state(_current_state,delta);
-	if Input.is_action_just_released("action"):
-		_switch_state_to(State.INTERACTION)
 	
 	var input_vector = Input.get_vector("left","right","up","down")
 	
@@ -126,6 +131,10 @@ func _enter_state(state:State)->void:
 		State.WALKING:
 			_current_speed = regular_speed;
 		State.HIDING:
+			player_body.hiding = true;
+			player.hide();
+			player_body.set_collision_mask_value(KILLER_COLLISION_LAYER,false);
+			player_body.set_collision_layer_value(SELF_COLLISION_LAYER,false);
 			_killer_touch_fatal = false;
 			_can_move = false;
 		State.INTERACTION:
@@ -135,12 +144,22 @@ func _enter_state(state:State)->void:
 				return
 			action_area.set_visible(true);
 			var obj = objs[0];
+			if obj is HideableObject:
+				var cannot_hide:bool = await KillerManager.player_in_line_of_sight(player_body);
+				if !cannot_hide:
+					_switch_state_to(State.HIDING);
+				return;
 			#this ensures the player won't get stuck trying to
 			#do an action that's already done.
 			action_speed = obj.action_speed if obj.active else 0;
 			_can_move = false;
 			var int_obj = action_area.get_overlapping_bodies();
 			for ob in int_obj:
+				if obj is HideableObject:
+					var cannot_hide:bool = await KillerManager.player_in_line_of_sight(player_body);
+					if !cannot_hide:
+						_switch_state_to(State.HIDING);
+						return;
 				ob.action();
 				ob.player_triggered = true
 				action_area.set_visible(false);
@@ -153,6 +172,9 @@ func _enter_state(state:State)->void:
 func _do_state(state:State,delta:float)->void:
 	match state:
 		State.DASH_INITIAL:
+			if Input.is_action_just_released("action"):
+				_switch_state_to(State.INTERACTION);
+				return
 			#The beginning of a dash lasts a set amount of time.
 			#Once that time is over, move to normal dash.
 			#End early if stamina runs out.
@@ -164,6 +186,9 @@ func _do_state(state:State,delta:float)->void:
 			if(_invuln_time_remaining <= 0):
 				_switch_state_to(State.DASHING);
 		State.DASHING:
+			if Input.is_action_just_released("action"):
+				_switch_state_to(State.INTERACTION);
+				return;
 			var dash_pressed:bool = Input.is_action_pressed("dash");
 			if(!dash_pressed):
 				_switch_state_to(State.WALKING);
@@ -173,12 +198,17 @@ func _do_state(state:State,delta:float)->void:
 			if (_current_stamina <= 0):
 				_switch_state_to(State.WALKING);
 		State.WALKING:
+			if Input.is_action_just_released("action"):
+				_switch_state_to(State.INTERACTION);
+				return;
 			##Let stamina regen
 			_regen_stamina(delta);
 			var dash_pressed:bool = Input.is_action_pressed("dash");
 			if(dash_pressed):
 				_switch_state_to(State.DASH_INITIAL);
 		State.HIDING:
+			if Input.is_action_just_released("action"):
+				_switch_state_to(State.WALKING);
 			_regen_stamina(delta);
 			#Placeholder. Unsure what the desired behaviour is currently.
 			pass
@@ -205,6 +235,10 @@ func _exit_state(state:State):
 		State.WALKING:
 			pass
 		State.HIDING:
+			player_body.hiding = false;
+			player.show();
+			player_body.set_collision_mask_value(KILLER_COLLISION_LAYER,true);
+			player_body.set_collision_layer_value(SELF_COLLISION_LAYER,true);
 			_killer_touch_fatal = true;
 			_can_move = true;
 		State.INTERACTION:
