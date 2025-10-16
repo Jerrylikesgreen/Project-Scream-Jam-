@@ -30,5 +30,6 @@ func _on_killer_countdown_timeout() ->void:
 	var killer_instance =  KillerManager.KILLER.instantiate()
 	add_child(killer_instance)
 	KillerManager.killer_count += 1
+	KillerManager.killer = killer_instance
 	killer_instance.position = spawn_point.global_position
 	KillerManager.killer_in_other_room = false
