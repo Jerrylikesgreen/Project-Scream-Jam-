@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cx0p1f5qas2l1"
+path="res://.godot/imported/Creepy Ping 2 (SpookJam1).ogg-8bc3c29ea6e463a78d04c2b147dbdd6a.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/OGG/Creepy Ping 2 (SpookJam1).ogg"
+dest_files=["res://.godot/imported/Creepy Ping 2 (SpookJam1).ogg-8bc3c29ea6e463a78d04c2b147dbdd6a.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

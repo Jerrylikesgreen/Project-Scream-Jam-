@@ -1,9 +1,13 @@
 class_name PlayerController extends Node
+
+signal sprite_change(animation:String)
+
 @onready var player: Player = $"../.."
 
 enum State{DASH_INITIAL,DASHING,WALKING,HIDING,INTERACTION, IDLE};
 var _current_state:State = State.WALKING;
 @onready var action_area: Area2D = %ActionArea
+@onready var player_sprite: AnimatedSprite2D = $"../PlayerSprite"
 
 #——————————————Variables——————————————————
 @onready var staminaBar:ProgressBar = $"Stamina Bar Canvas/MarginContainer/Stamina Bar"
@@ -55,8 +59,8 @@ var _invuln_time_remaining:float = invuln_time;
 ##The player's current speed
 var _current_speed:float = regular_speed;
 
-
-
+var _walkin_signal:bool = false
+var _idle_signal:bool = false
 ##The player's current stamina
 var _current_stamina:float = stamina_cap:
 	set(val):
@@ -88,23 +92,37 @@ var friction = 300
 var action_speed:float
 
 func _physics_process(delta: float) -> void:
-	_do_state(_current_state,delta);
-	
-	var input_vector = Input.get_vector("left","right","up","down")
-	
-	# X-axis
+	_do_state(_current_state, delta)
+
+	var input_vector = Input.get_vector("left", "right", "up", "down")
+
+	# X-axis movement
 	if input_vector.x != 0 and _can_move:
 		player_body.velocity.x = move_toward(player_body.velocity.x, input_vector.x * _current_speed, accel * delta)
+		# Flip sprite based on direction
+		player_sprite.flip_h = input_vector.x < 0
 	else:
 		player_body.velocity.x = move_toward(player_body.velocity.x, 0, friction * delta)
-	
-	# Y-axis
+
+	# Y-axis movement
 	if input_vector.y != 0 and _can_move:
 		player_body.velocity.y = move_toward(player_body.velocity.y, input_vector.y * _current_speed, accel * delta)
 	else:
 		player_body.velocity.y = move_toward(player_body.velocity.y, 0, friction * delta)
-	
+
+	# Move the player
 	player_body.move_and_slide()
+
+	# Animation handling
+	if input_vector.length() > 0 and _can_move:
+		emit_signal("sprite_change", "Moving")
+		_idle_signal = false
+		print("Signal Emit Moving")
+	else:
+		if _idle_signal == true:
+			return
+		emit_signal("sprite_change", "Idle")
+		_idle_signal = true
 
 
 

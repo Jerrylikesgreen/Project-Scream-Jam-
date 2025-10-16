@@ -79,9 +79,6 @@ size = Vector2(29, 13.25)
 [node name="Room_2" instance=ExtResource("1_2ejop")]
 script = ExtResource("2_mrhaj")
 
-[node name="Shadows" parent="Lighting" index="0"]
-visible = false
-
 [node name="MoonLight" parent="Lighting" index="2"]
 energy = 0.55
 
@@ -232,7 +229,6 @@ position = Vector2(1364, 551)
 storage = Array[ExtResource("6_opfmq")]([SubResource("Resource_d2gdd")])
 
 [node name="Lights" type="Node2D" parent="." index="6"]
-visible = false
 
 [node name="EntrenceLight" parent="Lights" index="0" instance=ExtResource("10_x5hks")]
 position = Vector2(581, -84)
@@ -351,7 +347,7 @@ action_speed = 3.0
 points = 1000
 
 [node name="InteractibleObjectCollisionShape2D" parent="Switches/switch" index="0"]
-position = Vector2(90.5, -47)
+position = Vector2(93, -32)
 shape = SubResource("RectangleShape2D_6idjy")
 
 [node name="InteractibleObjectSprite2D" parent="Switches/switch" index="1"]
@@ -388,6 +384,12 @@ transition_to_scene = SubResource("PackedScene_mrhaj")
 [node name="CollisionShape2D" parent="TransportArea2" index="0"]
 position = Vector2(1, 17)
 shape = SubResource("RectangleShape2D_deyxv")
+
+[node name="SFX" parent="." index="12"]
+default_volume_db = 1.0
+
+[node name="BgmNode" parent="." index="13"]
+volume_db = -5.0
 
 [editable path="PatrolArea"]
 [editable path="Lights/EntrenceLight/ObjectNonInteractive"]

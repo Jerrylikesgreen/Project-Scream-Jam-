@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b55rmgq6tn1m"
+path="res://.godot/imported/Character Walk Rotation 1 (SpookJam1).ogg-266889560f55238a1decbedbfcf71ddd.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/OGG/Character Walk Rotation 1 (SpookJam1).ogg"
+dest_files=["res://.godot/imported/Character Walk Rotation 1 (SpookJam1).ogg-266889560f55238a1decbedbfcf71ddd.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
