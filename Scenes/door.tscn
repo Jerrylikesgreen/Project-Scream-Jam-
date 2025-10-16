@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dh2mt3nebig3q"]
+[gd_scene load_steps=6 format=3 uid="uid://dh2mt3nebig3q"]
 
 [ext_resource type="PackedScene" uid="uid://3ak6v3qdvre" path="res://Scenes/interactible_object.tscn" id="1_w6aom"]
 [ext_resource type="Script" uid="uid://b824oukjkhij0" path="res://Scripts/door.gd" id="2_fahql"]
-[ext_resource type="Texture2D" uid="uid://bbbplnpqlea2s" path="res://Assets/TileSets/floors walls and stairs.png" id="2_p0e35"]
 [ext_resource type="Resource" uid="uid://b055t10e2vurr" path="res://door.tres" id="3_ab4ky"]
+[ext_resource type="Texture2D" uid="uid://dm00d5ha4cfjm" path="res://door_sprite_frames.tres" id="4_ab4ky"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ab4ky"]
 
 [node name="Door" instance=ExtResource("1_w6aom")]
 collision_layer = 40
@@ -15,13 +17,17 @@ points = 100
 
 [node name="InteractibleObjectCollisionShape2D" parent="." index="0"]
 position = Vector2(0.5, 3)
+shape = SubResource("RectangleShape2D_ab4ky")
 
 [node name="InteractibleObjectSprite2D" parent="." index="1"]
 position = Vector2(4.7683716e-07, -6.9999995)
 scale = Vector2(0.9999999, 0.9999998)
-texture = null
+texture = ExtResource("4_ab4ky")
+hframes = 2
+vframes = 2
+frame = 3
 region_enabled = true
-region_rect = Rect2(33, 105, 30, 39)
+region_rect = Rect2(256, 8, 64, 128)
 
 [node name="InteractibleObjectProgressBar" parent="." index="2"]
 z_index = 30
@@ -30,13 +36,3 @@ offset_left = -23.0
 offset_top = -37.0
 offset_right = 130.33331
 offset_bottom = -3.0
-
-[node name="Closed" type="Sprite2D" parent="." index="3"]
-unique_name_in_owner = true
-position = Vector2(0.24999613, -6.499998)
-scale = Vector2(0.9833336, 1.0263157)
-texture = ExtResource("2_p0e35")
-hframes = 2
-region_enabled = true
-region_rect = Rect2(17, 42, 60, 37.904007)
-region_filter_clip_enabled = true

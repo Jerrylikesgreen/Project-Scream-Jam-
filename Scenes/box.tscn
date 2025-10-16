@@ -4,11 +4,11 @@
 [ext_resource type="Script" uid="uid://cns84lp53o11n" path="res://Scripts/box.gd" id="2_ego7h"]
 [ext_resource type="Script" uid="uid://4b01cqmglqbj" path="res://Scripts/item.gd" id="3_y6vpp"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4pvdy"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2jyye"]
 
 [node name="Box" instance=ExtResource("1_xkb4e")]
 script = ExtResource("2_ego7h")
 storage = Array[ExtResource("3_y6vpp")]([])
 
 [node name="InteractibleObjectCollisionShape2D" parent="." index="0"]
-shape = SubResource("RectangleShape2D_4pvdy")
+shape = SubResource("RectangleShape2D_2jyye")

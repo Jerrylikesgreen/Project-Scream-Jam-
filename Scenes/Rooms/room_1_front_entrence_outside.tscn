@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://cvl8kf1nyvo88"]
+[gd_scene load_steps=17 format=4 uid="uid://cvl8kf1nyvo88"]
 
 [ext_resource type="PackedScene" uid="uid://ds6aoc55rpn5k" path="res://Scenes/Rooms/room.tscn" id="1_on5we"]
 [ext_resource type="TileSet" uid="uid://dquj14hvcbg8a" path="res://Resources/TileSets/floors_room1.tres" id="2_2cw0f"]
@@ -8,6 +8,9 @@
 [ext_resource type="LabelSettings" uid="uid://cgh0uejw4ndem" path="res://Resources/Themes/writings.tres" id="5_f8btm"]
 [ext_resource type="PackedScene" uid="uid://bfxp1tp6wevhl" path="res://Scenes/point_light.tscn" id="7_74mnt"]
 [ext_resource type="PackedScene" uid="uid://c0tn64ljsa1mr" path="res://Scenes/light_post.tscn" id="8_e0ld5"]
+[ext_resource type="PackedScene" uid="uid://3ak6v3qdvre" path="res://Scenes/interactible_object.tscn" id="9_ue15f"]
+[ext_resource type="Script" uid="uid://csf3my7v5vpg6" path="res://Scenes/trash_bins.gd" id="10_ue15f"]
+[ext_resource type="Texture2D" uid="uid://cb43v1jbt3jqc" path="res://trash_bins_frames.tres" id="12_rr2l4"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_2j81o"]
 normal = Vector2(0, 1)
@@ -21,6 +24,8 @@ normal = Vector2(-0.99993503, -0.011395271)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rr2l4"]
 normal = Vector2(-0.016179113, -0.99986917)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ue15f"]
+
 [node name="Room_1_Front_Entrence_Outside" instance=ExtResource("1_on5we")]
 script = ExtResource("2_2j81o")
 
@@ -29,8 +34,11 @@ position = Vector2(495.00003, 122)
 scale = Vector2(0.5918861, 0.2567814)
 energy = 1.5
 
+[node name="ColorRect" parent="Background/Background" index="0"]
+color = Color(0, 0, 0, 1)
+
 [node name="MoonLight" parent="Lighting" index="2"]
-energy = 1.35
+energy = 1.0
 
 [node name="Map" parent="." index="4"]
 z_index = -8
@@ -112,3 +120,100 @@ active = true
 [node name="TransportArea" parent="." index="10"]
 position = Vector2(497, 170)
 transition_to_scene = ExtResource("4_74mnt")
+
+[node name="Objects" type="Node2D" parent="." index="11"]
+
+[node name="TrashBins" parent="Objects" index="0" instance=ExtResource("9_ue15f")]
+position = Vector2(199, 183)
+script = ExtResource("10_ue15f")
+resource = null
+active = true
+action_speed = 1.0
+points = 50
+
+[node name="InteractibleObjectCollisionShape2D" parent="Objects/TrashBins" index="0"]
+shape = SubResource("RectangleShape2D_ue15f")
+
+[node name="InteractibleObjectSprite2D" parent="Objects/TrashBins" index="1"]
+texture = ExtResource("12_rr2l4")
+hframes = 4
+region_enabled = true
+region_rect = Rect2(192, 32, 128, 32)
+
+[node name="TrashBins2" parent="Objects" index="1" instance=ExtResource("9_ue15f")]
+position = Vector2(1031, 165)
+script = ExtResource("10_ue15f")
+resource = null
+active = true
+action_speed = 1.0
+points = 50
+
+[node name="InteractibleObjectCollisionShape2D" parent="Objects/TrashBins2" index="0"]
+shape = SubResource("RectangleShape2D_ue15f")
+
+[node name="InteractibleObjectSprite2D" parent="Objects/TrashBins2" index="1"]
+texture = ExtResource("12_rr2l4")
+hframes = 4
+frame = 1
+region_enabled = true
+region_rect = Rect2(192, 32, 128, 32)
+
+[node name="TrashBins3" parent="Objects" index="2" instance=ExtResource("9_ue15f")]
+position = Vector2(1009, 165)
+script = ExtResource("10_ue15f")
+resource = null
+active = true
+action_speed = 1.0
+points = 50
+
+[node name="InteractibleObjectCollisionShape2D" parent="Objects/TrashBins3" index="0"]
+shape = SubResource("RectangleShape2D_ue15f")
+
+[node name="InteractibleObjectSprite2D" parent="Objects/TrashBins3" index="1"]
+texture = ExtResource("12_rr2l4")
+hframes = 4
+frame = 1
+region_enabled = true
+region_rect = Rect2(192, 32, 128, 32)
+
+[node name="TrashBins4" parent="Objects" index="3" instance=ExtResource("9_ue15f")]
+position = Vector2(193, 190)
+script = ExtResource("10_ue15f")
+resource = null
+active = true
+action_speed = 1.0
+points = 50
+
+[node name="InteractibleObjectCollisionShape2D" parent="Objects/TrashBins4" index="0"]
+shape = SubResource("RectangleShape2D_ue15f")
+
+[node name="InteractibleObjectSprite2D" parent="Objects/TrashBins4" index="1"]
+texture = ExtResource("12_rr2l4")
+hframes = 4
+frame = 1
+region_enabled = true
+region_rect = Rect2(192, 32, 128, 32)
+
+[node name="TrashBins5" parent="Objects" index="4" instance=ExtResource("9_ue15f")]
+position = Vector2(214, 186)
+script = ExtResource("10_ue15f")
+resource = null
+active = true
+action_speed = 1.0
+points = 50
+
+[node name="InteractibleObjectCollisionShape2D" parent="Objects/TrashBins5" index="0"]
+shape = SubResource("RectangleShape2D_ue15f")
+
+[node name="InteractibleObjectSprite2D" parent="Objects/TrashBins5" index="1"]
+texture = ExtResource("12_rr2l4")
+hframes = 4
+frame = 2
+region_enabled = true
+region_rect = Rect2(192, 32, 128, 32)
+
+[editable path="Objects/TrashBins"]
+[editable path="Objects/TrashBins2"]
+[editable path="Objects/TrashBins3"]
+[editable path="Objects/TrashBins4"]
+[editable path="Objects/TrashBins5"]

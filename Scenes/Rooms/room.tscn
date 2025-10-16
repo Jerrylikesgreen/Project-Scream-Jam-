@@ -47,6 +47,7 @@ position = Vector2(-18, 25)
 occluder = SubResource("OccluderPolygon2D_dyxu8")
 
 [node name="MoonLight" type="DirectionalLight2D" parent="Lighting"]
+energy = 0.5
 
 [node name="PatrolArea" parent="." instance=ExtResource("2_c2haw")]
 script = ExtResource("3_622ha")

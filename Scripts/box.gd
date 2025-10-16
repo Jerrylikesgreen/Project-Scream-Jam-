@@ -25,4 +25,7 @@ func action_complete() -> void:
 			InventoryManager.on_acquire_item(items)
 			print(items)
 			storage.clear()
+			var item_name := items.name
+			Events.display_player_message("Found a {id} in here".format({"id": item_name}))
+
 	
