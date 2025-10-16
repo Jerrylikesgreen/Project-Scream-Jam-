@@ -1,11 +1,11 @@
 [gd_scene load_steps=6 format=3 uid="uid://bet4fsfdfx3tk"]
 
 [ext_resource type="PackedScene" uid="uid://3ak6v3qdvre" path="res://Scenes/interactible_object.tscn" id="1_fssis"]
-[ext_resource type="Script" uid="uid://djrgfr5kykn2b" path="res://Scenes/escape_door.gd" id="2_woobi"]
-[ext_resource type="Resource" uid="uid://b055t10e2vurr" path="res://door.tres" id="3_canuj"]
-[ext_resource type="Texture2D" uid="uid://dm00d5ha4cfjm" path="res://door_sprite_frames.tres" id="4_canuj"]
+[ext_resource type="Script" uid="uid://djrgfr5kykn2b" path="res://Scripts/escape_door.gd" id="2_woobi"]
+[ext_resource type="Resource" uid="uid://b055t10e2vurr" path="res://Resources/Themes/door.tres" id="3_canuj"]
+[ext_resource type="Texture2D" uid="uid://dm00d5ha4cfjm" path="res://Resources/Items/door_sprite_frames.tres" id="4_canuj"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pe4av"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_canuj"]
 
 [node name="EscapeDoor" instance=ExtResource("1_fssis")]
 script = ExtResource("2_woobi")
@@ -13,7 +13,7 @@ lock_uid = 0
 resource = ExtResource("3_canuj")
 
 [node name="InteractibleObjectCollisionShape2D" parent="." index="0"]
-shape = SubResource("RectangleShape2D_pe4av")
+shape = SubResource("RectangleShape2D_canuj")
 
 [node name="InteractibleObjectSprite2D" parent="." index="1"]
 texture = ExtResource("4_canuj")

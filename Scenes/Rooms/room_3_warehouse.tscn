@@ -1,14 +1,14 @@
 [gd_scene load_steps=18 format=4 uid="uid://dao82y24rbjqd"]
 
 [ext_resource type="PackedScene" uid="uid://ds6aoc55rpn5k" path="res://Scenes/Rooms/room.tscn" id="1_6h072"]
-[ext_resource type="TileSet" uid="uid://vdv03c2jnqai" path="res://Resources/room_3_floor.tres" id="2_jip48"]
+[ext_resource type="TileSet" uid="uid://vdv03c2jnqai" path="res://Resources/Themes/room_3_floor.tres" id="2_jip48"]
 [ext_resource type="PackedScene" uid="uid://7m1psxif0fay" path="res://Scenes/standing_lamp.tscn" id="2_waa3u"]
 [ext_resource type="Texture2D" uid="uid://rksxcd6xuk7q" path="res://Assets/TileSets/spritesheet_hospital_maternity.png" id="3_3t4tk"]
 [ext_resource type="PackedScene" uid="uid://bylcboixemo1k" path="res://Scenes/Rooms/room_2_front_entrence_inside.tscn" id="3_pnegw"]
 [ext_resource type="PackedScene" uid="uid://b00jneawpjbmd" path="res://Scenes/old_chest.tscn" id="6_tl1yo"]
 [ext_resource type="PackedScene" uid="uid://f7t5ayuv5ypk" path="res://Scenes/object_non_interactive.tscn" id="7_4ybyy"]
-[ext_resource type="Texture2D" uid="uid://cwmn3i4jxu86k" path="res://Scenes/work_bench_frames.tres" id="8_4ybyy"]
-[ext_resource type="Script" uid="uid://co86dgroauuc8" path="res://Scenes/workbech.gd" id="8_8mim1"]
+[ext_resource type="Texture2D" uid="uid://cwmn3i4jxu86k" path="res://Resources/TileSets/work_bench_frames.tres" id="8_4ybyy"]
+[ext_resource type="Script" uid="uid://co86dgroauuc8" path="res://Scripts/workbech.gd" id="8_8mim1"]
 [ext_resource type="PackedScene" uid="uid://dbkdleftnglmk" path="res://Scenes/door_locked.tscn" id="10_c0ke5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8mim1"]

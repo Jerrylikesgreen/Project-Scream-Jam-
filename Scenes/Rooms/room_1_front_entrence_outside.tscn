@@ -9,8 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://bfxp1tp6wevhl" path="res://Scenes/point_light.tscn" id="7_74mnt"]
 [ext_resource type="PackedScene" uid="uid://c0tn64ljsa1mr" path="res://Scenes/light_post.tscn" id="8_e0ld5"]
 [ext_resource type="PackedScene" uid="uid://3ak6v3qdvre" path="res://Scenes/interactible_object.tscn" id="9_ue15f"]
-[ext_resource type="Script" uid="uid://csf3my7v5vpg6" path="res://Scenes/trash_bins.gd" id="10_ue15f"]
-[ext_resource type="Texture2D" uid="uid://cb43v1jbt3jqc" path="res://trash_bins_frames.tres" id="12_rr2l4"]
+[ext_resource type="Script" uid="uid://csf3my7v5vpg6" path="res://Scripts/trash_bins.gd" id="10_ue15f"]
+[ext_resource type="Texture2D" uid="uid://cb43v1jbt3jqc" path="res://Resources/TileSets/trash_bins_frames.tres" id="12_rr2l4"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_2j81o"]
 normal = Vector2(0, 1)

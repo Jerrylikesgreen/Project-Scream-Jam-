@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://cxfwu2iokuhxd" path="res://Scripts/patrol_area.gd" id="3_622ha"]
 [ext_resource type="TileSet" uid="uid://7paqvgy0mhu3" path="res://Resources/TileSets/objects_room_1.tres" id="3_c2haw"]
 [ext_resource type="PackedScene" uid="uid://egwwowhbwaop" path="res://Scenes/transport_area.tscn" id="4_g3m34"]
-[ext_resource type="TileSet" uid="uid://d3ui3hwm7rqkr" path="res://msc.tres" id="6_qvido"]
+[ext_resource type="TileSet" uid="uid://d3ui3hwm7rqkr" path="res://Resources/TileSets/msc.tres" id="6_qvido"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_dyxu8"]
 polygon = PackedVector2Array(3105, -1127, 3227, 2064, -1277, 1995, -1358, -1153)

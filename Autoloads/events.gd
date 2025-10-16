@@ -35,6 +35,10 @@ func _now_s() -> float:
 func pin_entered(v:bool) -> void:
 	emit_signal("pin_entered_signal", v)
 
+func player_gains_points(points:int)->void:
+	var points_gained = Globals.player_data.player_score + points
+	Globals.player_data.player_score = points_gained
+
 
 func display_player_message(new_message: String, cooldown: float = -1.0, force: bool = false) -> void:
 	if not force:

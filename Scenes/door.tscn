@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://3ak6v3qdvre" path="res://Scenes/interactible_object.tscn" id="1_w6aom"]
 [ext_resource type="Script" uid="uid://b824oukjkhij0" path="res://Scripts/door.gd" id="2_fahql"]
-[ext_resource type="Resource" uid="uid://b055t10e2vurr" path="res://door.tres" id="3_ab4ky"]
-[ext_resource type="Texture2D" uid="uid://dm00d5ha4cfjm" path="res://door_sprite_frames.tres" id="4_ab4ky"]
+[ext_resource type="Resource" uid="uid://b055t10e2vurr" path="res://Resources/Themes/door.tres" id="3_ab4ky"]
+[ext_resource type="Texture2D" uid="uid://dm00d5ha4cfjm" path="res://Resources/Items/door_sprite_frames.tres" id="4_ab4ky"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ab4ky"]
 

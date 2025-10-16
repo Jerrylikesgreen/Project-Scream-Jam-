@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cby2r7rvs4oxq" path="res://Scripts/pin_pad.gd" id="1_7foyv"]
 [ext_resource type="Theme" uid="uid://hpso4mu8e4b7" path="res://Resources/Themes/default.tres" id="1_ms3cx"]
-[ext_resource type="LabelSettings" uid="uid://hlixbh7byjyu" path="res://Resources/password.tres" id="2_7foyv"]
+[ext_resource type="LabelSettings" uid="uid://hlixbh7byjyu" path="res://Resources/Themes/password.tres" id="2_7foyv"]
 
 [node name="PinPad" type="Control"]
 layout_mode = 3
