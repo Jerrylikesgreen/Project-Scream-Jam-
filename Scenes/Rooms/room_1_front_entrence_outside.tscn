@@ -41,7 +41,7 @@ tile_map_data = PackedByteArray("AAAuAAYAEAAUAAMAAAAuAAcAEAAUAAQAAAAuAAgAEAAUAAU
 position = Vector2(641, 187)
 
 [node name="TransportArea" parent="." index="5"]
-position = Vector2(640, 137)
+position = Vector2(640, 138)
 transition_to_scene = ExtResource("3_74mnt")
 
 [node name="PointLight" parent="." index="6" instance=ExtResource("7_74mnt")]

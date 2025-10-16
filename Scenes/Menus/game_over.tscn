@@ -3,7 +3,7 @@
 [ext_resource type="LabelSettings" uid="uid://dvc4o13t1lngk" path="res://Resources/Themes/game_over.tres" id="1_ny6da"]
 [ext_resource type="Theme" uid="uid://bkwpjcmrglqxc" path="res://Resources/Themes/gameover_button.tres" id="2_cl4et"]
 [ext_resource type="Script" uid="uid://c7p2awlohlxo5" path="res://Scripts/score.gd" id="3_bwy81"]
-[ext_resource type="Script" uid="uid://cpnopbjb3hix5" path="res://Scenes/Menus/retry.gd" id="4_prjnw"]
+[ext_resource type="Script" uid="uid://cpnopbjb3hix5" path="res://Scripts/retry.gd" id="4_prjnw"]
 
 [node name="GameOver" type="Control"]
 layout_mode = 3

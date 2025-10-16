@@ -3,7 +3,10 @@ extends Control
 @onready var return_button:Button = %ReturnButton;
 @onready var quit_button:Button = %QuitButton;
 @onready var game_over_container:VBoxContainer = %GameOverContainer;
-func _ready() -> void:
+
+
+func _ready():
+	get_tree().connect("about_to_quit", _on_about_to_quit)
 	if Globals.player_data != null:
 		score_label.text = "Score: {}".format([Globals.player_data.player_score]);
 	score_label.visible_characters = 0;
@@ -18,9 +21,13 @@ func _ready() -> void:
 	for i in range(0,len(score_label.text) + 1):
 		score_label.visible_characters = i;
 		await get_tree().create_timer(0.1).timeout;
+
+func _on_about_to_quit():
+	print("Game is closing, saving data...")
+	# Save player progress, close files, stop sounds, etc.
 	
 func _on_return_button_pressed()->void:
-	Events.game_restart();
-	queue_free();
+	Events.game_restart()
+
 func _on_quit_button_pressed()->void:
-	get_tree().quit();
+	get_tree().quit()

@@ -2,6 +2,7 @@
 extends Node
 const  KILLER = preload("res://Scenes/killer.tscn")
 
+
 var killer_in_other_room:bool = false:
 	set(val):
 		killer_in_other_room = val;
@@ -10,7 +11,7 @@ var killer_in_other_room:bool = false:
 		return;
 
 var killer_active:bool = false
-
+var active_room: Room
 var killer_body:Killerbody = null;
 
 var killer:Killer = null:
@@ -23,6 +24,29 @@ var killer:Killer = null:
 		return;
 
 var killer_count:int = 0
+
+
+func _ready() -> void:
+	Events.room_changed_signal.connect(_on_room_change_signal)
+	if killer_active == false:
+		killer = KILLER.instantiate()
+		var killer_countdown:Timer = Timer.new()
+		killer_countdown.set_one_shot(true)
+		killer_countdown.set_wait_time(5.0)
+		add_child(killer_countdown)
+		killer_countdown.timeout.connect(_on_killer_countdown_timeout)
+
+func _on_room_change_signal()->void:
+	pass
+		## run logic to spawn killer. 
+
+
+func _on_killer_countdown_timeout()->void:
+	active_room.add_child(killer)
+	killer_active = true
+	killer.global_position = active_room.spawn_point.global_position
+	killer_count += 1
+
 
 
 func player_in_line_of_sight(player_body:PlayerBody):
