@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=3 format=3 uid="uid://bgntavp5ioewt"]
+
+[ext_resource type="Texture2D" uid="uid://ckf43hro142tx" path="res://Resources/Interactables/standing_lamp-frames.tres" id="1_4t50o"]
+[ext_resource type="Script" uid="uid://4b01cqmglqbj" path="res://Scripts/item.gd" id="2_kol5y"]
+
+[resource]
+script = ExtResource("2_kol5y")
+name = "Standing Lamp"
+description = "Standing Lamp"
+image = ExtResource("1_4t50o")
+metadata/_custom_type_script = "uid://4b01cqmglqbj"

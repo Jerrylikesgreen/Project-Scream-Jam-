@@ -9,7 +9,7 @@
 [ext_resource type="Theme" uid="uid://hpso4mu8e4b7" path="res://Resources/Themes/default.tres" id="7_3smsa"]
 [ext_resource type="PackedScene" uid="uid://bfxp1tp6wevhl" path="res://Scenes/point_light.tscn" id="8_8erm5"]
 [ext_resource type="Texture2D" uid="uid://ro4qxlwkrgwb" path="res://Assets/2d_lights_and_shadows_neutral_point_light.webp" id="8_gymyn"]
-[ext_resource type="PackedScene" uid="uid://djivhnyw6vgwr" path="res://Scenes/Rooms/hud.tscn" id="9_f1ek2"]
+[ext_resource type="PackedScene" uid="uid://djivhnyw6vgwr" path="res://Scenes/hud.tscn" id="9_f1ek2"]
 [ext_resource type="Script" uid="uid://75y01qcsxxql" path="res://Scripts/hud.gd" id="10_tx1dd"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_x3wgy"]

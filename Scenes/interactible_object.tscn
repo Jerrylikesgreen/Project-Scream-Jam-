@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://3ak6v3qdvre"]
+[gd_scene load_steps=6 format=3 uid="uid://3ak6v3qdvre"]
 
 [ext_resource type="Script" uid="uid://cb2qf7yftc14k" path="res://Scripts/interactible_object.gd" id="1_wb1i2"]
-[ext_resource type="Resource" uid="uid://btv61c52blsra" path="res://Resources/Items/interactible_object.tres" id="2_wou4j"]
 [ext_resource type="Theme" uid="uid://hpso4mu8e4b7" path="res://Resources/Themes/default.tres" id="3_0qsqp"]
 [ext_resource type="Texture2D" uid="uid://cl77tcvrlc5o6" path="res://Assets/PNG/InteractibleObjects/crate.png" id="3_ojmeb"]
 [ext_resource type="PackedScene" uid="uid://bfxp1tp6wevhl" path="res://Scenes/point_light.tscn" id="4_ojmeb"]
@@ -12,7 +11,6 @@
 collision_layer = 12
 collision_mask = 128
 script = ExtResource("1_wb1i2")
-resource = ExtResource("2_wou4j")
 
 [node name="InteractibleObjectCollisionShape2D" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
