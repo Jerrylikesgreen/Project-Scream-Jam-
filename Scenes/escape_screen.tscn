@@ -1,0 +1,111 @@
+[gd_scene load_steps=12 format=3 uid="uid://bhb6k1kdv1qk1"]
+
+[ext_resource type="Theme" uid="uid://hpso4mu8e4b7" path="res://Resources/Themes/default.tres" id="1_l1u0n"]
+[ext_resource type="Script" uid="uid://801jvntj5o81" path="res://Scripts/escape_screen.gd" id="2_orhvw"]
+[ext_resource type="FontFile" uid="uid://dgemkxnrtn3i" path="res://Assets/Fonts/Dracutaz.ttf" id="3_ph40r"]
+[ext_resource type="Texture2D" uid="uid://b4tuj3mlikvd2" path="res://Assets/Misc/Button_bkg.png" id="4_8y6pk"]
+[ext_resource type="Texture2D" uid="uid://dfy4andao2dcl" path="res://Assets/Misc/Button_pressed.png" id="5_2nr30"]
+[ext_resource type="Texture2D" uid="uid://wo5f8tm64k05" path="res://Assets/Misc/Button_hover.png" id="6_qgj58"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uhe4m"]
+texture = ExtResource("4_8y6pk")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wtwl5"]
+texture = ExtResource("5_2nr30")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qamf6"]
+texture = ExtResource("6_qgj58")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l1u0n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_orhvw"]
+
+[node name="EscapeScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_l1u0n")
+script = ExtResource("2_orhvw")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_l1u0n")
+color = Color(0, 0, 0, 1)
+
+[node name="GameOverContainer" type="VBoxContainer" parent="ColorRect"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="GameOverLabel" type="Label" parent="ColorRect/GameOverContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.49, 0.49, 0.49, 1)
+theme_override_fonts/font = ExtResource("3_ph40r")
+theme_override_font_sizes/font_size = 80
+text = "You Escaped!"
+horizontal_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="ColorRect/GameOverContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_ph40r")
+theme_override_font_sizes/font_size = 31
+text = "Score: 617"
+horizontal_alignment = 1
+visible_characters = 10
+
+[node name="Buttons" type="VBoxContainer" parent="ColorRect/GameOverContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 45
+alignment = 1
+
+[node name="ReturnButton" type="Button" parent="ColorRect/GameOverContainer/Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_uhe4m")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wtwl5")
+theme_override_styles/hover = SubResource("StyleBoxTexture_qamf6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_l1u0n")
+text = "Restart"
+
+[node name="QuitButton" type="Button" parent="ColorRect/GameOverContainer/Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_uhe4m")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wtwl5")
+theme_override_styles/hover = SubResource("StyleBoxTexture_qamf6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_orhvw")
+text = "Quit"
