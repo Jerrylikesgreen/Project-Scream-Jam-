@@ -9,6 +9,7 @@
 [node name="Box" instance=ExtResource("1_xkb4e")]
 script = ExtResource("2_ego7h")
 storage = Array[ExtResource("3_y6vpp")]([])
+_outside = false
 
 [node name="InteractibleObjectCollisionShape2D" parent="." index="0"]
 shape = SubResource("RectangleShape2D_2jyye")

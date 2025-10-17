@@ -9,6 +9,12 @@ var id;
 #one inventory slot
 @export var max_in_inv_slot:int = 1;
 
+@export var sprite: AtlasTexture
+
+enum Momento {NONE,  PROTECTION, STAMINA, SPEED, VISION}
+
+@export var momento: Momento = Momento.NONE
+
 ## if not empty, player will produce a speech bubble with the String during certain actions. 
 @export var player_dialog:String
 

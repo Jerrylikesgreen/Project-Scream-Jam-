@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://cpnopbjb3hix5" path="res://Scripts/retry.gd" id="4_prjnw"]
 
 [node name="GameOver" type="Control"]
+z_index = 4096
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

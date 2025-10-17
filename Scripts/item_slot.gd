@@ -36,8 +36,13 @@ func set_item(i:ItemResource,n:int = 1)->bool:
 			num_label.hide();
 		num_stored = n;
 		item = i;
-		item_texture.texture = i.image;
-		return true;
+		if item.sprite == null:
+			item_texture.texture = i.image;
+			return true;
+		else:
+			item_texture.texture = i.sprite;
+
+			return true;
 
 func empty()->bool:
 	return item == null || num_stored == 0;

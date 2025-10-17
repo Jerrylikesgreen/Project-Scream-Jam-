@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=3 format=3 uid="uid://xvlswtp1ah2a"]
+
+[ext_resource type="Script" uid="uid://4b01cqmglqbj" path="res://Scripts/item.gd" id="1_7f8fa"]
+[ext_resource type="Texture2D" uid="uid://dxkg0utmc3f5h" path="res://Resources/Items/momento_speed.tres" id="2_cfxd8"]
+
+[resource]
+script = ExtResource("1_7f8fa")
+name = "Momento - Vision"
+description = "I can see better now. "
+consumable = true
+sprite = ExtResource("2_cfxd8")
+momento = 4
+metadata/_custom_type_script = "uid://4b01cqmglqbj"

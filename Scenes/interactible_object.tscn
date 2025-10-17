@@ -11,7 +11,6 @@
 collision_layer = 12
 collision_mask = 128
 script = ExtResource("1_wb1i2")
-_outside = null
 
 [node name="InteractibleObjectCollisionShape2D" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
@@ -48,6 +47,5 @@ color = Color(0.75, 0, 0, 1)
 [node name="RedGlow" parent="." instance=ExtResource("4_ojmeb")]
 position = Vector2(0, -17)
 color = Color(0.75, 0, 0, 0.74509805)
-energy = 0.8
 shadow_enabled = false
 shadow_color = Color(0, 0, 0, 0.39215687)

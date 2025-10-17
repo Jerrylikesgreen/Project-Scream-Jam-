@@ -20,12 +20,22 @@ func action_complete() -> void:
 	interactible_object_progress_bar.visible = false
 	action_count = 0.0
 	emit_signal("point_gain", points)
-	if !storage.is_empty():
-		for items in storage:
-			InventoryManager.on_acquire_item(items)
-			print(items)
-			storage.clear()
-			var item_name := items.name
-			Events.display_player_message("Found a {id} in here".format({"id": item_name}))
+
+	if storage.is_empty():
+		return
+	if storage.size() > 1:
+		Events.display_player_message("Found multiple items in here!")
+
+
+	for item in storage:
+		if item and not item.name.is_empty():
+			InventoryManager.on_acquire_item(item)
+			print(item)
+			var item_name := item.name
+			Events.display_player_message("Found {id} in here".format({"id": item.name}))
+
+
+	storage.clear()
+
 
 	
