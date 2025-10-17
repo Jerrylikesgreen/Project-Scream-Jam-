@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 @onready var debug: Label = %Debug
 @onready var killer_sprite: AnimatedSprite2D = $KillerSprite
-@onready var patrol_area: Area2D 
+@onready var patrol_area: Area2D  = get_tree().current_scene.find_child("PatrolArea");
 @onready var vision: Area2D = %Vision
 @onready var hit_box: Area2D = %HitBox
 @onready var pathfinder:NavigationAgent2D = %PathfinderToPlayer
@@ -62,7 +62,9 @@ func _on_body_entered(body: Node2D)->void:
 		killer_state = KillerState.CHASING
 
 func _on_body_exited(body: Node2D)->void:
+	print("body exited")
 	if body.is_in_group("Player"):
+		print("player body exited")
 		player_ref = null
 
 func _idle_logic(delta: float) -> void:
@@ -140,9 +142,9 @@ func _attack_logic(_delta: float) -> void:
 	print("Attack")
 
 func _chase_logic(_delta: float) -> void:
-	
 	if player_ref == null || player_ref.hiding:
 		_pick_patrol_target_position();
+		print("Plauer ref is null")
 		killer_state = KillerState.PATROL
 		return
 	_target_position = player_ref.global_position
@@ -158,6 +160,13 @@ func _chase_logic(_delta: float) -> void:
 	var next_path_point:Vector2 = pathfinder.get_next_path_position();
 	var target_vel:Vector2 = current_position.direction_to(next_path_point)*speed;
 	velocity = target_vel;
+	if velocity.x != 0:
+		var facing_left = velocity.x < 0
+		killer_sprite.flip_h = !facing_left
+		if facing_left:
+			vision.rotation_degrees = 180.0
+		else:
+			vision.rotation_degrees = 0.0
 	move_and_slide();
 	#var to_target = _target_position - global_position
 	#if to_target.length() > 2.0:
@@ -213,12 +222,15 @@ func _pick_area() -> void:
 	
 func _patrol_logic(_delta: float) -> void:
 	killer_sprite.play("Moving")
-	var to_target = _target_position - global_position
+	pathfinder.target_position = _target_position;
+	var current_position:Vector2 = global_position;
+	var next_path_point:Vector2 = pathfinder.get_next_path_position();
+	var to_target = pathfinder.target_position - global_position
 	if to_target.length() > 2.0:
-		velocity = to_target.normalized() * speed
+		velocity = current_position.direction_to(next_path_point)*speed;
 		if velocity.x != 0:
 			var facing_left = velocity.x < 0
-			killer_sprite.flip_h = facing_left
+			killer_sprite.flip_h = !facing_left
 			if facing_left:
 				vision.rotation_degrees = 180.0
 			else:

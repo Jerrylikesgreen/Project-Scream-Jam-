@@ -57,10 +57,13 @@ func start_countdown() -> void:
 	print("Coundown Start")
 	if killer_active:
 		return
-
-	var timer = Timer.new()
+	if timer:
+		timer.start();
+		return
+	timer = Timer.new()
 	timer.autostart = true
 	timer.wait_time = 20.0
+	timer.one_shot = true
 	timer.timeout.connect(_on_killer_countdown_timeout)
 	var nodes = get_tree().get_nodes_in_group("Room")
 	for node in nodes:
