@@ -1,11 +1,9 @@
-[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://q81o75yvp6lg"]
+[gd_resource type="Resource" script_class="ItemResource" load_steps=2 format=3 uid="uid://q81o75yvp6lg"]
 
-[ext_resource type="Texture2D" uid="uid://ctqfymvu1ic6g" path="res://Assets/PNG/Monster (1).png" id="1_pxte2"]
-[ext_resource type="Script" path="res://Scripts/item.gd" id="2_1tmng"]
+[ext_resource type="Script" uid="uid://4b01cqmglqbj" path="res://Scripts/item.gd" id="2_1tmng"]
 
 [resource]
 script = ExtResource("2_1tmng")
 name = "placeholder_1"
 description = "place held"
-image = ExtResource("1_pxte2")
 metadata/_custom_type_script = "uid://4b01cqmglqbj"

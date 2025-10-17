@@ -1,7 +1,9 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bi5ow5diajwct"]
+[gd_resource type="Resource" script_class="KeyResource" load_steps=3 format=3 uid="uid://bi5ow5diajwct"]
 
 [ext_resource type="Script" uid="uid://fwvtxcwim8xh" path="res://Resources/Items/key_resource_script.gd" id="1_tsf8v"]
+[ext_resource type="Texture2D" uid="uid://duh47jfwqbl0u" path="res://Resources/Items/green_key_texture.tres" id="2_efxom"]
 
 [resource]
 script = ExtResource("1_tsf8v")
+sprite = ExtResource("2_efxom")
 metadata/_custom_type_script = "uid://4b01cqmglqbj"
