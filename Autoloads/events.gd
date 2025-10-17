@@ -45,8 +45,12 @@ func escape()->void:
 
 func game_over()->void:
 	var game_over_screen = GAME_OVER.instantiate()
+	var game_over_canvas = CanvasLayer.new();
+	game_over_canvas.add_child(game_over_screen);
+	get_tree().paused = true;
 	var scene_root = get_tree().get_current_scene()
-	scene_root.add_child(game_over_screen)
+	scene_root.add_child(game_over_canvas)
+	game_over_canvas.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
 
 func game_restart() -> void:
 	Globals.is_new_start = true
