@@ -117,7 +117,6 @@ func _physics_process(delta: float) -> void:
 	if input_vector.length() > 0 and _can_move:
 		emit_signal("sprite_change", "Moving")
 		_idle_signal = false
-		print("Signal Emit Moving")
 	else:
 		if _idle_signal == true:
 			return

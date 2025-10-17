@@ -16,7 +16,7 @@ signal point_gain
 ## stores the current flip state on this node so it persists
 @export var flip_state_h: bool = false
 @export var flip_state_v: bool = false
-
+@export var _outside:bool = false
 ## Flag for when the player  intereacts with obj
 @export var player_triggered:bool = false
 ## Flag for when the killer intereacts with obj
@@ -44,9 +44,12 @@ func _ready() -> void:
 	interactible_object_collision_shape_2d.set_shape(shape)
 
 func _process(_delta: float) -> void:
+	if _outside:
+			return
 	if is_acting:
 		if !active and player_triggered:
 			action_incomplete()
+
 
 		action_count += ( 100.0 / action_speed ) * _delta
 
@@ -71,7 +74,8 @@ func action_incomplete() ->void:
 	Events.display_player_message("（＞д＜）")
 	
 func action() -> void:
-	
+	if _outside:
+			return
 	if not is_acting:
 		is_acting = true
 		interactible_object_progress_bar.visible = true

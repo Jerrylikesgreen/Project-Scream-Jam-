@@ -28,7 +28,9 @@ var negative_player_dialog: Array[String] = [
 	"(>_<;) !!"
 ]
 
-
+func room_changed()->void:
+	emit_signal("room_changed_signal")
+	print(self.name, " > called room_changed_signal ")
 
 func player_hit_event() -> void:
 	emit_signal("player_hit_signal")

@@ -8,13 +8,12 @@ class_name StandingLamp extends InteractibleObject
 func _ready() -> void:
 	if outside:
 		lamp_point_light.light_bright_max = 0.8
+		
 
 func _process(_delta: float) -> void:
-	if outside:
-		
-		return
-		
 	if is_acting:
+		if outside:
+			return
 		if !active and player_triggered:
 			action_incomplete()
 

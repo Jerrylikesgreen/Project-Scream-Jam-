@@ -52,19 +52,6 @@ func _physics_process(_delta: float) -> void:
 		KillerState.ACTION:
 			_action_logic(_delta)  # <-- ADDED: handle ACTION each physics frame
 	
-func handle_transition_area(area: Area2D) -> void:
-	if not area.is_in_group("TransitionArea"):
-		return
-	var target_scene: PackedScene = area.transition_to_scene
-	if target_scene == null:
-		push_warning("Transition area missing target scene")
-		return
-	var state := {
-		"scene_packed": preload("res://Scenes/killer.tscn"),
-		"patrol_count": _count,
-	}
-	KillerManager.queue_killer_for_scene(target_scene, state)
-	queue_free()
 
 func _on_body_entered(body: Node2D)->void:
 	if body.is_in_group("Player"):

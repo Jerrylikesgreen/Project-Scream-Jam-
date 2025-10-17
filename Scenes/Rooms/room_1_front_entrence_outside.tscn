@@ -20,6 +20,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gdl5t"]
 
 [node name="Room1FrontEntrenceOutside" instance=ExtResource("1_on5we")]
+no_killer = true
 
 [node name="MoonLight" parent="Lighting" index="2"]
 energy = 1.1
@@ -52,6 +53,8 @@ position = Vector2(640, 74)
 [node name="StandingLamp" parent="Lamps" index="0" instance=ExtResource("4_vpfpd")]
 position = Vector2(477, 141)
 outside = true
+resource = null
+_outside = true
 active = false
 
 [node name="InteractibleObjectCollisionShape2D" parent="Lamps/StandingLamp" index="0"]
@@ -69,7 +72,9 @@ flicker_enabled = true
 [node name="StandingLamp2" parent="Lamps" index="1" instance=ExtResource("4_vpfpd")]
 position = Vector2(245, 141)
 outside = true
+resource = null
 flip_state_h = true
+_outside = true
 active = false
 
 [node name="InteractibleObjectCollisionShape2D" parent="Lamps/StandingLamp2" index="0"]
@@ -90,6 +95,8 @@ flicker_enabled = true
 [node name="StandingLamp3" parent="Lamps" index="2" instance=ExtResource("4_vpfpd")]
 position = Vector2(24, 141)
 outside = true
+resource = null
+_outside = true
 active = false
 
 [node name="InteractibleObjectCollisionShape2D" parent="Lamps/StandingLamp3" index="0"]
@@ -107,6 +114,8 @@ flicker_enabled = true
 [node name="StandingLamp4" parent="Lamps" index="3" instance=ExtResource("4_vpfpd")]
 position = Vector2(1097, 151)
 outside = true
+resource = null
+_outside = true
 active = false
 
 [node name="InteractibleObjectCollisionShape2D" parent="Lamps/StandingLamp4" index="0"]
@@ -124,7 +133,9 @@ flicker_enabled = true
 [node name="StandingLamp5" parent="Lamps" index="4" instance=ExtResource("4_vpfpd")]
 position = Vector2(816, 145)
 outside = true
+resource = null
 flip_state_h = true
+_outside = true
 active = false
 
 [node name="InteractibleObjectCollisionShape2D" parent="Lamps/StandingLamp5" index="0"]
@@ -152,6 +163,7 @@ label_settings = ExtResource("5_f8btm")
 
 [node name="Door" parent="." index="9" instance=ExtResource("4_f8btm")]
 position = Vector2(640, 128)
+_outside = false
 active = true
 
 [node name="SFX" parent="." index="10"]

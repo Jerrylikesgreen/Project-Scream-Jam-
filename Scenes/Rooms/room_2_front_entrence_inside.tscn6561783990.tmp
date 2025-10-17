@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://bylcboixemo1k"]
+[gd_scene load_steps=42 format=4 uid="uid://bylcboixemo1k"]
 
 [ext_resource type="PackedScene" uid="uid://ds6aoc55rpn5k" path="res://Scenes/Rooms/room.tscn" id="1_2ejop"]
 [ext_resource type="Script" uid="uid://qmcd1ffhdsof" path="res://Scripts/room_2_front_entrence_inside.gd" id="2_mrhaj"]
@@ -30,9 +30,6 @@
 [ext_resource type="Texture2D" uid="uid://bj4yp3fh1sjp7" path="res://Resources/Items/door_switch.tres" id="27_s7qha"]
 [ext_resource type="PackedScene" uid="uid://egwwowhbwaop" path="res://Scenes/transport_area.tscn" id="28_fubpg"]
 [ext_resource type="PackedScene" uid="uid://dao82y24rbjqd" path="res://Scenes/Rooms/room_3_warehouse.tscn" id="29_6idjy"]
-[ext_resource type="AudioStream" uid="uid://b55rmgq6tn1m" path="res://Assets/OGG/Character Walk Rotation 1 (SpookJam1).ogg" id="31_dfw01"]
-[ext_resource type="AudioStream" uid="uid://cx0p1f5qas2l1" path="res://Assets/OGG/Creepy Ping 2 (SpookJam1).ogg" id="32_dfw01"]
-[ext_resource type="AudioStream" uid="uid://d1ksau7prrtca" path="res://Assets/OGG/Creepy Ping (SpookJam1).ogg" id="33_oh8ws"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5tl0p"]
 size = Vector2(255, 176)
@@ -66,7 +63,7 @@ image = SubResource("PlaceholderTexture2D_37mkd")
 player_dialog = "I need to find a password."
 metadata/_custom_type_script = "uid://4b01cqmglqbj"
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jdkou"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6idjy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8pdxm"]
 size = Vector2(18.5, 49.5)
@@ -82,8 +79,11 @@ size = Vector2(29, 13.25)
 [node name="Room_2" instance=ExtResource("1_2ejop")]
 script = ExtResource("2_mrhaj")
 
+[node name="Shadows" parent="Lighting" index="0"]
+energy = 1.7
+
 [node name="MoonLight" parent="Lighting" index="2"]
-shadow_enabled = true
+color = Color(0.7553861, 0.75538605, 0.75538605, 1)
 
 [node name="PatrolArea" parent="." index="2"]
 z_index = 10
@@ -133,24 +133,20 @@ tile_map_data = PackedByteArray("AABcABMABQAaAAkAAABdABMABQAaAAkAAABcACoABQAaAAk
 [node name="LockerSide4" parent="Furniture" index="0" instance=ExtResource("10_wordl")]
 position = Vector2(65, 539)
 flip_state_h = true
-_outside = false
 
 [node name="LockerSide" parent="Furniture" index="1" instance=ExtResource("10_wordl")]
 position = Vector2(625, 600)
 flip_state_h = true
-_outside = false
 active = true
 
 [node name="LockerSide2" parent="Furniture" index="2" instance=ExtResource("10_wordl")]
 position = Vector2(65, 607)
 storage = Array[ExtResource("6_opfmq")]([SubResource("Resource_1vsvp")])
 flip_state_h = true
-_outside = false
 active = true
 
 [node name="LockerSide3" parent="Furniture" index="3" instance=ExtResource("10_wordl")]
 position = Vector2(1585, 144)
-_outside = false
 active = true
 
 [node name="Dressers" type="Node2D" parent="Furniture" index="4"]
@@ -195,53 +191,45 @@ position = Vector2(1572, 573)
 position = Vector2(403, 46)
 storage = Array[ExtResource("6_opfmq")]([ExtResource("11_gwmvl")])
 resource = ExtResource("9_mplsn")
-_outside = false
 active = true
 
 [node name="WoodenBox7" parent="Boxes" index="1" instance=ExtResource("8_x5hks")]
 position = Vector2(1320, 565)
 storage = Array[ExtResource("6_opfmq")]([ExtResource("13_s7qha")])
 resource = ExtResource("9_mplsn")
-_outside = false
 active = true
 
 [node name="WoodenBox2" parent="Boxes" index="2" instance=ExtResource("8_x5hks")]
 position = Vector2(156, 273)
 storage = Array[ExtResource("6_opfmq")]([ExtResource("9_smd2o")])
 resource = ExtResource("9_mplsn")
-_outside = false
 active = true
 
 [node name="WoodenBox3" parent="Boxes" index="3" instance=ExtResource("8_x5hks")]
 position = Vector2(927, 230)
 storage = Array[ExtResource("6_opfmq")]([ExtResource("15_gwmvl")])
 resource = ExtResource("9_mplsn")
-_outside = false
 active = true
 
 [node name="WoodenBox4" parent="Boxes" index="4" instance=ExtResource("8_x5hks")]
 position = Vector2(920, 570)
 resource = ExtResource("9_mplsn")
-_outside = false
 active = true
 
 [node name="WoodenBox5" parent="Boxes" index="5" instance=ExtResource("8_x5hks")]
 position = Vector2(1566, 249)
 resource = ExtResource("9_mplsn")
-_outside = false
 active = true
 
 [node name="WoodenBox6" parent="Boxes" index="6" instance=ExtResource("8_x5hks")]
 position = Vector2(1195, 388)
 storage = Array[ExtResource("6_opfmq")]([ExtResource("11_claeb")])
 resource = ExtResource("9_mplsn")
-_outside = false
 active = true
 
 [node name="OldToolbox" parent="Boxes" index="7" instance=ExtResource("12_bogq7")]
 position = Vector2(1364, 551)
 storage = Array[ExtResource("6_opfmq")]([SubResource("Resource_d2gdd")])
-_outside = false
 
 [node name="Lights" type="Node2D" parent="." index="6"]
 
@@ -263,79 +251,66 @@ region_rect = Rect2(282, 19, 28, 10)
 position = Vector2(846, 227)
 scale = Vector2(1.2, 1.2)
 resource = null
-_outside = false
 
 [node name="StandingLamp8" parent="Lights/StandingLamps" index="1" instance=ExtResource("11_x5hks")]
 position = Vector2(567, 312)
 scale = Vector2(1.2, 1.2)
 resource = null
-_outside = false
 
 [node name="StandingLamp9" parent="Lights/StandingLamps" index="2" instance=ExtResource("11_x5hks")]
 position = Vector2(454, 608)
 scale = Vector2(1.2, 1.2)
 resource = null
-_outside = false
 
 [node name="StandingLamp10" parent="Lights/StandingLamps" index="3" instance=ExtResource("11_x5hks")]
 position = Vector2(1139, 623)
 scale = Vector2(1.2, 1.2)
 resource = null
-_outside = false
 
 [node name="StandingLamp11" parent="Lights/StandingLamps" index="4" instance=ExtResource("11_x5hks")]
 position = Vector2(1159, 249)
 scale = Vector2(1.2, 1.2)
 resource = null
-_outside = false
 
 [node name="StandingLamp2" parent="Lights/StandingLamps" index="5" instance=ExtResource("11_x5hks")]
 position = Vector2(1411, 148)
 scale = Vector2(1.2, 1.2)
 resource = null
-_outside = false
 
 [node name="StandingLamp3" parent="Lights/StandingLamps" index="6" instance=ExtResource("11_x5hks")]
 position = Vector2(1576, 576)
 scale = Vector2(1.2, 1.2)
 resource = null
-_outside = false
 
 [node name="StandingLamp4" parent="Lights/StandingLamps" index="7" instance=ExtResource("11_x5hks")]
 position = Vector2(180, 560)
 scale = Vector2(1.2, 1.2)
 resource = null
-_outside = false
 
 [node name="StandingLamp5" parent="Lights/StandingLamps" index="8" instance=ExtResource("11_x5hks")]
 position = Vector2(682, 593)
 scale = Vector2(1.2, 1.2)
 resource = null
-_outside = false
 
 [node name="StandingLamp6" parent="Lights/StandingLamps" index="9" instance=ExtResource("11_x5hks")]
 position = Vector2(814, 442.00003)
 scale = Vector2(1.2, 1.2)
 resource = null
-_outside = false
 
 [node name="StandingLamp12" parent="Lights/StandingLamps" index="10" instance=ExtResource("11_x5hks")]
 position = Vector2(936, 83)
 scale = Vector2(1.2, 1.2)
 resource = null
-_outside = false
 
 [node name="StandingLamp13" parent="Lights/StandingLamps" index="11" instance=ExtResource("11_x5hks")]
 position = Vector2(1148, 426)
 scale = Vector2(1.2, 1.2)
 resource = null
-_outside = false
 
 [node name="StandingLamp7" parent="Lights/StandingLamps" index="12" instance=ExtResource("11_x5hks")]
 position = Vector2(307, 262.00003)
 scale = Vector2(1.2, 1.2)
 resource = null
-_outside = false
 
 [node name="PointLight" parent="Lights" index="2" instance=ExtResource("10_x5hks")]
 position = Vector2(1157, -58)
@@ -346,24 +321,20 @@ energy = 0.9
 
 [node name="EscapeDoor" parent="Doors" index="0" instance=ExtResource("7_k3fpo")]
 position = Vector2(580, -40)
-_outside = false
 
 [node name="LockedDoor" parent="Doors" index="1" instance=ExtResource("17_wlyl6")]
 position = Vector2(1120, -32)
 lock_uid = 10
-_outside = false
 
 [node name="LockedDoor2" parent="Doors" index="2" instance=ExtResource("17_wlyl6")]
 position = Vector2(1488, 720)
 lock_uid = 3
-_outside = false
 action_speed = 3.0
 points = 500
 
 [node name="LockedDoor3" parent="Doors" index="3" instance=ExtResource("17_wlyl6")]
 position = Vector2(1489, 352)
 lock_uid = 3
-_outside = false
 action_speed = 3.0
 points = 500
 
@@ -375,13 +346,12 @@ script = ExtResource("22_dhpm4")
 position = Vector2(12, 3)
 script = ExtResource("23_8pdxm")
 resource = SubResource("Resource_8pdxm")
-_outside = false
 action_speed = 3.0
 points = 1000
 
 [node name="InteractibleObjectCollisionShape2D" parent="Switches/switch" index="0"]
 position = Vector2(93, -32)
-shape = SubResource("RectangleShape2D_jdkou")
+shape = SubResource("RectangleShape2D_6idjy")
 
 [node name="InteractibleObjectSprite2D" parent="Switches/switch" index="1"]
 position = Vector2(9.160003, 1.1600037)
@@ -419,15 +389,10 @@ position = Vector2(1, 17)
 shape = SubResource("RectangleShape2D_deyxv")
 
 [node name="SFX" parent="." index="12"]
-bus = &"SFX"
-tracks = Dictionary[String, AudioStream]({
-"Moving": ExtResource("31_dfw01"),
-"Ping": ExtResource("33_oh8ws"),
-"UI": ExtResource("32_dfw01")
-})
-min_intervals = {
-"Moving": 0.3
-}
+default_volume_db = 1.0
+
+[node name="BgmNode" parent="." index="13"]
+volume_db = -5.0
 
 [editable path="PatrolArea"]
 [editable path="Lights/EntrenceLight/ObjectNonInteractive"]

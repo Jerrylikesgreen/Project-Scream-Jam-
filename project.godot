@@ -53,6 +53,7 @@ TransitionArea="Area that will teleport either Player or Killer to a new locatio
 EntryPoint="Area that killer/player will tp to when entering Scene. "
 Switch="Switch"
 "Patrol Area"="Patrol Area"
+Room="Room"
 
 [gui]
 

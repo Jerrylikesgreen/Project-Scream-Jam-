@@ -3,7 +3,7 @@ class_name Room extends Node2D
 
 @onready var spawn_point: Node2D = %SpawnPoint
 var killer_spawn_countdown: Timer
-
+@export var no_killer:bool = false 
 
 
 func _ready() -> void:
@@ -12,19 +12,13 @@ func _ready() -> void:
 	add_child(Globals.player)
 	Globals.player.global_position = spawn_point.global_position
 	KillerManager.active_room = self
-
-
-		
-
-	
-
-func _on_killer_countdown_timeout() ->void:
-	if KillerManager.killer_count > 0:
+	Events.room_changed_signal.connect(_on_room_change_signal)
+	if no_killer:
 		return
-	var killer_instance =  KillerManager.KILLER.instantiate()
-	print(killer_instance)
-	add_child(killer_instance)
-	KillerManager.killer_count += 1
-	KillerManager.killer = killer_instance
-	killer_instance.position = spawn_point.global_position
-	KillerManager.killer_in_other_room = false
+	KillerManager.start_countdown()
+
+
+func _on_room_change_signal()->void:
+	if KillerManager.active_room == self:
+		return
+	KillerManager.active_room = self

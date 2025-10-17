@@ -13,7 +13,7 @@ var killer_in_other_room:bool = false:
 var killer_active:bool = false
 var active_room: Room
 var killer_body:Killerbody = null;
-
+var timer:Timer
 var killer:Killer = null:
 	set(k):
 		killer = k;
@@ -27,26 +27,46 @@ var killer_count:int = 0
 
 
 func _ready() -> void:
-	Events.room_changed_signal.connect(_on_room_change_signal)
-	if killer_active == false:
-		killer = KILLER.instantiate()
-		var killer_countdown:Timer = Timer.new()
-		killer_countdown.set_one_shot(true)
-		killer_countdown.set_wait_time(5.0)
-		add_child(killer_countdown)
-		killer_countdown.timeout.connect(_on_killer_countdown_timeout)
+	print("Ready ->" , self.name)
 
-func _on_room_change_signal()->void:
-	pass
-		## run logic to spawn killer. 
+
+func _spawn_killer()->void:
+	var room = get_tree().get_first_node_in_group("Room")
+	if killer:
+		killer.global_position = room.spawn_point.global_position
+		print( self.name, 
+		"-> Killers Positioin:  " ,killer.global_position,
+		" Spawnpoint Position  :", room.spawn_point.global_position)
+	else:
+		killer = KILLER.instantiate()
+
+		room.add_child(killer) 
+		killer.global_position = room.spawn_point.global_position
+		print( self.name, 
+		"-> Killers Positioin:  " ,killer.global_position,
+		" Spawnpoint Position  :", room.spawn_point.global_position)
+	
 
 
 func _on_killer_countdown_timeout()->void:
-	active_room.add_child(killer)
+	_spawn_killer()
 	killer_active = true
-	killer.global_position = active_room.spawn_point.global_position
-	killer_count += 1
 
+
+func start_countdown() -> void:
+	print("Coundown Start")
+	if killer_active:
+		return
+
+	var timer = Timer.new()
+	timer.autostart = true
+	timer.wait_time = 20.0
+	timer.timeout.connect(_on_killer_countdown_timeout)
+	var nodes = get_tree().get_nodes_in_group("Room")
+	for node in nodes:
+		if node is Room:
+			node.add_child(timer)
+	
 
 
 func player_in_line_of_sight(player_body:PlayerBody):
@@ -62,7 +82,7 @@ func player_in_line_of_sight(player_body:PlayerBody):
 		ray.collide_with_areas = false;
 		ray.set_collision_mask_value(6,true);
 		ray.set_collision_mask_value(1,true);
-		ray.collision_mask = 33; #1 + 32 = 2^0 + 2^5 = layers 1 and 6(players and walls)
+		ray.collision_mask = 33; #1 + 32 = 2^0 + 2^5 = layers 1 and 6(players and walls) I hate bit math. 
 		#need to wait for physics frames to elapse
 		#before seeing collisions
 		await get_tree().physics_frame;

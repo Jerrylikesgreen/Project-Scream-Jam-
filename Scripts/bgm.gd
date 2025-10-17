@@ -22,13 +22,6 @@ var _bus_idx: int = -1
 var _tw_node: Tween    = null  # for node volume fades (track x-fades)
 var _tw_bus:  Tween    = null  # for bus volume fades (slider moves)
 
-func _ready() -> void:
-	bus = "BGM"
-	_bus_idx = AudioServer.get_bus_index("BGM")
-	if _bus_idx < 0:
-		push_warning("Audio bus 'BGM' not found; falling back to Master.")
-		_bus_idx = AudioServer.get_bus_index("Master")
-	play()
 
 
 func set_fade_enabled(enabled: bool) -> void:
@@ -86,8 +79,6 @@ func _fade_in(t: float) -> void:
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
 
-	# Start from current volume (in case we were mid-fade)
-	start_db = clamp(volume_db, -80.0, 0.0)
 	if not playing:
 		volume_db = start_db if start_db <= 0.0 else -30.0
 		play()
