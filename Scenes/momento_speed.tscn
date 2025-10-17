@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://vrnslhtpnume"]
+
+[ext_resource type="Texture2D" uid="uid://dxkg0utmc3f5h" path="res://Resources/Items/momento_speed.tres" id="1_t54ni"]
+
+[node name="MomentoSpeed" type="Sprite2D"]
+texture = ExtResource("1_t54ni")
+region_enabled = true
+region_rect = Rect2(11, 15, 23, 16)

@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=33 format=3 uid="uid://bvuugeo67886t"]
+[gd_resource type="TileSet" load_steps=35 format=3 uid="uid://bvuugeo67886t"]
 
 [ext_resource type="Texture2D" uid="uid://bbbplnpqlea2s" path="res://Assets/TileSets/floors walls and stairs.png" id="1_qke5e"]
 [ext_resource type="Texture2D" uid="uid://peh5uvww4avj" path="res://Assets/PNG/Interiors_free_32x32.png" id="1_ra044"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cispvaoil2iep" path="res://Assets/TileSets/spritesheet_hospital_lab.png" id="7_dh2ko"]
 [ext_resource type="Texture2D" uid="uid://rksxcd6xuk7q" path="res://Assets/TileSets/spritesheet_hospital_maternity.png" id="8_icw8x"]
 [ext_resource type="Texture2D" uid="uid://ct8jnan8pnpp8" path="res://Assets/TileSets/rustic_furnitureset_withshadow.png" id="8_xss8a"]
+[ext_resource type="Texture2D" uid="uid://c7cxcn1spgryk" path="res://Assets/Misc/Bed.png" id="9_by7my"]
 [ext_resource type="Texture2D" uid="uid://dk1wdb3m4pl0i" path="res://Assets/TileSets/1_100x100px.png" id="12_hu833"]
 [ext_resource type="Texture2D" uid="uid://qo3mfornot01" path="res://Assets/TileSets/2_100x100px.png" id="13_by7my"]
 
@@ -7757,6 +7758,27 @@ texture = ExtResource("8_xss8a")
 22:17/0 = 0
 23:17/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ablwd"]
+texture = ExtResource("9_by7my")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_854tm"]
 texture = ExtResource("3_vwyar")
 0:0/0 = 0
@@ -11560,3 +11582,4 @@ sources/12 = SubResource("TileSetAtlasSource_l2nid")
 sources/13 = SubResource("TileSetAtlasSource_o355a")
 sources/14 = SubResource("TileSetAtlasSource_en4o6")
 sources/15 = SubResource("TileSetAtlasSource_uxrnf")
+sources/16 = SubResource("TileSetAtlasSource_ablwd")

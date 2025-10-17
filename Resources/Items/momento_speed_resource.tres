@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=3 format=3 uid="uid://wanbn1r6e41k"]
+
+[ext_resource type="Script" uid="uid://4b01cqmglqbj" path="res://Scripts/item.gd" id="2_n7x5s"]
+[ext_resource type="Texture2D" uid="uid://cfvtv4k6n1l4t" path="res://Resources/Items/momento_speed_texture.tres" id="2_u042x"]
+
+[resource]
+script = ExtResource("2_n7x5s")
+name = "Momento - Speed"
+description = "I feel safe with this for some reason..."
+consumable = true
+sprite = ExtResource("2_u042x")
+momento = 3
+player_dialog = "I feel safe with this for some reason..."
+metadata/_custom_type_script = "uid://4b01cqmglqbj"

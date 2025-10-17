@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bru434uidj4ty"]
+
+[node name="MomentoProtectioSprite" type="Sprite2D"]
+region_enabled = true
+region_rect = Rect2(101, 15, 23, 16)

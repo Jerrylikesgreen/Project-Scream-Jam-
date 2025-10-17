@@ -111,6 +111,7 @@ func _drag(index:int):
 	dragging = true;
 	if inv_contents.contents[index] == null:
 		return;
+	
 	var item:ItemResource = inv_contents.contents[index];
 	drag_sprite = Sprite2D.new()
 	drag_sprite.texture = item.image;

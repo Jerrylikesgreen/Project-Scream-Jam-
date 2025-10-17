@@ -46,6 +46,9 @@ func _spawn_killer()->void:
 		"-> Killers Positioin:  " ,killer.global_position,
 		" Spawnpoint Position  :", room.spawn_point.global_position)
 	
+func stun()->void:
+	killer.stun
+	pass
 
 
 func _on_killer_countdown_timeout()->void:

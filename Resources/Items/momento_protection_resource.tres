@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=3 format=3 uid="uid://dvd18lhscog76"]
+
+[ext_resource type="Script" uid="uid://4b01cqmglqbj" path="res://Scripts/item.gd" id="2_ibvie"]
+[ext_resource type="Texture2D" uid="uid://b57uxefa7k2it" path="res://Resources/Items/protection_atlis.tres" id="3_ibvie"]
+
+[resource]
+script = ExtResource("2_ibvie")
+name = "Momento - Protection"
+description = "I feel safe with this for some reason..."
+consumable = true
+sprite = ExtResource("3_ibvie")
+momento = 1
+player_dialog = "I feel safe with this for some reason..."
+metadata/_custom_type_script = "uid://4b01cqmglqbj"

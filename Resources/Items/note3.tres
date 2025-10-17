@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="ItemResource" load_steps=3 format=3 uid="uid://b8a34x3c6w27f"]
 
-[ext_resource type="Texture2D" uid="uid://dsje07ax0lwei" path="res://Assets/PNG/Card_Generic_v2.png" id="1_1ghq4"]
+[ext_resource type="Texture2D" uid="uid://478y8gc7gtqp" path="res://Resources/Items/clip_baord_texture.tres" id="2_cespl"]
 [ext_resource type="Script" uid="uid://4b01cqmglqbj" path="res://Scripts/item.gd" id="2_xt10m"]
 
 [resource]
 script = ExtResource("2_xt10m")
 name = "Note"
 description = "PIN = ?,?,8,9"
-image = ExtResource("1_1ghq4")
+sprite = ExtResource("2_cespl")
 metadata/_custom_type_script = "uid://4b01cqmglqbj"
