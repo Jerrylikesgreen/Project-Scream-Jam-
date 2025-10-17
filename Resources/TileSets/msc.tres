@@ -8257,7 +8257,6 @@ texture = ExtResource("9_8kcgv")
 20:21/0 = 0
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8kcgv"]
-load_path = "res://.godot/imported/rustic_room_door_tiles.png-7148b2488b2d6733f3000928fddf687f.ctex"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i2tq8"]
 texture = SubResource("CompressedTexture2D_8kcgv")
