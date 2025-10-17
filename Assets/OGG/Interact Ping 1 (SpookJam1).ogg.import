@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b0pj0gg8u4c0h"
+path="res://.godot/imported/Interact Ping 1 (SpookJam1).ogg-9a40f1bc225dd8fba8d0700a73599303.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/OGG/Interact Ping 1 (SpookJam1).ogg"
+dest_files=["res://.godot/imported/Interact Ping 1 (SpookJam1).ogg-9a40f1bc225dd8fba8d0700a73599303.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

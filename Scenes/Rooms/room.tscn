@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ds6aoc55rpn5k"]
+[gd_scene load_steps=20 format=3 uid="uid://ds6aoc55rpn5k"]
 
 [ext_resource type="Script" uid="uid://cf6twwk0k0dtx" path="res://Scripts/room.gd" id="1_dyxu8"]
 [ext_resource type="PackedScene" uid="uid://do85javim3v33" path="res://Scenes/patrol_area.tscn" id="2_c2haw"]
@@ -9,7 +9,15 @@
 [ext_resource type="TileSet" uid="uid://d3ui3hwm7rqkr" path="res://Resources/TileSets/msc.tres" id="6_qvido"]
 [ext_resource type="Script" uid="uid://bkt56jhgdpfmr" path="res://Scripts/sfx.gd" id="8_y264i"]
 [ext_resource type="PackedScene" uid="uid://d07kyn1y07o7r" path="res://Scenes/bgm.tscn" id="9_5wmef"]
+[ext_resource type="AudioStream" uid="uid://b55rmgq6tn1m" path="res://Assets/OGG/Character Walk Rotation 1 (SpookJam1).ogg" id="9_bai86"]
 [ext_resource type="AudioStream" uid="uid://djgpexxlsc3oy" path="res://Assets/OGG/placeholder_bgm.ogg" id="9_vjn8x"]
+[ext_resource type="AudioStream" uid="uid://b0pj0gg8u4c0h" path="res://Assets/OGG/Interact Ping 1 (SpookJam1).ogg" id="10_7b2ry"]
+[ext_resource type="AudioStream" uid="uid://c3sag4pxxwifn" path="res://Assets/OGG/Room Ambience Loop (ScareJam 1).ogg" id="11_7rqus"]
+[ext_resource type="AudioStream" uid="uid://cx0p1f5qas2l1" path="res://Assets/OGG/Creepy Ping 2 (SpookJam1).ogg" id="11_8j1ji"]
+[ext_resource type="AudioStream" uid="uid://48e7fwpxyd83" path="res://Assets/OGG/Chase Music (ScareJam 1).ogg" id="12_8io4b"]
+[ext_resource type="AudioStream" uid="uid://d1ksau7prrtca" path="res://Assets/OGG/Creepy Ping (SpookJam1).ogg" id="12_u18k6"]
+[ext_resource type="AudioStream" uid="uid://bctkcebvnqgsh" path="res://Assets/OGG/Spotted! (ScareJam 1).ogg" id="13_1g4dh"]
+[ext_resource type="AudioStream" uid="uid://cgi2oy3lsjds2" path="res://Assets/OGG/Spotted! Buildup (ScareJam 1).ogg" id="14_i540k"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_dyxu8"]
 polygon = PackedVector2Array(3105, -1127, 3227, 2064, -1277, 1995, -1358, -1153)
@@ -40,8 +48,8 @@ color = Color(0.021434637, 0.021434635, 0.021434633, 1)
 [node name="Lighting" type="Node2D" parent="."]
 
 [node name="Shadows" type="DirectionalLight2D" parent="Lighting"]
-color = Color(0.13682574, 0.13682574, 0.13682568, 0.8901961)
-energy = 3.1
+color = Color(0.07815645, 0.07815645, 0.07815645, 1)
+energy = 2.0
 blend_mode = 1
 shadow_enabled = true
 shadow_color = Color(0.51718444, 0.5171845, 0.51718444, 0.87058824)
@@ -81,7 +89,15 @@ position = Vector2(464, 93)
 [node name="SFX" type="AudioStreamPlayer2D" parent="."]
 script = ExtResource("8_y264i")
 tracks = Dictionary[String, AudioStream]({
-"Moving": ExtResource("9_vjn8x")
+"Buildup": ExtResource("14_i540k"),
+"Moving": ExtResource("9_bai86"),
+"Ping1": ExtResource("10_7b2ry"),
+"Ping2": ExtResource("11_8j1ji"),
+"Spotted": ExtResource("13_1g4dh"),
+"UI": ExtResource("12_u18k6")
 })
 
 [node name="BgmNode" parent="." instance=ExtResource("9_5wmef")]
+stream = ExtResource("11_7rqus")
+fade_enabled = false
+tracks = Array[AudioStream]([ExtResource("9_vjn8x"), ExtResource("11_7rqus"), ExtResource("12_8io4b")])

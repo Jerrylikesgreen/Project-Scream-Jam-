@@ -11,7 +11,7 @@ signal player_message(new_message: String)
 signal pin_entered_signal(v:bool)
 signal play_sfx_signal(track: String, pos: Vector2 , overlap: bool , restart_same: bool )
 signal room_changed_signal
-
+signal play_bgm_signal(track:int)
 var _msg_default_cooldown := 30.0           # seconds; change as you like
 var _msg_last_until: Dictionary = {}        # text -> show-again time (unix seconds)
 var game_start:bool = true
@@ -27,6 +27,9 @@ var negative_player_dialog: Array[String] = [
 	"(*_*)",
 	"(>_<;) !!"
 ]
+
+func play_bgm(track:int)->void:
+	emit_signal("play_bgm_signal", track)
 
 func room_changed()->void:
 	emit_signal("room_changed_signal")

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bctkcebvnqgsh"
+path="res://.godot/imported/Spotted! (ScareJam 1).ogg-9f90bb4f61047cfa84c0c4cea0275fa0.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/OGG/Spotted! (ScareJam 1).ogg"
+dest_files=["res://.godot/imported/Spotted! (ScareJam 1).ogg-9f90bb4f61047cfa84c0c4cea0275fa0.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

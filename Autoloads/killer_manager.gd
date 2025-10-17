@@ -47,11 +47,15 @@ func _spawn_killer()->void:
 		" Spawnpoint Position  :", room.spawn_point.global_position)
 	
 func stun()->void:
-	killer.stun
+	killer.stun()
+	Events.play_bgm(1)
 	pass
-
+var _count: int =0
 
 func _on_killer_countdown_timeout()->void:
+	_count =+ 1
+	if _count >2 and  _count < 4:
+		Events.play_bgm(2)
 	_spawn_killer()
 	killer_active = true
 
@@ -77,6 +81,7 @@ func start_countdown() -> void:
 
 func player_in_line_of_sight(player_body:PlayerBody):
 	print("line_of_sight called")
+	Events.sfx_play("Buildup", killer.global_position, false, false)
 	if(killer != null):
 		print("killer not null")
 		var ray:RayCast2D = RayCast2D.new();
@@ -98,6 +103,7 @@ func player_in_line_of_sight(player_body:PlayerBody):
 		if(ray.is_colliding()):
 			print(ray.get_collider().name);
 			if ray.get_collider() == player_body:
+				Events.sfx_play("Spotted", killer.global_position, false, false)
 				ray.queue_free();
 				return true
 		ray.queue_free();

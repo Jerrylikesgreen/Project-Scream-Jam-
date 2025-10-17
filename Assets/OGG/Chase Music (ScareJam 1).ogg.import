@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://48e7fwpxyd83"
+path="res://.godot/imported/Chase Music (ScareJam 1).ogg-c668fd441250bdf380161eb788ae1fda.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/OGG/Chase Music (ScareJam 1).ogg"
+dest_files=["res://.godot/imported/Chase Music (ScareJam 1).ogg-c668fd441250bdf380161eb788ae1fda.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
