@@ -189,7 +189,8 @@ debug_color = Color(0.662523, 0.40550858, 0.812828, 0.41960785)
 
 [node name="PlayerLight" parent="PlayerBody" instance=ExtResource("8_8erm5")]
 position = Vector2(-3, -2)
-color = Color(0.7490196, 0.72156864, 0.72156864, 0.4117647)
+color = Color(0.7490196, 0.7490196, 0.7490196, 0.4627451)
+energy = 0.87
 shadow_enabled = false
 texture_scale = 0.75
 

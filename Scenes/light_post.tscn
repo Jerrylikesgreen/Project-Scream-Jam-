@@ -22,6 +22,8 @@ position = Vector2(0, 8)
 [node name="Pointlight" type="PointLight2D" parent="." index="1"]
 position = Vector2(5, -9)
 energy = 0.8
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.6156863)
 texture = ExtResource("2_6a0t3")
 script = ExtResource("2_7nkrh")
 flicker_enabled = true

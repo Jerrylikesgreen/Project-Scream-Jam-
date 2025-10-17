@@ -1,12 +1,4 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-[gd_scene load_steps=46 format=4 uid="uid://bylcboixemo1k"]
-=======
-[gd_scene load_steps=49 format=4 uid="uid://bylcboixemo1k"]
->>>>>>> Stashed changes
-=======
-[gd_scene load_steps=49 format=4 uid="uid://bylcboixemo1k"]
->>>>>>> Stashed changes
+[gd_scene load_steps=50 format=4 uid="uid://bylcboixemo1k"]
 
 [ext_resource type="PackedScene" uid="uid://ds6aoc55rpn5k" path="res://Scenes/Rooms/room.tscn" id="1_2ejop"]
 [ext_resource type="Script" uid="uid://qmcd1ffhdsof" path="res://Scripts/room_2_front_entrence_inside.gd" id="2_mrhaj"]
@@ -17,7 +9,6 @@
 [ext_resource type="Script" uid="uid://4b01cqmglqbj" path="res://Scripts/item.gd" id="6_opfmq"]
 [ext_resource type="PackedScene" uid="uid://bet4fsfdfx3tk" path="res://Scenes/escape_door.tscn" id="7_k3fpo"]
 [ext_resource type="PackedScene" uid="uid://b5k46f6ff2l7l" path="res://Scenes/box.tscn" id="8_x5hks"]
-[ext_resource type="Resource" uid="uid://c0moxi7totggp" path="res://Resources/Interactables/wooden_box.tres" id="9_mplsn"]
 [ext_resource type="PackedScene" uid="uid://rruityo8xk0v" path="res://Scenes/locker_side.tscn" id="10_wordl"]
 [ext_resource type="PackedScene" uid="uid://bfxp1tp6wevhl" path="res://Scenes/point_light.tscn" id="10_x5hks"]
 [ext_resource type="Resource" uid="uid://ccnj0408cq768" path="res://Resources/Items/old_key_10.tres" id="11_claeb"]
@@ -46,6 +37,7 @@
 [ext_resource type="AudioStream" uid="uid://b55rmgq6tn1m" path="res://Assets/OGG/Character Walk Rotation 1 (SpookJam1).ogg" id="31_dfw01"]
 [ext_resource type="AudioStream" uid="uid://cx0p1f5qas2l1" path="res://Assets/OGG/Creepy Ping 2 (SpookJam1).ogg" id="32_dfw01"]
 [ext_resource type="AudioStream" uid="uid://d1ksau7prrtca" path="res://Assets/OGG/Creepy Ping (SpookJam1).ogg" id="33_oh8ws"]
+[ext_resource type="AudioStream" uid="uid://c3sag4pxxwifn" path="res://Assets/OGG/Room Ambience Loop (ScareJam 1).ogg" id="38_ja5nt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5tl0p"]
 size = Vector2(255, 176)
@@ -79,7 +71,7 @@ image = SubResource("PlaceholderTexture2D_37mkd")
 player_dialog = "I need to find a password."
 metadata/_custom_type_script = "uid://4b01cqmglqbj"
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_oh8ws"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fwj5x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8pdxm"]
 size = Vector2(18.5, 49.5)
@@ -235,43 +227,36 @@ flip_state_h = true
 [node name="WoodenBox" parent="Boxes" index="0" instance=ExtResource("8_x5hks")]
 position = Vector2(403, 46)
 storage = Array[ExtResource("6_opfmq")]([ExtResource("11_gwmvl"), ExtResource("14_oh8ws")])
-resource = ExtResource("9_mplsn")
 active = true
 
 [node name="WoodenBox7" parent="Boxes" index="1" instance=ExtResource("8_x5hks")]
 position = Vector2(1320, 565)
 storage = Array[ExtResource("6_opfmq")]([ExtResource("13_s7qha")])
-resource = ExtResource("9_mplsn")
 active = true
 
 [node name="WoodenBox2" parent="Boxes" index="2" instance=ExtResource("8_x5hks")]
 position = Vector2(156, 273)
 storage = Array[ExtResource("6_opfmq")]([ExtResource("16_dfw01")])
-resource = ExtResource("9_mplsn")
 active = true
 
 [node name="WoodenBox3" parent="Boxes" index="3" instance=ExtResource("8_x5hks")]
 position = Vector2(927, 230)
 storage = Array[ExtResource("6_opfmq")]([ExtResource("15_gwmvl"), ExtResource("19_fwj5x")])
-resource = ExtResource("9_mplsn")
 active = true
 
 [node name="WoodenBox4" parent="Boxes" index="4" instance=ExtResource("8_x5hks")]
 position = Vector2(920, 570)
 storage = Array[ExtResource("6_opfmq")]([ExtResource("19_ytfsi")])
-resource = ExtResource("9_mplsn")
 active = true
 
 [node name="WoodenBox5" parent="Boxes" index="5" instance=ExtResource("8_x5hks")]
 position = Vector2(1566, 249)
 storage = Array[ExtResource("6_opfmq")]([ExtResource("16_dfw01")])
-resource = ExtResource("9_mplsn")
 active = true
 
 [node name="WoodenBox6" parent="Boxes" index="6" instance=ExtResource("8_x5hks")]
 position = Vector2(1195, 388)
 storage = Array[ExtResource("6_opfmq")]([ExtResource("11_claeb"), ExtResource("16_dfw01")])
-resource = ExtResource("9_mplsn")
 active = true
 
 [node name="OldToolbox" parent="Boxes" index="7" instance=ExtResource("12_bogq7")]
@@ -398,7 +383,7 @@ points = 1000
 
 [node name="InteractibleObjectCollisionShape2D" parent="Switches/switch" index="0"]
 position = Vector2(93, -32)
-shape = SubResource("RectangleShape2D_oh8ws")
+shape = SubResource("RectangleShape2D_fwj5x")
 
 [node name="InteractibleObjectSprite2D" parent="Switches/switch" index="1"]
 position = Vector2(9.160003, 1.1600037)
@@ -417,7 +402,7 @@ scale = Vector2(0.99999994, 1)
 shape = SubResource("RectangleShape2D_8pdxm")
 
 [node name="SpawnPoint" parent="." index="9"]
-position = Vector2(580, 12)
+position = Vector2(577, 26)
 
 [node name="TransportArea" parent="." index="10"]
 position = Vector2(-74, -2)
@@ -445,6 +430,9 @@ tracks = Dictionary[String, AudioStream]({
 min_intervals = {
 "Moving": 0.3
 }
+
+[node name="BgmNode" parent="." index="13"]
+stream = ExtResource("38_ja5nt")
 
 [editable path="PatrolArea"]
 [editable path="Lights/EntrenceLight/ObjectNonInteractive"]

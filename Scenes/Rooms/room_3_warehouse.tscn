@@ -28,7 +28,6 @@
 
 [node name="StandingLamp" parent="Lighting" index="3" instance=ExtResource("2_waa3u")]
 position = Vector2(418, 174)
-_outside = false
 
 [node name="InteractibleObjectCollisionShape2D" parent="Lighting/StandingLamp" index="0"]
 shape = SubResource("RectangleShape2D_8mim1")
@@ -41,7 +40,6 @@ region_rect = Rect2(40, 8, 24, 40)
 
 [node name="StandingLamp2" parent="Lighting" index="4" instance=ExtResource("2_waa3u")]
 position = Vector2(657, 288)
-_outside = false
 
 [node name="InteractibleObjectCollisionShape2D" parent="Lighting/StandingLamp2" index="0"]
 shape = SubResource("RectangleShape2D_c0ke5")
@@ -55,7 +53,6 @@ region_rect = Rect2(40, 8, 24, 40)
 [node name="StandingLamp3" parent="Lighting" index="5" instance=ExtResource("2_waa3u")]
 position = Vector2(198, 383)
 flip_state_h = true
-_outside = false
 
 [node name="InteractibleObjectCollisionShape2D" parent="Lighting/StandingLamp3" index="0"]
 shape = SubResource("RectangleShape2D_5qvgv")
@@ -70,7 +67,6 @@ region_rect = Rect2(40, 8, 24, 40)
 [node name="StandingLamp4" parent="Lighting" index="6" instance=ExtResource("2_waa3u")]
 position = Vector2(163, 180)
 flip_state_h = true
-_outside = false
 
 [node name="InteractibleObjectCollisionShape2D" parent="Lighting/StandingLamp4" index="0"]
 shape = SubResource("RectangleShape2D_b76ii")
@@ -84,7 +80,6 @@ region_rect = Rect2(40, 8, 24, 40)
 
 [node name="StandingLamp5" parent="Lighting" index="7" instance=ExtResource("2_waa3u")]
 position = Vector2(990, 518)
-_outside = false
 
 [node name="InteractibleObjectCollisionShape2D" parent="Lighting/StandingLamp5" index="0"]
 shape = SubResource("RectangleShape2D_4xbei")
@@ -97,7 +92,6 @@ region_rect = Rect2(40, 8, 24, 40)
 
 [node name="StandingLamp6" parent="Lighting" index="8" instance=ExtResource("2_waa3u")]
 position = Vector2(712, 558)
-_outside = false
 
 [node name="InteractibleObjectCollisionShape2D" parent="Lighting/StandingLamp6" index="0"]
 shape = SubResource("RectangleShape2D_6nbqo")
@@ -110,7 +104,6 @@ region_rect = Rect2(40, 8, 24, 40)
 
 [node name="StandingLamp7" parent="Lighting" index="9" instance=ExtResource("2_waa3u")]
 position = Vector2(825, 67)
-_outside = false
 
 [node name="InteractibleObjectCollisionShape2D" parent="Lighting/StandingLamp7" index="0"]
 shape = SubResource("RectangleShape2D_w846f")
@@ -141,56 +134,48 @@ position = Vector2(1044, 67)
 
 [node name="OldToolbox" parent="Box" index="0" instance=ExtResource("6_tl1yo")]
 position = Vector2(649, 58)
-_outside = false
 active = true
 action_speed = 3.5
 points = 150
 
 [node name="OldToolbox2" parent="Box" index="1" instance=ExtResource("6_tl1yo")]
 position = Vector2(1058, 204)
-_outside = false
 active = true
 action_speed = 3.5
 points = 150
 
 [node name="OldToolbox3" parent="Box" index="2" instance=ExtResource("6_tl1yo")]
 position = Vector2(572, 63)
-_outside = false
 active = true
 action_speed = 3.5
 points = 150
 
 [node name="OldToolbox4" parent="Box" index="3" instance=ExtResource("6_tl1yo")]
 position = Vector2(151, 83)
-_outside = false
 active = true
 action_speed = 3.5
 points = 150
 
 [node name="OldToolbox5" parent="Box" index="4" instance=ExtResource("6_tl1yo")]
 position = Vector2(120, 391)
-_outside = false
 active = true
 action_speed = 3.5
 points = 150
 
 [node name="OldToolbox6" parent="Box" index="5" instance=ExtResource("6_tl1yo")]
 position = Vector2(561, 532)
-_outside = false
 active = true
 action_speed = 3.5
 points = 150
 
 [node name="OldToolbox7" parent="Box" index="6" instance=ExtResource("6_tl1yo")]
 position = Vector2(1028, 537)
-_outside = false
 active = true
 action_speed = 3.5
 points = 150
 
 [node name="OldToolbox8" parent="Box" index="7" instance=ExtResource("6_tl1yo")]
 position = Vector2(651, 255)
-_outside = false
 active = true
 action_speed = 3.5
 points = 150
@@ -219,7 +204,7 @@ sprite = ExtResource("8_4ybyy")
 texture = ExtResource("8_4ybyy")
 hframes = 2
 vframes = 2
-frame = 3
+frame = 2
 
 [node name="ObjectNonInteractive3" parent="Furniture/Workbench" index="2" instance=ExtResource("7_4ybyy")]
 position = Vector2(10, 47)
@@ -230,6 +215,7 @@ sprite = ExtResource("8_4ybyy")
 texture = ExtResource("8_4ybyy")
 hframes = 2
 vframes = 2
+frame = 1
 
 [node name="ObjectNonInteractive4" parent="Furniture/Workbench" index="3" instance=ExtResource("7_4ybyy")]
 position = Vector2(328, 230)
@@ -240,6 +226,7 @@ sprite = ExtResource("8_4ybyy")
 texture = ExtResource("8_4ybyy")
 hframes = 2
 vframes = 2
+frame = 1
 
 [node name="ObjectNonInteractive5" parent="Furniture/Workbench" index="4" instance=ExtResource("7_4ybyy")]
 position = Vector2(115, 510)
@@ -256,7 +243,6 @@ frame = 2
 
 [node name="LockedDoor" parent="Doors" index="0" instance=ExtResource("10_c0ke5")]
 position = Vector2(352, 417)
-_outside = false
 
 [editable path="Lighting/StandingLamp"]
 [editable path="Lighting/StandingLamp2"]
