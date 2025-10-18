@@ -11,9 +11,9 @@ var id;
 
 @export var sprite: AtlasTexture
 
-enum Momento {NONE,  PROTECTION, STAMINA, SPEED, VISION}
+enum Memento {NONE,  PROTECTION, STAMINA, SPEED, VISION}
 
-@export var momento: Momento = Momento.NONE
+@export var memento: Memento = Memento.NONE
 
 ## if not empty, player will produce a speech bubble with the String during certain actions. 
 @export var player_dialog:String
