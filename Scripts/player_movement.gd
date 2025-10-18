@@ -59,7 +59,7 @@ var _invuln_time_remaining:float = invuln_time;
 ##The player's current speed
 var _current_speed:float = regular_speed;
 
-var _walkin_signal:bool = false
+var _walking_signal:bool = false
 var _idle_signal:bool = false
 ##The player's current stamina
 var _current_stamina:float = stamina_cap:
@@ -92,7 +92,7 @@ var friction = 300
 var action_speed:float
 
 func _physics_process(delta: float) -> void:
-	_do_state(_current_state, delta)
+	_do_state(_current_state, delta);
 
 	var input_vector = Input.get_vector("left", "right", "up", "down")
 
@@ -138,6 +138,7 @@ func _enter_state(state:State)->void:
 		State.DASH_INITIAL:
 			player_body.set_collision_mask_value(KILLER_COLLISION_LAYER,false);
 			player_body.set_collision_layer_value(SELF_COLLISION_LAYER,false);
+			player_body.set_collision_layer_value(9,true);
 			if(_current_stamina < min_dash_stamina):
 				_switch_state_to(State.WALKING);
 				return;
@@ -247,6 +248,7 @@ func _exit_state(state:State):
 		State.DASH_INITIAL:
 			player_body.set_collision_mask_value(KILLER_COLLISION_LAYER,true);
 			player_body.set_collision_layer_value(SELF_COLLISION_LAYER,true);
+			player_body.set_collision_layer_value(9,false);
 		State.DASHING:
 			pass
 		State.WALKING:

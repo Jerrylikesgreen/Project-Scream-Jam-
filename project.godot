@@ -119,6 +119,7 @@ left_click={
 2d_physics/layer_6="Wall"
 2d_physics/layer_7="HitBox"
 2d_physics/layer_8="Action"
+2d_physics/layer_9="Hidden Player"
 
 [rendering]
 
