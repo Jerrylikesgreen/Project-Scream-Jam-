@@ -17,8 +17,8 @@ func _use_tile_data_runtime_update(coords: Vector2i) -> bool:
 		var other_local_coords:Vector2 = tilemap.to_local(to_global(map_to_local(coords)));
 		var other_coords:Vector2i = tilemap.local_to_map(other_local_coords);
 		if other_coords in tilemap.get_used_cells():
-			var wall_or_object_collision = tilemap.get_cell_tile_data(other_coords).get_collision_polygons_count(0) > 0
-			if wall_or_object_collision:
+			var cell_tile_data:TileData = tilemap.get_cell_tile_data(other_coords)
+			if cell_tile_data != null && cell_tile_data.get_collision_polygons_count(0) > 0:
 				return true;
 	return false
 func _tile_data_runtime_update(coords: Vector2i, tile_data: TileData) -> void:
