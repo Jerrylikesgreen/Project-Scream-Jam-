@@ -9,5 +9,5 @@ name = "Momento - Vision"
 description = "I can see better now. "
 consumable = true
 sprite = ExtResource("2_cfxd8")
-momento = 4
+memento = 4
 metadata/_custom_type_script = "uid://4b01cqmglqbj"

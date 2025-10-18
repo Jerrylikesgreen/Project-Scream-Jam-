@@ -9,6 +9,6 @@ name = "Momento - Speed"
 description = "I feel safe with this for some reason..."
 consumable = true
 sprite = ExtResource("2_u042x")
-momento = 3
+memento = 3
 player_dialog = "I feel safe with this for some reason..."
 metadata/_custom_type_script = "uid://4b01cqmglqbj"
