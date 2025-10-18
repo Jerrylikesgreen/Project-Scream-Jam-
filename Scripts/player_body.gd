@@ -15,15 +15,17 @@ func _on_sprite_change(animation:String)->void:
 	player_sprite.play(animation)
 	Events.sfx_play(animation, global_position, false, false)
 
-	
+
 func _on_player_hit():
+	var i:int = 0;
 	for item in InventoryManager.inventory.contents:
-		if item.momento == item.Momento.PROTECTION:
+		if item != null && item.memento == ItemResource.Memento.PROTECTION:
+			print(InventoryManager.inventory.contents[i].name)
 			KillerManager.stun()
 			Events.sfx_play("UI", global_position, true, false)
 			Events.display_player_message(Events.negative_player_dialog[3])
-			InventoryManager.inventory.use(InventoryManager.inventory.content[item])
+			InventoryManager.inventory.use(i)
 			return
-
+		i += 1;
 	Events.game_over()
 	get_parent().queue_free()
