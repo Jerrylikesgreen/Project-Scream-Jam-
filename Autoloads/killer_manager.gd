@@ -7,8 +7,11 @@ var killer_in_other_room:bool = false:
 	set(val):
 		killer_in_other_room = val;
 		if val:
+			killer_active = false
 			print("killer_in_other_room set to True");
-			killer = null;
+			if killer != null:
+				killer.queue_free();
+				killer = null;
 		return;
 
 var killer_active:bool = false
@@ -28,8 +31,13 @@ var killer_count:int = 0
 
 
 func _ready() -> void:
+	get_tree().scene_changed.connect(_on_scene_change);
 	print("Ready ->" , self.name)
 
+func _on_scene_change():
+	var scene:Node = get_tree().current_scene;
+	if scene.is_in_group("Room"):
+		killer_in_other_room = !killer_in_other_room;
 
 func _spawn_killer()->void:
 	var room = get_tree().get_first_node_in_group("Room")
@@ -37,19 +45,19 @@ func _spawn_killer()->void:
 		print("killer not instantiated.")
 		killer.global_position = room.spawn_point.global_position
 		killer_body.global_position = room.spawn_point.global_position
-		print( self.name, 
-		"-> Killers Positioin:  " ,killer.global_position,
-		" Spawnpoint Position  :", room.spawn_point.global_position)
+		#print( self.name, 
+		#"-> Killers Positioin:  " ,killer.global_position,
+		#" Spawnpoint Position  :", room.spawn_point.global_position)
 	else:
 		killer = KILLER.instantiate()
 		print("Killer instantiated")
 		killer.global_position = room.spawn_point.global_position
 		killer_body.global_position = room.spawn_point.global_position
-		room.add_child(killer) 
-		
-		print( self.name, 
-		"-> Killers Positioin:  " ,killer.global_position,
-		" Spawnpoint Position  :", room.spawn_point.global_position)
+	room.add_child(killer) 
+	
+	print( self.name, 
+	"-> Killers Positioin:  " ,killer.global_position,
+	" Spawnpoint Position  :", room.spawn_point.global_position)
 	
 func stun()->void:
 	killer.stun()
@@ -58,6 +66,7 @@ func stun()->void:
 var _count: int =0
 
 func _on_killer_countdown_timeout()->void:
+	print("Kiwwew Countdown timed out")
 	_count =+ 1
 	if _count >2 and  _count < 4:
 		Events.play_bgm(2)
@@ -66,21 +75,21 @@ func _on_killer_countdown_timeout()->void:
 
 
 func start_countdown() -> void:
-	print("Coundown Start")
+	print("Countdown Start")
 	if killer_active:
 		return
-	if timer:
-		timer.start();
-		return
-	timer = Timer.new()
-	timer.autostart = true
-	timer.wait_time = 20.0
-	timer.one_shot = true
-	timer.timeout.connect(_on_killer_countdown_timeout)
+	if timer == null:
+		timer = Timer.new()
+		timer.autostart = true
+		timer.wait_time = 20.0
+		timer.one_shot = true
+		timer.timeout.connect(_on_killer_countdown_timeout)
 	var nodes = get_tree().get_nodes_in_group("Room")
 	for node in nodes:
 		if node is Room:
 			node.add_child(timer)
+	if timer != null:
+		timer.start();
 	
 
 
