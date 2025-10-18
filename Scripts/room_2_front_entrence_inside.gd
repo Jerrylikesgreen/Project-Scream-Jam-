@@ -12,6 +12,7 @@ func _ready() -> void:
 		Globals.player = Globals.PLAYER.instantiate()
 	call_deferred("add_child", Globals.player)
 	Globals.player.global_position = spawn_point.global_position
+	Globals.player.reset_pos();
 	KillerManager.start_countdown()
 	print(KillerManager.killer_active, "ready Room 2")
 	print(Globals.killer_has_not_appeared)
