@@ -8,6 +8,7 @@ extends AudioStreamPlayer2D
 @export var volume_variance_db: float = 1.0
 @export var default_volume_db: float = 0.0
 @export var min_intervals: Dictionary = {"Moving": 0.45}
+@export var debug = false;
 
 var _pool: Array[AudioStreamPlayer2D] = []
 var _pool_index: int = -1
@@ -52,12 +53,13 @@ func _rand_variation(min_v: float, max_v: float) -> float:
 
 func _on_play_sfx_signal(track: String, pos: Vector2 = Vector2(), overlap: bool = true, restart_same: bool = true) -> void:
 	# debug entry
-	print_debug("[SFX] signal:", track, "pos:", pos, "overlap:", overlap, "restart_same:", restart_same)
+	if debug:
+		print_debug("[SFX] signal:", track, "pos:", pos, "overlap:", overlap, "restart_same:", restart_same)
 
-	# quick validation
-	if not tracks.has(track):
-		print_debug("[SFX] track not found in tracks dict:", track)
-		return
+		# quick validation
+		if not tracks.has(track):
+			print_debug("[SFX] track not found in tracks dict:", track)
+			return
 
 	if track == "Idle":
 		stop_sfx("Moving")
@@ -65,7 +67,8 @@ func _on_play_sfx_signal(track: String, pos: Vector2 = Vector2(), overlap: bool 
 
 	var stream := tracks[track] as AudioStream
 	if stream == null:
-		print_debug("[SFX] stream is null for track:", track)
+		if debug:
+			print_debug("[SFX] stream is null for track:", track)
 		return
 
 	# rate limiter
@@ -76,21 +79,24 @@ func _on_play_sfx_signal(track: String, pos: Vector2 = Vector2(), overlap: bool 
 	if _last_played.has(track):
 		var last := float(_last_played[track])
 		if now - last < min_i:
-			print_debug("[SFX] rate-limited:", track, "time since last:", now - last, "min:", min_i)
+			if debug:
+				print_debug("[SFX] rate-limited:", track, "time since last:", now - last, "min:", min_i)
 			return
 	_last_played[track] = now
 
 	if not overlap:
 		var main := _pool[0] if _pool.size() > 0 else null
 		if main == null:
-			print_debug("[SFX] no main player in pool")
+			if debug:
+				print_debug("[SFX] no main player in pool")
 			return
 		# if same stream already playing
 		if main.stream == stream and main.is_playing():
 			if restart_same:
 				main.stop()
 			else:
-				print_debug("[SFX] main already playing same track, skipping:", track)
+				if debug:
+					print_debug("[SFX] main already playing same track, skipping:", track)
 				return
 		main.stop()
 		main.stream = stream
@@ -98,13 +104,15 @@ func _on_play_sfx_signal(track: String, pos: Vector2 = Vector2(), overlap: bool 
 		main.pitch_scale = 1.0 + _rand_variation(-pitch_variance, pitch_variance)
 		main.volume_db = default_volume_db + _rand_variation(-volume_variance_db, volume_variance_db)
 		main.play()
-		print_debug("[SFX] playing non-overlap on main:", track)
+		if debug:
+			print_debug("[SFX] playing non-overlap on main:", track)
 		return
 
 	# overlap -> use pooled player
 	var p := _get_next_player()
 	if p == null:
-		print_debug("[SFX] no pooled player available")
+		if debug:
+			print_debug("[SFX] no pooled player available")
 		return
 	p.stop()
 	p.stream = stream
@@ -112,15 +120,18 @@ func _on_play_sfx_signal(track: String, pos: Vector2 = Vector2(), overlap: bool 
 	p.pitch_scale = 1.0 + _rand_variation(-pitch_variance, pitch_variance)
 	p.volume_db = default_volume_db + _rand_variation(-volume_variance_db, volume_variance_db)
 	p.play()
-	print_debug("[SFX] playing (pooled) track:", track, "pool_index:", _pool_index)
+	if debug:
+		print_debug("[SFX] playing (pooled) track:", track, "pool_index:", _pool_index)
 
 func play_sfx_overlap(track: String, pos: Vector2 = Vector2.ZERO) -> void:
 	if not tracks.has(track):
-		print_debug("[SFX] play_sfx_overlap: track not present:", track)
+		if debug:
+			print_debug("[SFX] play_sfx_overlap: track not present:", track)
 		return
 	var stream := tracks[track] as AudioStream
 	if stream == null:
-		print_debug("[SFX] play_sfx_overlap: stream null for:", track)
+		if debug:
+			print_debug("[SFX] play_sfx_overlap: stream null for:", track)
 		return
 
 	var p := AudioStreamPlayer2D.new()
@@ -151,7 +162,8 @@ func stop_sfx(track: String) -> void:
 			p.stop()
 			# clear stream to avoid lingering equality matches
 			p.stream = null
-	print_debug("[SFX] stop_sfx called for:", track)
+	if debug:
+		print_debug("[SFX] stop_sfx called for:", track)
 
 func set_min_interval(track: String, secs: float) -> void:
 	min_intervals[track] = secs
