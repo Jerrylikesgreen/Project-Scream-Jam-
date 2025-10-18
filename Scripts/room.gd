@@ -13,6 +13,7 @@ func _ready() -> void:
 		Globals.player = Globals.PLAYER.instantiate()
 	add_child(Globals.player)
 	Globals.player.global_position = spawn_point.global_position
+	Globals.player.reset_pos();
 	KillerManager.active_room = self
 	Events.room_changed_signal.connect(_on_room_change_signal)
 	if no_killer:
