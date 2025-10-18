@@ -12,11 +12,16 @@ var _pop_up_shown:bool = false
 var active: bool = true
 var switch_ref:StaticBody2D
  
+
+
 func _ready() -> void:
+	tree_entered.connect(_ready)
+	
 	var switch_node_search = get_tree().get_nodes_in_group("Switch")
 	for nodes in switch_node_search:
 		if nodes._switch:
 			switch_ref = nodes.get_child(0)
+			print("Switch found: ",switch_ref.name)
 			switch_ref.action_incomplete_signal.connect(_on_action_incomplete_signal)
 			switch_ref.action_complete_signal.connect(_on_action_complete_signal)
 
@@ -39,7 +44,10 @@ func _on_pin_signal()->void:
 
 
 func _on_action_complete_signal()->void:
-	pass
+	print("received action complete", _pop_up_shown)
+	if !_pop_up_shown:
+		_pop_up_shown = true
+		pop_up.set_visible(true);
 
 func _on_action_incomplete_signal()->void:
 	print("received action complete", _pop_up_shown)

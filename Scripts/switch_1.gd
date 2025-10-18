@@ -5,8 +5,13 @@ class_name Switch1 extends InteractibleObject
 signal action_incomplete_signal
 signal action_complete_signal
 
+func _ready():
+	super._ready();
+	Events.pin_entered_signal.connect(_on_pin_entered);
 
-
+func _on_pin_entered(correct:bool):
+	if correct:
+		call_deferred("queue_free");
 
 func action() -> void:
 	if not is_acting:
