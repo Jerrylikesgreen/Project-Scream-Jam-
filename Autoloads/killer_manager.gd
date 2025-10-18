@@ -7,6 +7,7 @@ var killer_in_other_room:bool = false:
 	set(val):
 		killer_in_other_room = val;
 		if val:
+			print("killer_in_other_room set to True");
 			killer = null;
 		return;
 
@@ -33,15 +34,19 @@ func _ready() -> void:
 func _spawn_killer()->void:
 	var room = get_tree().get_first_node_in_group("Room")
 	if killer:
+		print("killer not instantiated.")
 		killer.global_position = room.spawn_point.global_position
+		killer_body.global_position = room.spawn_point.global_position
 		print( self.name, 
 		"-> Killers Positioin:  " ,killer.global_position,
 		" Spawnpoint Position  :", room.spawn_point.global_position)
 	else:
 		killer = KILLER.instantiate()
-
-		room.add_child(killer) 
+		print("Killer instantiated")
 		killer.global_position = room.spawn_point.global_position
+		killer_body.global_position = room.spawn_point.global_position
+		room.add_child(killer) 
+		
 		print( self.name, 
 		"-> Killers Positioin:  " ,killer.global_position,
 		" Spawnpoint Position  :", room.spawn_point.global_position)

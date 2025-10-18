@@ -9,6 +9,6 @@ name = "Momento - Protection"
 description = "I feel safe with this for some reason..."
 consumable = true
 sprite = ExtResource("3_ibvie")
-momento = 1
+memento = 1
 player_dialog = "I feel safe with this for some reason..."
 metadata/_custom_type_script = "uid://4b01cqmglqbj"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bja82w2ernttj"]
+[gd_scene load_steps=26 format=3 uid="uid://bja82w2ernttj"]
 
 [ext_resource type="Script" uid="uid://bikngahb45rul" path="res://Scripts/player.gd" id="1_6t5aa"]
 [ext_resource type="Script" uid="uid://bvf78xmw0liad" path="res://Scripts/player_body.gd" id="2_fkybt"]
@@ -100,6 +100,9 @@ animations = [{
 "speed": 7.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pu2lt"]
+height = 26.666666
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gymyn"]
 radius = 15.666666
 height = 74.0
@@ -170,10 +173,11 @@ energy = 0.9
 range_item_cull_mask = 16
 texture = ExtResource("8_gymyn")
 
-[node name="CollisionShape2D" type="CollisionPolygon2D" parent="PlayerBody"]
-position = Vector2(1, 4)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBody"]
+position = Vector2(1, 14)
+rotation = 1.5707964
 scale = Vector2(0.6, 0.6)
-polygon = PackedVector2Array(-6.6666675, -3.5858986, -6.6666675, -14.999999, 1.6666665, -14.999999, 8.333333, -14.999999, 6.666667, -3.5858986, 6.6666665, 23.333334, -6.6666675, 23.333334)
+shape = SubResource("CapsuleShape2D_pu2lt")
 
 [node name="ActionArea" type="Area2D" parent="PlayerBody"]
 unique_name_in_owner = true

@@ -114,7 +114,13 @@ func _drag(index:int):
 	
 	var item:ItemResource = inv_contents.contents[index];
 	drag_sprite = Sprite2D.new()
-	drag_sprite.texture = item.image;
+	if item.sprite == null:
+		drag_sprite.texture = item.image;
+	else:
+		drag_sprite.texture = item.sprite;
+	
+	#drag_sprite.texture = item.image;
+
 	var item_texture:TextureRect = slots[index].item_texture
 	var dims:Vector2 = item_texture.get_rect().size;
 	var tex_size:Vector2 = item_texture.texture.get_size();

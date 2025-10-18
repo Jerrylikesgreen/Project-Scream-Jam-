@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://conhdlxhcey73" path="res://Assets/PNG/Killer/killer_spritesheet.png" id="3_5tl0p"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5tl0p"]
+radius = 12.0
+height = 24.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kyn8l"]
 atlas = ExtResource("3_5tl0p")
@@ -247,10 +249,12 @@ script = ExtResource("1_5tl0p")
 unique_name_in_owner = true
 collision_layer = 2
 collision_mask = 36
+motion_mode = 1
+wall_min_slide_angle = 0.033161256
 script = ExtResource("1_4lk16")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killer Body"]
-position = Vector2(9, -6)
+position = Vector2(5, 20)
 shape = SubResource("CapsuleShape2D_5tl0p")
 
 [node name="KillerSprite" type="AnimatedSprite2D" parent="Killer Body"]
@@ -260,6 +264,7 @@ autoplay = "Idle"
 
 [node name="Vision" type="Area2D" parent="Killer Body"]
 unique_name_in_owner = true
+collision_mask = 257
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="Killer Body/Vision"]
 visible = false
@@ -282,6 +287,7 @@ debug_color = Color(0.9696228, 0.09829701, 0.37320936, 0.41960785)
 
 [node name="Label" type="Label" parent="Killer Body"]
 unique_name_in_owner = true
+visible = false
 offset_left = -22.0
 offset_top = -46.0
 offset_right = 28.0
@@ -290,6 +296,7 @@ text = "Action"
 
 [node name="PathfinderToPlayer" type="NavigationAgent2D" parent="Killer Body"]
 unique_name_in_owner = true
+debug_enabled = true
 debug_path_custom_color = Color(0.33333334, 0.07058824, 1, 1)
 
 [node name="Debug" type="Label" parent="."]
