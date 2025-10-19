@@ -93,10 +93,10 @@ func start_countdown() -> void:
 	
 
 
-func player_in_line_of_sight(player_body:PlayerBody):
+func player_in_line_of_sight(player_body:PlayerBody)->bool:
 	print("line_of_sight called")
-	Events.sfx_play("Buildup", killer.global_position, false, false)
 	if(killer != null):
+		Events.sfx_play("Buildup", killer.global_position, false, false)
 		print("killer not null")
 		var ray:RayCast2D = RayCast2D.new();
 		killer_body.add_child(ray)
