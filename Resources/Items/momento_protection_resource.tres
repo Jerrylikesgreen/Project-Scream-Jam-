@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("2_ibvie")
-name = "Momento - Protection"
+name = "Memento - Protection"
 description = "I feel safe with this for some reason..."
 consumable = true
 sprite = ExtResource("3_ibvie")

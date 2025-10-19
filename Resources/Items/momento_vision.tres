@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_7f8fa")
-name = "Momento - Vision"
+name = "Memento - Vision"
 description = "I can see better now. "
 consumable = true
 sprite = ExtResource("2_cfxd8")
