@@ -7,6 +7,7 @@
 size = Vector2(88, 38)
 
 [node name="HideableObject" type="StaticBody2D"]
+scale = Vector2(0.6, 0.6)
 collision_layer = 12
 script = ExtResource("1_r6g5t")
 sprite_texture = ExtResource("2_t2kyu")
@@ -17,4 +18,5 @@ shape = SubResource("RectangleShape2D_toaw8")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+scale = Vector2(-1, 1)
 texture = ExtResource("2_t2kyu")

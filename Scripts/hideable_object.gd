@@ -1,5 +1,5 @@
 class_name HideableObject extends StaticBody2D
-
+var killer_trigger = false;
 @export var sprite_texture:Texture2D;
 @onready var sprite:Sprite2D = %Sprite;
 func _ready()->void:
