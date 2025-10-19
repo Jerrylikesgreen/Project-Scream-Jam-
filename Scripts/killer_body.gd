@@ -31,6 +31,8 @@ func _ready():
 	for node in patrol_area_search:
 		if node.is_in_group("Patrol Area"):
 			patrol_area = node
+	$PickNextPatrolTimer.timeout.connect(_pick_patrol_target_position);
+	
 
 	randomize()
 	_pick_area()
